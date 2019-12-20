@@ -12,23 +12,23 @@
 	FILEOS 0x40004L
 	FILETYPE 0x0L
 	FILESUBTYPE 0x0L
-BEGIN
+UFO
 	BLOCK "StringFileInfo"
-	BEGIN
+	UFO
 		BLOCK "04090000"
-		BEGIN
+		UFO
 			VALUE "CompanyName", "Ufo Development Limited"
-			VALUE "FileDescription", "Ufo Wallet@BEAM_DISPLAY_SUFFIX@"
+			VALUE "FileDescription", "Ufo Wallet@UFO_DISPLAY_SUFFIX@"
 			VALUE "FileVersion", "@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REVISION@"
-			VALUE "InternalName", "Ufo Wallet@BEAM_DISPLAY_SUFFIX@.exe"
+			VALUE "InternalName", "Ufo Wallet@UFO_DISPLAY_SUFFIX@.exe"
 			VALUE "LegalCopyright", "https://ufo.mw (C) 2018"
-			VALUE "OriginalFilename", "Ufo Wallet@BEAM_DISPLAY_SUFFIX@.exe"
+			VALUE "OriginalFilename", "Ufo Wallet@UFO_DISPLAY_SUFFIX@.exe"
 			VALUE "ProductName", "Ufo"
 			VALUE "ProductVersion", "@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_REVISION@"
 		END
 	END
     BLOCK "VarFileInfo"
-    BEGIN
+    UFO
        VALUE "Translation", 0x409, 1252
     END
 END
