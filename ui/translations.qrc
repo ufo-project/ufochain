@@ -1,0 +1,18 @@
+<RCC>
+	<qresource prefix="/translations">
+		<file>en_US.qm</file>
+		<file>ru_RU.qm</file>
+		<file>es_ES.qm</file>
+		<file>be_BY.qm</file>
+		<file>vi_VI.qm</file>
+		<file>zh_CN.qm</file>
+		<file>fi_FI.qm</file>
+		<file>fr_FR.qm</file>
+		<file>ja_JP.qm</file>
+		<file>ko_KR.qm</file>
+		<file>sv_SE.qm</file>
+		<file>th_TH.qm</file>
+		<file>tr_TR.qm</file>
+		<file>nl_NL.qm</file>
+	</qresource>
+</RCC>

@@ -1,0 +1,21 @@
+SRCS =aes_helper.c gost_streebog.c mod_blakecoin.c sph_blake.c sph_bmw.c sph_cubehash.c sph_echo.c sph_fugue.c sph_groestl.c sph_hamsi_helper.c sph_hamsi.c sph_haval.c sph_hefty1.c sph_jh.c sph_keccak.c sph_luffa.c sph_ripemd.c sph_sha2.c sph_sha2big.c sph_shabal.c sph_shavite.c sph_simd.c sph_skein.c sph_whirlpool.c x17r.c
+OBJS = aes_helper.o gost_streebog.o mod_blakecoin.o sph_blake.o sph_bmw.o sph_cubehash.o sph_echo.o sph_fugue.o sph_groestl.o sph_hamsi_helper.o sph_hamsi.o sph_haval.o sph_hefty1.o sph_jh.o sph_keccak.o sph_luffa.o sph_ripemd.o sph_sha2.o sph_sha2big.o sph_shabal.o sph_shavite.o sph_simd.o sph_skein.o sph_whirlpool.o x17r.o
+
+CC = arm-linux-gnueabihf-gcc
+CCFLAGS = -Wall -O0
+
+all : a
+
+a : $(OBJS)
+	ar -rv libx17r.a  $(OBJS)
+
+#main : $(OBJS)
+#	$(CC) $^ -o $@ $(CCFLAGS)
+	
+%.o : %.c
+	$(CC) -c $< $(CCFLAGS)
+	
+clean: 
+	rm -rf test *.o
+	rm -rf libx17r.a
+	rm -rf *.exe
