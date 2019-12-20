@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=Beam Wallet
+Name=Ufo Wallet
 Comment=Scalable confidential cryptocurrency
-Exec=/usr/bin/BeamWallet %U
+Exec=/usr/bin/UfoWallet %U
 Icon=beam
 Terminal=false
 Type=Application
 Categories=Network
 MimeType=application/x-beam-item;
-GenericName=Beam Wallet
+GenericName=Ufo Wallet
