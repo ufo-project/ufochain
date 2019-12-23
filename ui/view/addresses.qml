@@ -4,7 +4,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.2
 import "controls"
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 
 ColumnLayout {
     id: addressRoot

@@ -1,8 +1,8 @@
 import QtQuick.Layouts 1.11
 import QtQuick 2.11
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 import "../utils.js" as Utils
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 
 ColumnLayout {
     id: control

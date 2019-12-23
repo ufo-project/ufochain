@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.0
 import "controls"
 import "utils.js" as Utils
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 
 ColumnLayout {
     id: settingsView

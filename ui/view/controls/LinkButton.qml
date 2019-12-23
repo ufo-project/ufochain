@@ -3,7 +3,7 @@ import QtQuick.Controls 1.2
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.0
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 import "."
 
 Control {

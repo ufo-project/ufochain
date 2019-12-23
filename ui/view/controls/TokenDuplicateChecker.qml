@@ -1,4 +1,4 @@
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 
 ConfirmationDialog {
     TokenBootstrapManager {

@@ -2,7 +2,7 @@ import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Controls.impl 2.4
 import QtQuick.Templates 2.4 as T
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 import "."
 
 T.TextField {
