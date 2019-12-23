@@ -105,9 +105,12 @@ namespace ufo
 
 		struct {
 			// emission parameters
-			Amount Value0	= Coin * 80; // Initial emission. Each drop it will be halved. In case of odd num it's rounded to the lower value.
-			Height Drop0	= 1440 * 365; // 1 year roughly. This is the height of the last block that still has the initial emission, the drop is starting from the next block
-			Height Drop1	= 1440 * 365 * 4; // 4 years roughly. Each such a cycle there's a new drop
+			//Amount Value0	= Coin * 80; // Initial emission. Each drop it will be halved. In case of odd num it's rounded to the lower value.
+			//Height Drop0	= 1440 * 365; // 1 year roughly. This is the height of the last block that still has the initial emission, the drop is starting from the next block
+			//Height Drop1	= 1440 * 365 * 4; // 4 years roughly. Each such a cycle there's a new drop
+
+			Amount Value0 = Coin * 5; // Initial emission. Each drop it will be halved.
+			Height Drop0 = 2100000; // about 4 years roughly. Each such a cycle there's a drop
 		} Emission;
 
 		struct {

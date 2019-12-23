@@ -975,36 +975,43 @@ namespace ufo
 			pForks[i].m_Height = MaxHeight;
 	}
 
+	//Amount Rules::get_EmissionEx(Height h, Height& hEnd, Amount base) const
+	//{
+	//	h -= Rules::HeightGenesis; // may overflow, but it's ok. If h < HeightGenesis (which must not happen anyway) - then it'll give a huge height, for which the emission would be zero anyway.
+
+	//	// Current emission strategy:
+	//	// at Emission.Drop0 - 1/2
+	//	// at Emission.Drop1 - 5/8
+	//	// each Emission.Drop1 cycle - 1/2
+
+	//	if (h < Emission.Drop0)
+	//	{
+	//		hEnd = Rules::HeightGenesis + Emission.Drop0;
+	//		return base;
+	//	}
+
+	//	assert(Emission.Drop1);
+	//	Height n = 1 + (h - Emission.Drop0) / Emission.Drop1;
+
+	//	const uint32_t nBitsMax = sizeof(Amount) << 3;
+	//	if (n >= nBitsMax)
+	//	{
+	//		hEnd = MaxHeight;
+	//		return 0;
+	//	}
+
+	//	hEnd = Rules::HeightGenesis + Emission.Drop0 + n * Emission.Drop1;
+
+	//	if (n >= 2)
+	//		base += (base >> 2); // the unusual part - add 1/4
+
+	//	return base >> n;
+	//}
+
 	Amount Rules::get_EmissionEx(Height h, Height& hEnd, Amount base) const
 	{
-		h -= Rules::HeightGenesis; // may overflow, but it's ok. If h < HeightGenesis (which must not happen anyway) - then it'll give a huge height, for which the emission would be zero anyway.
-
-		// Current emission strategy:
-		// at Emission.Drop0 - 1/2
-		// at Emission.Drop1 - 5/8
-		// each Emission.Drop1 cycle - 1/2
-
-		if (h < Emission.Drop0)
-		{
-			hEnd = Rules::HeightGenesis + Emission.Drop0;
-			return base;
-		}
-
-		assert(Emission.Drop1);
-		Height n = 1 + (h - Emission.Drop0) / Emission.Drop1;
-
-		const uint32_t nBitsMax = sizeof(Amount) << 3;
-		if (n >= nBitsMax)
-		{
-			hEnd = MaxHeight;
-			return 0;
-		}
-
-		hEnd = Rules::HeightGenesis + Emission.Drop0 + n * Emission.Drop1;
-
-		if (n >= 2)
-			base += (base >> 2); // the unusual part - add 1/4
-
+		int n = (h - 1) / Emission.Drop0;
+		hEnd = (n + 1) * Emission.Drop0;
 		return base >> n;
 	}
 
