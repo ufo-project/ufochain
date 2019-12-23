@@ -123,9 +123,9 @@ namespace ufo
 			uint32_t WindowMedian0	= 25; // Timestamp for a block must be (strictly) higher than the median of preceding window
 			uint32_t WindowMedian1	= 7; // Num of blocks taken at both endings of WindowWork, to pick medians.
 			//Difficulty Difficulty0	= Difficulty(8 << Difficulty::s_MantissaBits); // 2^8 = 256
-      //Difficulty Difficulty0 = Difficulty(1);
-      uint32_t DiffAdjustBlocks = 10;
-      Difficulty Difficulty0 = Difficulty(0x1e0fffff);
+			//Difficulty Difficulty0 = Difficulty(1);
+			uint32_t DiffAdjustBlocks = 50;  // Adjust difficulty once for 50 blocks
+			Difficulty Difficulty0 = Difficulty(0x1e0fffff);
 			struct {
 				// damp factor. Adjustment of actual dt toward expected, effectively dampens
 				uint32_t M = 1; // Multiplier of the actual dt
