@@ -1079,7 +1079,7 @@ namespace ufo
 			<< Coin
 			<< Emission.Value0
 			<< Emission.Drop0
-			<< Emission.Drop1
+			//<< Emission.Drop1
 			<< Maturity.Coinbase
 			<< Maturity.Std
 			<< MaxBodySize

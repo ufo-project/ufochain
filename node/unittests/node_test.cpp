@@ -2259,7 +2259,7 @@ int main()
 	ufo::Rules::get().DA.WindowWork = 35;
 	ufo::Rules::get().Maturity.Coinbase = 35; // lowered to see more txs
 	ufo::Rules::get().Emission.Drop0 = 5;
-	ufo::Rules::get().Emission.Drop1 = 8;
+	//ufo::Rules::get().Emission.Drop1 = 8;
 	ufo::Rules::get().CA.Enabled = true;
 	ufo::Rules::get().Maturity.Coinbase = 10;
 	ufo::Rules::get().pForks[1].m_Height = 16;
