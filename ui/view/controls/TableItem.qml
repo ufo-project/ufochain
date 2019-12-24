@@ -2,7 +2,7 @@ import QtQuick 2.11
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 import QtGraphicalEffects 1.0
-import Beam.Wallet 1.0
+import Ufo.Wallet 1.0
 import "."
 
 Item {
