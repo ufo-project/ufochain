@@ -1527,7 +1527,7 @@ namespace ufo
 			bool IsAllBbsReceived() const
 			{
 				return !m_nBbsMsgsPending;
-			}
+			} 
 
 			bool IsAllRecoveryReceived() const
 			{

@@ -856,24 +856,27 @@
         <translation>Wallet is not connected to the node</translation>
     </message>
     <message id="tx-failture-undefined">
-        <source>Unexpected reason, please send wallet logs to Beam support</source>
-        <translation>Unexpected reason, please send wallet logs to Beam support</translation>
+        <source>Unexpected reason, please send wallet logs to Ufo support</source>
+        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
+        <translation type="unfinished">Unexpected reason, please send wallet logs to Beam support</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
         <translation>Transaction cancelled</translation>
     </message>
     <message id="tx-failture-receiver-signature-invalid">
-        <source>Receiver signature in not valid, please send wallet logs to Beam support</source>
-        <translation>Receiver signature in not valid, please send wallet logs to Beam support</translation>
+        <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
+        <translation type="unfinished">Receiver signature in not valid, please send wallet logs to Beam support</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
         <translation>Failed to register transaction with the blockchain, see node logs for details</translation>
     </message>
     <message id="tx-failture-not-valid">
-        <source>Transaction is not valid, please send wallet logs to Beam support</source>
-        <translation>Transaction is not valid, please send wallet logs to Beam support</translation>
+        <source>Transaction is not valid, please send wallet logs to Ufo support</source>
+        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
+        <translation type="unfinished">Transaction is not valid, please send wallet logs to Beam support</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -900,8 +903,9 @@
         <translation>Transaction timed out</translation>
     </message>
     <message id="tx-failture-not-signed-by-receiver">
-        <source>Payment not signed by the receiver, please send wallet logs to Beam support</source>
-        <translation>Payment not signed by the receiver, please send wallet logs to Beam support</translation>
+        <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
+        <translation type="unfinished">Payment not signed by the receiver, please send wallet logs to Beam support</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
