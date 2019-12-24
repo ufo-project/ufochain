@@ -20,10 +20,7 @@ namespace ufo
         std::vector<std::string> result
         {
 #ifdef UFO_TESTNET
-            //"us-nodes.testnet.ufo.mw:8100",
-            //"eu-nodes.testnet.ufo.mw:8100",
-            //"ap-nodes.testnet.ufo.mw:8100"
-          "39.107.80.68:20001"
+          "192.168.1.122:20015"
 #else
             //"eu-node01.masternet.ufo.mw:8100",
             //"eu-node02.masternet.ufo.mw:8100",
