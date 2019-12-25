@@ -1260,7 +1260,7 @@ namespace ufo
       memcpy(pDataIn + 4, (unsigned char*)m_Prev.m_pData, m_Prev.nBytes);
       memset(pDataIn + 36, 0x0, 4);
 
-      memcpy(pDataIn + 40, (unsigned char*)v.m_pData, m_Prev.nBytes);
+      memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
       memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
 
       x17r_hash(pDataOut, pDataIn, 80);
