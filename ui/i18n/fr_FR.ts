@@ -642,9 +642,9 @@
         <translation>J&apos;accepte</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <translation>224/5000
-Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si vous utilisez votre portefeuille sur un autre appareil, votre solde sera à jour, mais l&apos;historique et les adresses des transactions seront conservés séparément sur chaque appareil.</translation>
+Vous essayez de restaurer un portefeuille Ufo existant. Veuillez noter que si vous utilisez votre portefeuille sur un autre appareil, votre solde sera à jour, mais l&apos;historique et les adresses des transactions seront conservés séparément sur chaque appareil.</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -858,8 +858,8 @@ Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si v
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Raison inattendue, veuillez envoyer les logs du portefeuille au service clientèle de Beam</translation>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Raison inattendue, veuillez envoyer les logs du portefeuille au service clientèle de Ufo</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -867,8 +867,8 @@ Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si v
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">La signature du destinataire n&apos;est pas valide, veuillez envoyer les logs du portefeuille au service clientèle de Beam</translation>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">La signature du destinataire n&apos;est pas valide, veuillez envoyer les logs du portefeuille au service clientèle de Ufo</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -876,8 +876,8 @@ Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si v
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">La transaction n&apos;est pas valide, veuillez envoyer les logs du portefeuille au service clientèle de Beam</translation>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">La transaction n&apos;est pas valide, veuillez envoyer les logs du portefeuille au service clientèle de Ufo</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -905,8 +905,8 @@ Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si v
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Le paiement n&apos;a pas été signé par le récipiendaire, merci d&apos;envoyer les logs du portefeuille au service clientèle de Beam</translation>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Le paiement n&apos;a pas été signé par le récipiendaire, merci d&apos;envoyer les logs du portefeuille au service clientèle de Ufo</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1026,8 +1026,8 @@ Vous essayez de restaurer un portefeuille Beam existant. Veuillez noter que si v
         <translation>Lien externe</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>L&apos;application Beam Wallet nécessite l&apos;autorisation d&apos;ouvrir un lien externe dans le navigateur. Cette action exposera votre adresse IP au serveur Web. Pour l&apos;éviter, choisissez -Annuler-. Vous pouvez modifier votre choix dans les paramètres de l&apos;application à tout moment.</translation>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <translation>L&apos;application Ufo Wallet nécessite l&apos;autorisation d&apos;ouvrir un lien externe dans le navigateur. Cette action exposera votre adresse IP au serveur Web. Pour l&apos;éviter, choisissez -Annuler-. Vous pouvez modifier votre choix dans les paramètres de l&apos;application à tout moment.</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1476,7 +1476,7 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="atomic-swap-receive-beam">
         <source>Receive BEAM</source>
-        <translation>Recevoir Beam</translation>
+        <translation>Recevoir Ufo</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>

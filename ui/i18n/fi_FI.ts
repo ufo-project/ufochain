@@ -642,7 +642,7 @@
         <translation>Hyväksy</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <translation>Olet palauttamassa vanhaa lompakkoa. Huomioithan, että jos olet jo käyttänyt lompakkoa toisella laitteella, tapahtumahistoria sekä tallentamasi osoitteet eivät siirry uudelle laitteelle palautuksen yhteydessä. Tapahtumat sekä osoitteet tallennetaan erikseen kullekin laitteelle. Lompakkosi saldo kuitenkin palautetaan ja on käytettävissä ajantasaisena uudessa laitteessa.</translation>
     </message>
     <message id="start-migration-message">
@@ -857,8 +857,8 @@
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Odottamaton virheen syy, ole hyvä ja lähetä lompakon lokitiedostot Beam-tukeen (palvelu englanniksi)</translation>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Odottamaton virheen syy, ole hyvä ja lähetä lompakon lokitiedostot Ufo-tukeen (palvelu englanniksi)</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -866,8 +866,8 @@
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Saajan allekirjoitus ei ole pätevä, ole hyvä ja lähetä lompakon lokitiedostot Beam-tukeen (palvelu englanniksi)</translation>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Saajan allekirjoitus ei ole pätevä, ole hyvä ja lähetä lompakon lokitiedostot Ufo-tukeen (palvelu englanniksi)</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -875,8 +875,8 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Maksutapahtuma ei ole pätevä, ole hyvä ja lähetä lompakon lokitiedostot Beam-tukeen (palvelu englanniksi)</translation>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Maksutapahtuma ei ole pätevä, ole hyvä ja lähetä lompakon lokitiedostot Ufo-tukeen (palvelu englanniksi)</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -904,8 +904,8 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Saaja ei allekirjoittanut maksutapahtumaa, ole hyvä ja lähetä lompakon lokitiedostot Beam-tukeen (palvelu englanniksi)</translation>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Saaja ei allekirjoittanut maksutapahtumaa, ole hyvä ja lähetä lompakon lokitiedostot Ufo-tukeen (palvelu englanniksi)</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1025,8 +1025,8 @@
         <translation>Ulkoinen linkki</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Beam-lompakkosovellus vaatii luvan sovelluksen ulkoisten linkkien avaamiseen selaimessasi. Tämä toiminto paljastaa IP-osoitteesi ulkoisen palvelimen ylläpitäjälle. Välttääksesi tämän valitse -Peruuta-. Voit myöhemmin muuttaa asetuksia milloin vain.</translation>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <translation>Ufo-lompakkosovellus vaatii luvan sovelluksen ulkoisten linkkien avaamiseen selaimessasi. Tämä toiminto paljastaa IP-osoitteesi ulkoisen palvelimen ylläpitäjälle. Välttääksesi tämän valitse -Peruuta-. Voit myöhemmin muuttaa asetuksia milloin vain.</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>

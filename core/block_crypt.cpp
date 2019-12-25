@@ -1010,8 +1010,9 @@ namespace ufo
 
 	Amount Rules::get_EmissionEx(Height h, Height& hEnd, Amount base) const
 	{
+		assert(h >= 1);
 		int n = (h - 1) / Emission.Drop0;
-		hEnd = (n + 1) * Emission.Drop0;
+		hEnd = (n + 1) * Emission.Drop0 + 1;
 		return base >> n;
 	}
 

@@ -9,7 +9,7 @@
     </message>
     <message id="general-groth">
         <source>GROTH</source>
-        <translation>Groth: đơn vị nhỏ nhất của Beam </translation>
+        <translation>Groth: đơn vị nhỏ nhất của Ufo </translation>
     </message>
     <message id="general-comment">
         <source>Comment</source>
@@ -627,7 +627,7 @@
     </message>
     <message id="send-curency-sub-name">
         <source>GROTH</source>
-        <translation type="vanished">Groth: đơn vị nhỏ nhất của Beam </translation>
+        <translation type="vanished">Groth: đơn vị nhỏ nhất của Ufo </translation>
     </message>
     <message id="send-remaining-label">
         <source>Remaining</source>
@@ -642,8 +642,8 @@
         <translation>Tôi đồng ý</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>Bạn đang cố gắng khôi phục một ví Beam hiện có. Xin lưu ý rằng nếu bạn sử dụng ví của mình trên một thiết bị khác, số dư của bạn sẽ được cập nhật, nhưng lịch sử giao dịch và địa chỉ sẽ được giữ riêng trên mỗi thiết bị.</translation>
+        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <translation>Bạn đang cố gắng khôi phục một ví Ufo hiện có. Xin lưu ý rằng nếu bạn sử dụng ví của mình trên một thiết bị khác, số dư của bạn sẽ được cập nhật, nhưng lịch sử giao dịch và địa chỉ sẽ được giữ riêng trên mỗi thiết bị.</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -857,8 +857,8 @@
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Lý do không mong muốn, vui lòng gửi nhật ký ví đến hỗ trợ Beam</translation>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Lý do không mong muốn, vui lòng gửi nhật ký ví đến hỗ trợ Ufo</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -866,8 +866,8 @@
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Chữ ký người nhận không hợp lệ, vui lòng gửi nhật ký ví tới hỗ trợ Beam</translation>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Chữ ký người nhận không hợp lệ, vui lòng gửi nhật ký ví tới hỗ trợ Ufo</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -875,8 +875,8 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Giao dịch không hợp lệ, vui lòng gửi nhật ký ví đến hỗ trợ Beam</translation>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Giao dịch không hợp lệ, vui lòng gửi nhật ký ví đến hỗ trợ Ufo</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -904,8 +904,8 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Thanh toán không được ký bởi người nhận, vui lòng gửi nhật ký ví tới bộ phận hỗ trợ của Beam</translation>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Thanh toán không được ký bởi người nhận, vui lòng gửi nhật ký ví tới bộ phận hỗ trợ của Ufo</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -921,7 +921,7 @@
     </message>
     <message id="tx-curency-sub-name">
         <source>GROTH</source>
-        <translation type="vanished">Groth: đơn vị nhỏ nhất của Beam </translation>
+        <translation type="vanished">Groth: đơn vị nhỏ nhất của Ufo </translation>
     </message>
     <message id="utxo-utxo">
         <source>UTXO</source>
@@ -1025,8 +1025,8 @@
         <translation>Liên kết bên ngoài</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Ứng dụng Ví Beam yêu cầu sự cho phép để mở liên kết ngoài trong trình duyệt. Hành động này sẽ hiển thị IP của bạn cho máy chủ web. Để tránh điều này, chọn -Hủy-. Bạn có thể thay đổi lựa chọn của mình trong cài đặt ứng dụng bất cứ lúc nào.</translation>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <translation>Ứng dụng Ví Ufo yêu cầu sự cho phép để mở liên kết ngoài trong trình duyệt. Hành động này sẽ hiển thị IP của bạn cho máy chủ web. Để tránh điều này, chọn -Hủy-. Bạn có thể thay đổi lựa chọn của mình trong cài đặt ứng dụng bất cứ lúc nào.</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1475,7 +1475,7 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="atomic-swap-receive-beam">
         <source>Receive BEAM</source>
-        <translation>Nhận Beam</translation>
+        <translation>Nhận Ufo</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
