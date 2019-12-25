@@ -645,8 +645,9 @@
         <translation>我同意</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>您正在尝试还原已存在的Beam钱包
+        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
+        <translation type="unfinished">您正在尝试还原已存在的Beam钱包
 请注意：如果您在其他设备上使用该钱包，您的余额将是最新的，但交易历史和地址将分别保存在每个设备上</translation>
     </message>
     <message id="start-migration-message">
@@ -1038,8 +1039,9 @@
         <translation>外部链接</translation>
     </message>
     <message id="open-external-message">
-        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Beam钱包需要获取权限以在浏览器中打开外部链接
+        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
+        <translation type="unfinished">Beam钱包需要获取权限以在浏览器中打开外部链接
 
 在浏览器中打开外部外链会暴露您的IP地址；如不想暴露IP地址，请选择“取消”；您可以随时在设置中修改该选项</translation>
     </message>
@@ -1490,12 +1492,13 @@ please review your settings and try again.</oldsource>
         <translation>交易</translation>
     </message>
     <message id="atomic-swap-receive-beam">
-        <source>Receive BEAM</source>
-        <translation>接收Beam</translation>
+        <source>Receive UFO</source>
+        <translation>接收UFO</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
-        <translation>支付Beam</translation>
+        <oldsource>Send UFO</oldsource>
+        <translation type="unfinished">支付UFO</translation>
     </message>
     <message id="atomic-swap-only-my-offers">
         <source>Only my offers</source>

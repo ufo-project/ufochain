@@ -642,8 +642,9 @@
         <translation>ฉันยอมรับ</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>คุณกำลังดำเนินการกู้กระเป๋า กรุณาเข้าใจว่าถ้าคุณกำลังจะใช้งานกระเป๋าที่จะกู้นี้ในอุปกรณ์อื่น ยอดคงเหลือที่จะแสดงผลในอุปกรณ์นี้จะถูกอัพเดทเป็นปัจจุบัน แต่รายการประวัติธุรกรรมและที่อยู่นั้นจะถูกแยกเก็บในแต่ละอุปกรณ์</translation>
+        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
+        <translation type="unfinished">คุณกำลังดำเนินการกู้กระเป๋า กรุณาเข้าใจว่าถ้าคุณกำลังจะใช้งานกระเป๋าที่จะกู้นี้ในอุปกรณ์อื่น ยอดคงเหลือที่จะแสดงผลในอุปกรณ์นี้จะถูกอัพเดทเป็นปัจจุบัน แต่รายการประวัติธุรกรรมและที่อยู่นั้นจะถูกแยกเก็บในแต่ละอุปกรณ์</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -1025,8 +1026,9 @@
         <translation>ลิงก์ภายนอก</translation>
     </message>
     <message id="open-external-message">
-        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>กระเป๋า Ufo ต้องการการอนุญาตเพื่อที่จะเปิดลิงค์ภายนอก การกระทำนี้จะทำให้ IP ของคุณส่งไปยังเว็บปลายทาง เพื่อเป็นการป้องกัน ให้เลือก &quot;ยกเลิก&quot; และ คุณสามารถเปลี่ยนแปลงตัวเลือกนี้ได้ที่การตั้งค่าเมื่อไหร่ก็ได้</translation>
+        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
+        <translation type="unfinished">กระเป๋า Ufo ต้องการการอนุญาตเพื่อที่จะเปิดลิงค์ภายนอก การกระทำนี้จะทำให้ IP ของคุณส่งไปยังเว็บปลายทาง เพื่อเป็นการป้องกัน ให้เลือก &quot;ยกเลิก&quot; และ คุณสามารถเปลี่ยนแปลงตัวเลือกนี้ได้ที่การตั้งค่าเมื่อไหร่ก็ได้</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1474,12 +1476,13 @@ please review your settings and try again.</oldsource>
         <translation>ธุรกรรม</translation>
     </message>
     <message id="atomic-swap-receive-beam">
-        <source>Receive BEAM</source>
-        <translation>รับ Ufo</translation>
+        <source>Receive UFO</source>
+        <translation>รับ UFO</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
-        <translation>ส่ง BEAM</translation>
+        <oldsource>Send UFO</oldsource>
+        <translation type="unfinished">ส่ง UFO</translation>
     </message>
     <message id="atomic-swap-only-my-offers">
         <source>Only my offers</source>
