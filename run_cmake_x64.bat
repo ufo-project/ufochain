@@ -1,4 +1,5 @@
 setlocal
-call "D:\ufochain\setenv_x64.bat"
+cd /d %~dp0
+call "setenv_x64.bat"
 cd %GRA_ROOT%
-cmake-gui -G "Visual Studio 15"
+..\CMake\bin\cmake-gui.exe -G "Visual Studio 15"

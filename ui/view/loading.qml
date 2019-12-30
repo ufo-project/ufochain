@@ -219,7 +219,7 @@ Item
                         Layout.alignment:    Qt.AlignHCenter
                         font.pixelSize:      12
                         color:               Qt.rgba(255, 255, 255, 0.3)
-                        text:                [qsTrId("settings-version"), BeamGlobals.version()].join(' ')
+                        text:                [qsTrId("settings-version"), UfoGlobals.version()].join(' ')
                     }
 
                     Item {

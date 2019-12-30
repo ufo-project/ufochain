@@ -18,21 +18,21 @@ ConfirmationDialog {
     property alias addressText:      addressLabel.text
     property alias amountText:       amountLabel.text
     property alias feeText:          feeLabel.text
-    property Item defaultFocusItem:  BeamGlobals.needPasswordToSpend() ? requirePasswordInput : cancelButton
+    property Item defaultFocusItem:  UfoGlobals.needPasswordToSpend() ? requirePasswordInput : cancelButton
 
     okButtonColor:           Style.accent_outgoing
     okButtonText:            qsTrId("general-send")
     okButtonIconSource:      "qrc:/assets/icon-send-blue.svg"
-    okButtonEnable:          BeamGlobals.needPasswordToSpend() ? requirePasswordInput.text.length : true
+    okButtonEnable:          UfoGlobals.needPasswordToSpend() ? requirePasswordInput.text.length : true
     cancelButtonIconSource:  "qrc:/assets/icon-cancel-white.svg"
 
     function confirmationHandler() {
-        if (BeamGlobals.needPasswordToSpend()) {
+        if (UfoGlobals.needPasswordToSpend()) {
             if (requirePasswordInput.text.length == 0) {
                 requirePasswordInput.forceActiveFocus(Qt.TabFocusReason);
                 return;
             }
-            if (!BeamGlobals.isPasswordValid(requirePasswordInput.text)) {
+            if (!UfoGlobals.isPasswordValid(requirePasswordInput.text)) {
                 requirePasswordInput.forceActiveFocus(Qt.TabFocusReason);
                 requirePasswordError.text = qsTrId("general-pwd-invalid");
                 return;
@@ -164,7 +164,7 @@ ConfirmationDialog {
                 //
                 SFText {
                     id: requirePasswordLabel
-                    visible: BeamGlobals.needPasswordToSpend()
+                    visible: UfoGlobals.needPasswordToSpend()
                     Layout.row: 4
                     Layout.columnSpan: 2
                     Layout.topMargin: 50
@@ -179,7 +179,7 @@ ConfirmationDialog {
 
                 SFTextInput {
                     id: requirePasswordInput
-                    visible: BeamGlobals.needPasswordToSpend()
+                    visible: UfoGlobals.needPasswordToSpend()
                     Layout.row: 5
                     Layout.columnSpan: 2
                     Layout.fillWidth: true
@@ -194,7 +194,7 @@ ConfirmationDialog {
 
                 SFText {
                     id: requirePasswordError
-                    visible: BeamGlobals.needPasswordToSpend()
+                    visible: UfoGlobals.needPasswordToSpend()
                     Layout.row: 6
                     Layout.columnSpan: 2
                     height: 16

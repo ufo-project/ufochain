@@ -66,7 +66,7 @@ CustomTableView {
                     text: styleData.value
                     color: Style.content_main
                     copyMenuEnabled: true
-                    onCopyText: BeamGlobals.copyToClipboard(text)
+                    onCopyText: UfoGlobals.copyToClipboard(text)
                 }
             }
         }
@@ -100,7 +100,7 @@ CustomTableView {
                     anchors.leftMargin: 20
                     elide: Text.ElideRight
                     anchors.verticalCenter: parent.verticalCenter
-                    text: Utils.formatDateTime(styleData.value, BeamGlobals.getLocaleName())
+                    text: Utils.formatDateTime(styleData.value, UfoGlobals.getLocaleName())
                     color: Style.content_main
                 }
             }
@@ -127,7 +127,7 @@ CustomTableView {
                     anchors.leftMargin: 20
                     elide: Text.ElideRight
                     anchors.verticalCenter: parent.verticalCenter
-                    text: Utils.formatDateTime(styleData.value, BeamGlobals.getLocaleName())
+                    text: Utils.formatDateTime(styleData.value, UfoGlobals.getLocaleName())
                     color: Style.content_main
                 }
             }

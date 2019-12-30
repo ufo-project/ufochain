@@ -739,7 +739,7 @@ ColumnLayout {
                             Layout.preferredHeight: 32
 
                             SFText {
-                                property string beamUrl: "<a href='https://www.beam.mw/'>beam.mw</a>"
+                                property string beamUrl: "<a href='https://www.ufo.mw/'>beam.mw</a>"
                                 //% "blockchain explorer"
                                             property string explorerUrl: "<a href='%1'>%2</a>".arg(Style.explorerUrl).arg(qsTrId("explorer"))
                                 //: general settings, label for alow open external links

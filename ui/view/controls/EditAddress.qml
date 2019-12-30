@@ -43,7 +43,7 @@ Dialog {
 	}
 
 	property var getExpirationTimeLabel: function() {
-		var localeName = BeamGlobals.getLocaleName();
+		var localeName = UfoGlobals.getLocaleName();
 		if (isExpiredAddress) {
 			return addressItem
 				? Utils.formatDateTime(addressItem.expirationDate, localeName)
@@ -130,7 +130,7 @@ Dialog {
                 text: addressItem ? addressItem.address : ""
 				elide: Text.ElideLeft
 				copyMenuEnabled: true
-				onCopyText: BeamGlobals.copyToClipboard(text)
+				onCopyText: UfoGlobals.copyToClipboard(text)
 			}
     	}
 

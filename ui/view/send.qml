@@ -43,7 +43,7 @@ ColumnLayout {
     }
 
     function isTAInputValid(token) {
-        return token.length == 0 || BeamGlobals.isTAValid(token)
+        return token.length == 0 || UfoGlobals.isTAValid(token)
     }
 
     ColumnLayout {
@@ -84,7 +84,7 @@ ColumnLayout {
                 }
 
                 if (!isSwapMode) {
-                    isSwapOnFly = !BeamGlobals.isAddress(receiverTAInput.text);
+                    isSwapOnFly = !UfoGlobals.isAddress(receiverTAInput.text);
                 }
 
                 if (!isTAInputValid(receiverTAInput.text)) {
@@ -94,7 +94,7 @@ ColumnLayout {
                 }
 
                 isErrorDetected = (isSwapOnFly || isSwapMode) &&
-                        !BeamGlobals.isSwapToken(receiverTAInput.text);
+                        !UfoGlobals.isSwapToken(receiverTAInput.text);
                 
                 if (isErrorDetected) {
                     pasteEventComplete = false;

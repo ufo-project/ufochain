@@ -53,7 +53,7 @@ ColumnLayout {
     }
 
     Component.onCompleted: {
-        if (!BeamGlobals.canSwap()) swapna.open();
+        if (!UfoGlobals.canSwap()) swapna.open();
     }
 
     SwapNADialog {
@@ -199,7 +199,7 @@ ColumnLayout {
                         color:            viewModel.commentValid ? Style.content_main : Style.validator_error
                         focus:            true
                         text:             viewModel.addressComment
-                        maximumLength:    BeamGlobals.maxCommentLength()
+                        maximumLength:    UfoGlobals.maxCommentLength()
                         enabled:          !thisView.addressSaved
                     }
 
@@ -479,7 +479,7 @@ ColumnLayout {
                     icon.source:         "qrc:/assets/icon-copy.svg"
                     enabled:             thisView.canSend()
                     onClicked: {
-                        BeamGlobals.copyToClipboard(viewModel.transactionToken);
+                        UfoGlobals.copyToClipboard(viewModel.transactionToken);
                         if (!thisView.addressSaved) {
                             thisView.addressSaved = true
                             viewModel.saveAddress()

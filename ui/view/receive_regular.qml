@@ -132,7 +132,7 @@ ColumnLayout {
                 color:            viewModel.commentValid ? Style.content_main : Style.validator_error
                 focus:            true
                 text:             viewModel.addressComment
-                maximumLength:    BeamGlobals.maxCommentLength()
+                maximumLength:    UfoGlobals.maxCommentLength()
             }
 
             Binding {
@@ -300,7 +300,7 @@ ColumnLayout {
             icon.color:         Style.content_opposite
             palette.button:     Style.active
             icon.source:        "qrc:/assets/icon-copy.svg"
-            onClicked:          BeamGlobals.copyToClipboard(viewModel.receiverAddress)
+            onClicked:          UfoGlobals.copyToClipboard(viewModel.receiverAddress)
             enabled:            receiveView.isValid()
         }
     }

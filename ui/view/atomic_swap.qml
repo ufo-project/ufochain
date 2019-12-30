@@ -194,7 +194,7 @@ Item {
                     }
                     gradLeft: Style.swapCurrencyPaneGrLeftBEAM
                     currencyIcon: "qrc:/assets/icon-beam.svg"
-                    valueStr: [viewModel.beamAvailable, Utils.symbolBeam].join(" ")
+                    valueStr: [viewModel.ufoAvailable, Utils.symbolBeam].join(" ")
                     valueSecondaryStr: activeTxCountStr()
                     visible: true
                 }
@@ -233,7 +233,7 @@ Item {
                     valueSecondaryStr: parent.btcActiveTxStr()
                     isOk: viewModel.btcOK
                     isConnecting: viewModel.btcConnecting
-                    visible: BeamGlobals.haveBtc()
+                    visible: UfoGlobals.haveBtc()
                     //% "Connecting..."
                     textConnecting: qsTrId("swap-connecting")
                     //% "Cannot connect to peer. Please check the address and retry."
@@ -247,7 +247,7 @@ Item {
                     valueSecondaryStr: parent.ltcActiveTxStr()
                     isOk: viewModel.ltcOK
                     isConnecting: viewModel.ltcConnecting
-                    visible: BeamGlobals.haveLtc()
+                    visible: UfoGlobals.haveLtc()
                     textConnecting: qsTrId("swap-connecting")
                     textConnectionError: qsTrId("swap-beta-connection-error")
                 }
@@ -259,7 +259,7 @@ Item {
                     valueSecondaryStr: parent.qtumActiveTxStr()
                     isOk: viewModel.qtumOK
                     isConnecting: viewModel.qtumConnecting
-                    visible: BeamGlobals.haveQtum()
+                    visible: UfoGlobals.haveQtum()
                     textConnecting: qsTrId("swap-connecting")
                     textConnectionError: qsTrId("swap-beta-connection-error")
                 }
@@ -275,7 +275,7 @@ Item {
                     textColor: Style.active
                     isOk: true
                     borderSize: 1
-                    visible: !BeamGlobals.haveBtc() || !BeamGlobals.haveLtc() || !BeamGlobals.haveQtum()
+                    visible: !UfoGlobals.haveBtc() || !UfoGlobals.haveLtc() || !UfoGlobals.haveQtum()
                     MouseArea {
                         id:                clickArea
                         anchors.fill:      parent
@@ -287,11 +287,11 @@ Item {
                 }
                 Component.onCompleted: {
                     var currencyIcons = [];
-                    if (!BeamGlobals.haveBtc())
+                    if (!UfoGlobals.haveBtc())
                         currencyIcons.push("qrc:/assets/icon-btc.svg");
-                    if (!BeamGlobals.haveLtc())
+                    if (!UfoGlobals.haveLtc())
                         currencyIcons.push("qrc:/assets/icon-ltc.svg");
-                    if (!BeamGlobals.haveQtum())
+                    if (!UfoGlobals.haveQtum())
                         currencyIcons.push("qrc:/assets/icon-qtum.svg");
 
                     swapOptions.currencyIcons = currencyIcons;
@@ -681,7 +681,7 @@ Item {
                                                 }
                                                 else {
                                                     var txParameters = offersTable.model.getRoleValue(styleData.row, "rawTxParameters");
-                                                    var token = BeamGlobals.rawTxParametrsToTokenStr(txParameters);
+                                                    var token = UfoGlobals.rawTxParametrsToTokenStr(txParameters);
                                                     tokenDuplicateChecker.checkTokenForDuplicate(token);
                                                 }
                                             }
@@ -842,12 +842,12 @@ Item {
                                         swapCoinRedeemTxConfirmations:  txRolesMap && txRolesMap.swapCoinRedeemTxConfirmations ? txRolesMap.swapCoinRedeemTxConfirmations : ""
                                         swapCoinRefundTxId:             txRolesMap && txRolesMap.swapCoinRefundTxId ? txRolesMap.swapCoinRefundTxId : ""
                                         swapCoinRefundTxConfirmations:  txRolesMap && txRolesMap.swapCoinRefundTxConfirmations ? txRolesMap.swapCoinRefundTxConfirmations : ""
-                                        beamLockTxKernelId:             txRolesMap && txRolesMap.beamLockTxKernelId ? txRolesMap.beamLockTxKernelId : ""
-                                        beamRedeemTxKernelId:           txRolesMap && txRolesMap.beamRedeemTxKernelId ? txRolesMap.beamRedeemTxKernelId : ""
-                                        beamRefundTxKernelId:           txRolesMap && txRolesMap.beamRefundTxKernelId ? txRolesMap.beamRefundTxKernelId : ""
+                                        beamLockTxKernelId:             txRolesMap && txRolesMap.ufoLockTxKernelId ? txRolesMap.ufoLockTxKernelId : ""
+                                        beamRedeemTxKernelId:           txRolesMap && txRolesMap.ufoRedeemTxKernelId ? txRolesMap.ufoRedeemTxKernelId : ""
+                                        beamRefundTxKernelId:           txRolesMap && txRolesMap.ufoRefundTxKernelId ? txRolesMap.ufoRefundTxKernelId : ""
                                         
                                         onTextCopied: function (text) {
-                                            BeamGlobals.copyToClipboard(text);
+                                            UfoGlobals.copyToClipboard(text);
                                         }
                                     }
                                 }
@@ -1024,7 +1024,7 @@ Item {
                                         fontStyleName: "Bold"
                                         fontSizeMode: Text.Fit
                                         color: Style.accent_outgoing
-                                        onCopyText: BeamGlobals.copyToClipboard(Utils.getAmountWithoutCurrency(styleData.value)) 
+                                        onCopyText: UfoGlobals.copyToClipboard(Utils.getAmountWithoutCurrency(styleData.value)) 
                                     }
                                 }
                             }
@@ -1047,7 +1047,7 @@ Item {
                                         fontStyleName: "Bold"
                                         fontSizeMode: Text.Fit
                                         color: Style.accent_incoming
-                                        onCopyText: BeamGlobals.copyToClipboard(Utils.getAmountWithoutCurrency(styleData.value)) 
+                                        onCopyText: UfoGlobals.copyToClipboard(Utils.getAmountWithoutCurrency(styleData.value)) 
                                     }
                                 }
                             }
@@ -1171,7 +1171,7 @@ Item {
                             icon.source: "qrc:/assets/icon-copy.svg"
                             enabled: txContextMenu.canCopyToken
                             onTriggered: {
-                                BeamGlobals.copyToClipboard(txContextMenu.token);
+                                UfoGlobals.copyToClipboard(txContextMenu.token);
                             }
                         }
 

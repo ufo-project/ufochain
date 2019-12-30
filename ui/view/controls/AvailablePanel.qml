@@ -197,7 +197,6 @@ Control {
         RowLayout{
             Layout.preferredWidth: parent.width / 2
             visible: parseFloat(receiving) > 0 || parseFloat(sending) > 0
-
             Rectangle {
                 color:   Qt.rgba(255, 255, 255, 0.1)
                 width:   1

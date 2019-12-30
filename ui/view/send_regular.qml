@@ -83,7 +83,7 @@ ColumnLayout {
                 placeholderText:  qsTrId("send-contact-placeholder")
 
                 onTextChanged: {
-                    if (BeamGlobals.isSwapToken(text)&&
+                    if (UfoGlobals.isSwapToken(text)&&
                         typeof onSwapToken == "function") {
                         onSwapToken(text);
                     }
@@ -151,7 +151,7 @@ ColumnLayout {
                 font.pixelSize:   14
                 color:            Style.content_main
                 selectByMouse:    true
-                maximumLength:    BeamGlobals.maxCommentLength()
+                maximumLength:    UfoGlobals.maxCommentLength()
             }
 
             Item {

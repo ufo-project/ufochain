@@ -29,5 +29,5 @@ Item {
         verticalAlignment: Text.AlignBottom
     }
 
-    onCopyText: BeamGlobals.copyToClipboard(itemText.text)
+    onCopyText: UfoGlobals.copyToClipboard(itemText.text)
 }

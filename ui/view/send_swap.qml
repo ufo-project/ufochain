@@ -35,19 +35,19 @@ ColumnLayout {
         var currname = ""
 
         if (currency == Currency.CurrBtc) {
-            isOtherCurrActive  = BeamGlobals.haveBtc()
+            isOtherCurrActive  = UfoGlobals.haveBtc()
             //% "Bitcoin"
             currname = qsTrId("general-bitcoin")
         }
 
         if (currency == Currency.CurrLtc){
-            isOtherCurrActive = BeamGlobals.haveLtc()
+            isOtherCurrActive = UfoGlobals.haveLtc()
             //% "Litecoin"
             currname = qsTrId("general-litecoin")
         }
 
         if (currency == Currency.CurrQtum) {
-            isOtherCurrActive = BeamGlobals.haveQtum()
+            isOtherCurrActive = UfoGlobals.haveQtum()
             //% "QTUM"
             currname = qsTrId("general-qtum")
         }
@@ -234,7 +234,7 @@ ColumnLayout {
                         font.pixelSize:   14
                         color:            Style.content_main
                         selectByMouse:    true
-                        maximumLength:    BeamGlobals.maxCommentLength()
+                        maximumLength:    UfoGlobals.maxCommentLength()
                     }
 
                     Item {
@@ -303,7 +303,7 @@ ColumnLayout {
                                 id:               offered
                                 font.pixelSize:   14
                                 color:            Style.content_secondary
-                                text:             Utils.formatDateTime(viewModel.offeredTime, BeamGlobals.getLocaleName())
+                                text:             Utils.formatDateTime(viewModel.offeredTime, UfoGlobals.getLocaleName())
                             }
                         }
 
@@ -322,7 +322,7 @@ ColumnLayout {
                                 Layout.topMargin: 10
                                 font.pixelSize:   14
                                 color:            Style.content_secondary
-                                text:             Utils.formatDateTime(viewModel.expiresTime, BeamGlobals.getLocaleName())
+                                text:             Utils.formatDateTime(viewModel.expiresTime, UfoGlobals.getLocaleName())
                             }
                         }
                     }

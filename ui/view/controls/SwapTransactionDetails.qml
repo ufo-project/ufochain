@@ -189,7 +189,7 @@ RowLayout {
             color: Style.content_main
             //wrapMode: Text.Wrap
             elide: Text.ElideMiddle
-            text: root.beamLockTxKernelId
+            text: root.ufoLockTxKernelId
             onCopyText: textCopied(text)
         }
         
@@ -212,7 +212,7 @@ RowLayout {
             color: Style.content_main
             // wrapMode: Text.Wrap
             elide: Text.ElideMiddle
-            text: root.beamRedeemTxKernelId
+            text: root.ufoRedeemTxKernelId
             onCopyText: textCopied(text)
         }
 
@@ -281,7 +281,7 @@ RowLayout {
             color: Style.content_main
             // wrapMode: Text.Wrap
             elide: Text.ElideMiddle
-            text: root.beamRefundTxKernelId
+            text: root.ufoRefundTxKernelId
             onCopyText: textCopied(text)
         }
 

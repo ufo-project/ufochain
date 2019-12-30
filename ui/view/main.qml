@@ -54,7 +54,7 @@ Rectangle {
     property var contentItems : [
 		//"dashboard",
 		"wallet", 
-        "atomic_swap",
+        //"atomic_swap",
 		"addresses", 
 		"utxo",
 		//"notification", 

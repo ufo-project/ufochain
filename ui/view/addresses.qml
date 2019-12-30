@@ -138,7 +138,7 @@ ColumnLayout {
                     font.pixelSize: 14
                     wrapMode: Text.Wrap
                     copyMenuEnabled: true
-                    onCopyText: BeamGlobals.copyToClipboard(text)
+                    onCopyText: UfoGlobals.copyToClipboard(text)
                 }
             }
 
@@ -324,7 +324,7 @@ ColumnLayout {
                             text: styleData.value
                             color: Style.content_main
                             copyMenuEnabled: true
-                            onCopyText: BeamGlobals.copyToClipboard(text)
+                            onCopyText: UfoGlobals.copyToClipboard(text)
                         }
                     }
                 }
