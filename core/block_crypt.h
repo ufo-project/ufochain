@@ -110,7 +110,7 @@ namespace ufo
 			//Height Drop1	= 1440 * 365 * 4; // 4 years roughly. Each such a cycle there's a new drop
 
 			Amount Value0 = Coin * 5; // Initial emission. Each drop it will be halved.
-			Height Drop0 = 2100000; // about 4 years roughly. Each such a cycle there's a drop
+			Height Drop0 = 1050000; // about 2 years roughly. Each such a cycle there's a drop
 		} Emission;
 
 		struct {

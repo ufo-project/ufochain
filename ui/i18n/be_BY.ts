@@ -643,7 +643,8 @@
     </message>
     <message id="start-restore-message-line">
         <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>Вы спрабуеце аднавіць існуючы кашалёк. Калі ласка, звярніце ўвагу, калі ваш кашалёк выкарыстоўваецца на іншай прыладзе, ваш баланс будзе адноўлены да актуальнага стану, але гісторыя транзакцый і адрасы будуць захоўвацца эксклюзіўна для кожнай прылады.</translation>
+        <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
+        <translation type="unfinished">Вы спрабуеце аднавіць існуючы кашалёк. Калі ласка, звярніце ўвагу, калі ваш кашалёк выкарыстоўваецца на іншай прыладзе, ваш баланс будзе адноўлены да актуальнага стану, але гісторыя транзакцый і адрасы будуць захоўвацца эксклюзіўна для кожнай прылады.</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -857,8 +858,8 @@
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Невядомая памылка, калі ласка, адпраўце лог-файлы камандзе падтрымкі Beam</translation>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Невядомая памылка, калі ласка, адпраўце лог-файлы камандзе падтрымкі Ufo</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -866,8 +867,8 @@
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Ня карэктны подпіс атрымальніка, калі ласка, адпраўце лог-файлы камандзе падтрымкі Beam</translation>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Ня карэктны подпіс атрымальніка, калі ласка, адпраўце лог-файлы камандзе падтрымкі Ufo</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -875,8 +876,8 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Някарэктная транзакцыя, калі ласка, адпраўце лог-файлы камандзе падтрымкі Beam</translation>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Някарэктная транзакцыя, калі ласка, адпраўце лог-файлы камандзе падтрымкі Ufo</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -904,8 +905,8 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Транзакцыя ня падпісана атрымальнікам, калі ласка, адпраўце лог-файлы камандзе падтрымкі Beam</translation>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">Транзакцыя ня падпісана атрымальнікам, калі ласка, адпраўце лог-файлы камандзе падтрымкі Ufo</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1026,7 +1027,8 @@
     </message>
     <message id="open-external-message">
         <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Кашалёк спрабуе адкрыць знешнюю спасылку ў браўзэры. Гэта дзеянне можа раскрыць ваш IP адрас серверу. Каб пазбегнуць гэтага, націсніце &quot;адмена&quot;. Вы можаце змяніць свой выбар ва ўсталёўках у любы час.</translation>
+        <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
+        <translation type="unfinished">Кашалёк спрабуе адкрыць знешнюю спасылку ў браўзэры. Гэта дзеянне можа раскрыць ваш IP адрас серверу. Каб пазбегнуць гэтага, націсніце &quot;адмена&quot;. Вы можаце змяніць свой выбар ва ўсталёўках у любы час.</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1474,12 +1476,13 @@ please review your settings and try again.</oldsource>
         <translation>Транзакцыі</translation>
     </message>
     <message id="atomic-swap-receive-beam">
-        <source>Receive BEAM</source>
-        <translation type="unfinished">Receive BEAM</translation>
+        <source>Receive UFO</source>
+        <translation type="unfinished">Receive UFO</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
-        <translation type="unfinished">Send BEAM</translation>
+        <oldsource>Send UFO</oldsource>
+        <translation type="unfinished">Send UFO</translation>
     </message>
     <message id="atomic-swap-only-my-offers">
         <source>Only my offers</source>
