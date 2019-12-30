@@ -876,13 +876,8 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-<<<<<<< HEAD
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Transaction is not valid, please send wallet logs to Beam support</translation>
-=======
         <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">Transaction is not valid, please send wallet logs to Ufo support</translation>
->>>>>>> 4d7aab88865f31967ded6941b32e15dc5cc2f38d
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -910,13 +905,8 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-<<<<<<< HEAD
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">Payment not signed by the receiver, please send wallet logs to Beam support</translation>
-=======
         <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">Payment not signed by the receiver, please send wallet logs to Ufo support</translation>
->>>>>>> 4d7aab88865f31967ded6941b32e15dc5cc2f38d
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>

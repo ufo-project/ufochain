@@ -1,3 +1,4 @@
 run_cmake_x64.bat
 setenv_x64.bat
 *.gen
+*.qm
