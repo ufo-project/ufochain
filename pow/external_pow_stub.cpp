@@ -21,14 +21,14 @@ public:
     }
 
 private:
-  struct Job {
-    std::string jobID;
-    Merkle::Hash prev;
-    Merkle::Hash input;
-    Height height;
-    Block::PoW pow;
-    BlockFound callback;
-  };
+    struct Job {
+        std::string jobID;
+        Merkle::Hash prev;
+        Merkle::Hash input;
+        Height height;
+        Block::PoW pow;
+        BlockFound callback;
+    };
 
     void new_job(
         const std::string& jobID,
@@ -40,10 +40,10 @@ private:
         const CancelCallback& cancelCallback
     ) override
     {
-      {
+        {
         std::lock_guard<std::mutex> lk(_mutex);
         if (_currentJob.input == input) {
-          return;
+            return;
         }
         _currentJob.jobID = jobID;
         _currentJob.prev = prev;
@@ -52,7 +52,7 @@ private:
         _currentJob.height = height;
         _currentJob.callback = callback;
         _changed = true;
-      }
+        }
       _cond.notify_one();
     }
 
@@ -109,16 +109,16 @@ private:
                        << " and height=" << job.height;
 
             if (_fakeSolver) {
-              /*
+				/*
                 ECC::GenRandom(&job.pow.m_Indices[0], (uint32_t)job.pow.m_Indices.size());
-                {
-                    std::lock_guard<std::mutex> lk(_mutex);
-                    _lastFoundBlock = job.pow;
-                    _lastFoundBlockID = job.jobID;
-                    _lastFoundBlockHeight = job.height;
-                }
-                job.callback();
-                */
+				{
+					std::lock_guard<std::mutex> lk(_mutex);
+					_lastFoundBlock = job.pow;
+					_lastFoundBlockID = job.jobID;
+					_lastFoundBlockHeight = job.height;
+				}
+				job.callback();
+				*/
 
             } else if ( (job.pow.*SolveFn) (job.prev.m_pData, Merkle::Hash::nBytes, job.input.m_pData, Merkle::Hash::nBytes, cancelFn)) {
                 {

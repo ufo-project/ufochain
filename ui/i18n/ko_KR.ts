@@ -643,7 +643,8 @@
     </message>
     <message id="start-restore-message-line">
         <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>현재 이미 존재하는 Beam 지갑을 복구하려고 하고 있습니다. 지갑을 다른 기기에서 사용한다면 그 잔고는 지속적으로 업데이트 되지만, 거래 내역은 기기 별로 분리되어서 저장될 것입니다.</translation>
+        <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
+        <translation type="unfinished">현재 이미 존재하는 Ufo 지갑을 복구하려고 하고 있습니다. 지갑을 다른 기기에서 사용한다면 그 잔고는 지속적으로 업데이트 되지만, 거래 내역은 기기 별로 분리되어서 저장될 것입니다.</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -857,8 +858,8 @@
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">예상되지 않은 이유, 지갑 로그를 Beam support 에 보내십시오</translation>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">예상되지 않은 이유, 지갑 로그를 Ufo support 에 보내십시오</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -866,8 +867,8 @@
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">받는 사람의 서명이 유효하지 않습니다, Beam support 에 지갑 로그를 보내십시오</translation>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">받는 사람의 서명이 유효하지 않습니다, Ufo support 에 지갑 로그를 보내십시오</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -875,8 +876,8 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">거래가 유효하지 않습니다, Beam support 에 지갑 로그를 보내십시오</translation>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">거래가 유효하지 않습니다, Ufo support 에 지갑 로그를 보내십시오</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -904,8 +905,8 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
-        <translation type="unfinished">수신자가 지불에 서명하지 않았습니다, 지갑 로그를 Beam support 에 보내십시오</translation>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
+        <translation type="unfinished">수신자가 지불에 서명하지 않았습니다, 지갑 로그를 Ufo support 에 보내십시오</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1026,7 +1027,8 @@
     </message>
     <message id="open-external-message">
         <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Beam 지갑 앱은 브라우저에서 외부 링크를 열 수 있는 권한이 필요합니다. 이를 수행하면 당신의 IP 주소가 웹 서버에 노출 될 것입니다. 원하지 않는다면 -취소- 를 선택하십시오. 설정에서 언제든지 변경할 수 있습니다.</translation>
+        <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
+        <translation type="unfinished">Ufo 지갑 앱은 브라우저에서 외부 링크를 열 수 있는 권한이 필요합니다. 이를 수행하면 당신의 IP 주소가 웹 서버에 노출 될 것입니다. 원하지 않는다면 -취소- 를 선택하십시오. 설정에서 언제든지 변경할 수 있습니다.</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1474,12 +1476,13 @@ please review your settings and try again.</oldsource>
         <translation>거래내역</translation>
     </message>
     <message id="atomic-swap-receive-beam">
-        <source>Receive BEAM</source>
-        <translation>BEAM 받기</translation>
+        <source>Receive UFO</source>
+        <translation>UFO 받기</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
-        <translation>BEAM 보내기</translation>
+        <oldsource>Send UFO</oldsource>
+        <translation type="unfinished">UFO 보내기</translation>
     </message>
     <message id="atomic-swap-only-my-offers">
         <source>Only my offers</source>
@@ -1559,7 +1562,7 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>거래를 완료하기 위해서는, Beam 을 보낸 후 12시간 동안 온라인 상태이어야 합니다.</translation>
+        <translation>거래를 완료하기 위해서는, Ufo 을 보낸 후 12시간 동안 온라인 상태이어야 합니다.</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

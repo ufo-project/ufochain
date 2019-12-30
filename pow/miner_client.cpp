@@ -154,6 +154,7 @@ private:
           return IExternalPOW::solution_rejected;
         }
         LOG_INFO() << "block found id=" << _lastJobID;
+        LOG_INFO() << "nonce=" << _lastFoundBlock.m_Nonce;
 
         _blockSent = false;
         send_last_found_block();

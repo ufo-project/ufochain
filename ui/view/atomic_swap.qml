@@ -360,7 +360,7 @@ Item {
                             color: sendReceiveBeamSwitch.checked
                                 ? Qt.rgba(Style.content_main.r, Style.content_main.g, Style.content_main.b, 0.5)
                                 : Style.active
-                            //% "Receive BEAM"
+                            //% "Receive UFO"
                             text: qsTrId("atomic-swap-receive-beam")
                             MouseArea {
                                 anchors.fill: parent

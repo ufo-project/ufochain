@@ -643,7 +643,8 @@
     </message>
     <message id="start-restore-message-line">
         <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
-        <translation>あなたはすでに存在するBeamウォレットを復元しようとしています。あなたが他のデバイスで使用しているウォレットを復元しようとすると、残高は最新になりますが、トランザクション履歴とアドレス情報はそれぞれのデバイスで保管されている為、再現されません。</translation>
+        <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
+        <translation type="unfinished">あなたはすでに存在するBeamウォレットを復元しようとしています。あなたが他のデバイスで使用しているウォレットを復元しようとすると、残高は最新になりますが、トランザクション履歴とアドレス情報はそれぞれのデバイスで保管されている為、再現されません。</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -857,7 +858,7 @@
     </message>
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
-        <oldsource>Unexpected reason, please send wallet logs to Beam support</oldsource>
+        <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">予期せぬ理由です。ウォレットのログをBeamサポートに送信してください</translation>
     </message>
     <message id="tx-failture-cancelled">
@@ -866,7 +867,7 @@
     </message>
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Receiver signature in not valid, please send wallet logs to Beam support</oldsource>
+        <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">受信者の署名が無効です。ウォレットのログをBeamサポートに送信してください</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
@@ -875,7 +876,7 @@
     </message>
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
-        <oldsource>Transaction is not valid, please send wallet logs to Beam support</oldsource>
+        <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">トランザクションが無効です。ウォレットのログをBeamサポートに送信してください</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
@@ -904,7 +905,7 @@
     </message>
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
-        <oldsource>Payment not signed by the receiver, please send wallet logs to Beam support</oldsource>
+        <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
         <translation type="unfinished">支払が受信者によって署名されてました。ウォレットログをBeamサポートまで送信してください</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
@@ -1026,7 +1027,8 @@
     </message>
     <message id="open-external-message">
         <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
-        <translation>Beam ウォレットアプリは、外部リンクをブラウザで開く許可を必要とします。この操作により、あなたのIPアドレスがWebサーバーに共有されます。これを回避する為には、キャンセルを選択してください。この設定はいつでも変更できます。</translation>
+        <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
+        <translation type="unfinished">Ufo ウォレットアプリは、外部リンクをブラウザで開く許可を必要とします。この操作により、あなたのIPアドレスがWebサーバーに共有されます。これを回避する為には、キャンセルを選択してください。この設定はいつでも変更できます。</translation>
     </message>
     <message id="start-open-change-wallet-message">
         <source>If you&apos;ll restore a wallet all transaction history and addresses will be lost.</source>
@@ -1474,12 +1476,13 @@ please review your settings and try again.</oldsource>
         <translation>トランザクション</translation>
     </message>
     <message id="atomic-swap-receive-beam">
-        <source>Receive BEAM</source>
-        <translation>BEAMを受信</translation>
+        <source>Receive UFO</source>
+        <translation>UFOを受信</translation>
     </message>
     <message id="atomic-swap-send-beam">
         <source>Send BEAM</source>
-        <translation>BEAMを送信</translation>
+        <oldsource>Send UFO</oldsource>
+        <translation type="unfinished">UFOを送信</translation>
     </message>
     <message id="atomic-swap-only-my-offers">
         <source>Only my offers</source>

@@ -1109,13 +1109,13 @@ void NodeProcessor::TryGoTo(NodeDB::StateID& sidTrg)
 			break;
 	}
 
-  if (mbc.Flush() == true)
-  {
-    LOG_INFO() << "(mbc.Flush()==true";
-    return; // at position
-  }
+	if (mbc.Flush() == true)
+	{
+		LOG_INFO() << "(mbc.Flush()==true";
+		return; // at position
+	}
 
-  LOG_INFO() << "(mbc.Flush()==false";
+	LOG_INFO() << "(mbc.Flush()==false";
 	if (!bContextFail)
 		LOG_WARNING() << "Context-free verification failed";
 
