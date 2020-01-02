@@ -22,10 +22,10 @@ namespace ufo
 {
 	struct Difficulty
 	{
-    uint32_t nBitsPow;
+        uint32_t nBitsPow;
 
 		//Difficulty(uint32_t d = 0) :m_Packed(d) {}
-    Difficulty(uint32_t d = 0) :nBitsPow(d) {}
+        Difficulty(uint32_t d = 0) :nBitsPow(d) {}
 
 		typedef ECC::uintBig Raw;
 
@@ -35,18 +35,18 @@ namespace ufo
 		//static const uint32_t s_Inf = (s_MaxOrder + 1) << s_MantissaBits;
 
 		//bool IsTargetReached(const ECC::uintBig&) const;
-    bool IsTargetReached(const uint256& hash) const;
+        bool IsTargetReached(const uint256& hash) const;
 
 		//bool get_Target(ECC::uintBig&) const; // more expensive to calculate. Use to test many variants for the same target
-    bool get_Target(arith_uint256&) const;
+        bool get_Target(arith_uint256&) const;
 		void Unpack(Raw&) const;
-    void Pack(const Raw&);
+        void Pack(const Raw&);
 
 		//void Unpack(uint32_t& order, uint32_t& mantissa) const;
 		//void Pack(uint32_t order, uint32_t mantissa);
 
-    void Unpack(arith_uint256&) const;
-    void Pack(const arith_uint256&);
+        void Unpack(arith_uint256&) const;
+        void Pack(const arith_uint256&);
 		void Calculate(const Raw& wrk, uint32_t dh, uint32_t dtTrg_s, uint32_t dtSrc_s);
 
 		friend Raw operator + (const Raw&, const Difficulty&);
