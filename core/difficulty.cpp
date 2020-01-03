@@ -16,6 +16,8 @@
 #include <cmath>
 #include "block_crypt.h"
 
+#include "stdlib.h"
+
 namespace ufo
 {
     //void Difficulty::Pack(uint32_t order, uint32_t mantissa)

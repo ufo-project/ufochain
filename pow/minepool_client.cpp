@@ -114,18 +114,18 @@ private:
         _enonce_len = enonce.length() / 2;
         _miner->set_enonce(enonce.c_str());
 
-        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code << ", enonce " << enonce;
+        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code << ", enonce=" << enonce;
         return true;
     }
 
     bool on_message(const stratum::MiningSubmitResult& submit_result) override {
         std::string share_submit_id = submit_result.id;
         if (submit_result.code < 0) {
-            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << "was refused";
+            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused";
             return true;
         }
 
-        LOG_DEBUG() << "mining_submit, share_submit_id " << share_submit_id << "was accepted";
+        LOG_DEBUG() << "mining_submit, share_submit_id " << share_submit_id << " was accepted";
         return true;
     }
 
@@ -151,7 +151,7 @@ private:
             BIND_THIS_MEMFN(on_share_found),
             []() { return false; }
         );
-        LOG_INFO() << "new job: jobid " << _lastJobID << ", jobPrev  " << _lastJobPrev << ", jobinput " << _lastJobInput << ", difficulty " << _setDifficulty;
+        LOG_INFO() << "new job: jobid " << _lastJobID << ", jobPrev=" << _lastJobPrev << ", jobinput=" << _lastJobInput << ", difficulty=" << _setDifficulty;
 
         return true;
     }
@@ -175,7 +175,7 @@ private:
             target *= int(floor(dd));
         }
         _setDifficulty.Pack(target);
-        LOG_DEBUG() << "mining_set_difficulty to " << set_difficulty.difficulty << ", difficulty " << _setDifficulty;
+        LOG_DEBUG() << "mining_set_difficulty to " << set_difficulty.difficulty << ", difficulty=" << _setDifficulty;
         
         if (_lastJobID != "") {
             _miner->new_job(
@@ -183,7 +183,7 @@ private:
                 BIND_THIS_MEMFN(on_share_found),
                 []() { return false; }
             );
-            LOG_INFO() << "new job(set_difficulty): jobid " << _lastJobID << ", jobPrev  " << _lastJobPrev << ", jobinput " << _lastJobInput << ", difficulty " << _setDifficulty;
+            LOG_INFO() << "new job(set_difficulty): jobid " << _lastJobID << ", jobPrev=" << _lastJobPrev << ", jobinput=" << _lastJobInput << ", difficulty=" << _setDifficulty;
         }
 
         return true;
@@ -191,7 +191,6 @@ private:
 
     IExternalPOW2::ShareFoundResult on_share_found() {
         std::string jobID;
-		Height h;
         _miner->get_last_found_share(jobID, _lastFoundShare);
         if (jobID != _lastJobID) {
             LOG_INFO() << "solution expired" << TRACE(jobID);

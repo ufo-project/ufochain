@@ -225,8 +225,6 @@ private:
     }
 
     bool get_new_job(Job& job) {
-        std::unique_lock<std::mutex> lk(_mutex);
-       
         if (_stop) return false;
 
         uint32_t nonce_len = 8 - _enonce_len;
@@ -236,7 +234,7 @@ private:
 
         _changed = false;
         job = _currentJob;
-        job.pow.m_Nonce = ++nonce_start;
+        job.pow.m_Nonce = nonce_start;
         return true;
     }
 
@@ -257,12 +255,12 @@ private:
         while (!_stop) {
             {
                 std::lock_guard<std::mutex> lk(_mutex);
-                if (_never_getjob) {
-                    std::this_thread::sleep_for(std::chrono::seconds(1));
+                if (_never_getjob.load()) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(10));
                     continue;
                 }
 
-                if (_changed) {
+                if (_changed.load()) {
                     get_new_job(job);
                 }
             }
@@ -270,6 +268,8 @@ private:
             LOG_INFO() << "solving job id=" << job.jobID
                 << " with nonce=" << job.pow.m_Nonce
                 << " and difficulty=" << job.pow.m_Difficulty;
+
+            job.pow.m_Nonce.Inc();
 
             if (_fakeSolver) {
                 ;
