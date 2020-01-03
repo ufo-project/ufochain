@@ -41,5 +41,10 @@ if (NOT ANDROID AND NOT IOS)
     #find_package(Boost 1.67 REQUIRED COMPONENTS program_options)
     target_link_libraries(miner_client external_pow Boost::program_options x17r)
 
+    add_executable(minepool_client minepool_client.cpp ../core/block_crypt.cpp) # ???????????????????????????
+
+    #find_package(Boost 1.67 REQUIRED COMPONENTS program_options)
+    target_link_libraries(minepool_client external_pow Boost::program_options x17r)
+
     add_subdirectory(unittests)
 endif()
