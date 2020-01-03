@@ -35,7 +35,6 @@ class PoolStratumClient : public stratum::ParserCallback {
     std::unique_ptr<IExternalPOW2> _miner;
     io::Reactor& _reactor;
     io::Address _serverAddress;
-    //std::string _apiKey;
     std::string _minerAddress;
     std::string _workerName;
     LineProtocol _lineProtocol;
@@ -44,8 +43,7 @@ class PoolStratumClient : public stratum::ParserCallback {
     std::string _lastJobID;
     Merkle::Hash _lastJobPrev;
     Merkle::Hash _lastJobInput;
-    uintBig_t<8> _lastJobNonce;
-    //Block::PoW _lastFoundBlock;
+    Block::PoW _lastFoundShare;
     bool _tls;
     bool _fakeSolver;
     uint64_t _shareSubmitIndex;
@@ -61,8 +59,8 @@ public:
             BIND_THIS_MEMFN(on_raw_message),
             BIND_THIS_MEMFN(on_write)
         ),
-        _lastJobID(""),
         _timer(io::Timer::create(_reactor)),
+        _lastJobID(""),
         _tls(false),
         _fakeSolver(false),
         _shareSubmitIndex(1000),
@@ -77,45 +75,6 @@ private:
         LOG_DEBUG() << "got " << std::string((char*)data, size-1);
         return stratum::parse_json_msg(data, size, *this);
     }
-
-    /*
-    bool fill_job_info(const stratum::Job& job) {
-        bool ok = false;
-        std::vector<uint8_t> buf = from_hex(job.prev, &ok);
-        if (!ok || buf.size() != 32) return false;
-        memcpy(_lastJobPrev.m_pData, buf.data(), 32);
-        std::vector<uint8_t> buf2 = from_hex(job.input, &ok);
-        if (!ok || buf2.size() != 32) return false;
-        memcpy(_lastJobInput.m_pData, buf2.data(), 32);
-        _lastJobID = job.id;
-        return true;
-    }
-    
-    bool on_message(const stratum::Job& job) override {
-        Block::PoW pow;
-        pow.m_Difficulty.nBitsPow = job.nbits;
-
-        LOG_INFO() << "new job here: id=" << job.id;
-
-        if (!fill_job_info(job)) return false;
-
-        _miner->new_job(
-            _lastJobID, _lastJobPrev, _lastJobInput, pow, job.height,
-            BIND_THIS_MEMFN(on_block_found),
-            []() { return false; }
-        );
-
-        return true;
-    }
-
-    bool on_message(const stratum::Result& res) override {
-        if (res.code < 0) {
-            return on_stratum_error(res.code);
-        }
-        LOG_DEBUG() << "ignoring result message, code=" << res.code << " description=" << res.description;
-        return true;
-    }
-    */
 
     bool on_message(const stratum::MiningAuthorizeResult& authorize_result) override {
         if (authorize_result.code < 0) {
@@ -136,7 +95,7 @@ private:
         uint64_t enonce_seed = strtoull(subscribe_result.enonce.c_str(), nullptr, 0);
         _miner->set_seed(enonce_seed);
 
-        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code;
+        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code << " , enonce " << enonce_seed;
         return true;
     }
 
@@ -191,7 +150,7 @@ private:
 
         target = target / d;
         _setDifficulty.Pack(target);
-        LOG_DEBUG() << "mining_set_difficulty, difficulty " << set_difficulty.difficulty << " , nbits " << to_hex((unsigned char*)_setDifficulty.nBitsPow, 4);
+        LOG_DEBUG() << "mining_set_difficulty, " << set_difficulty.difficulty << " , difficulty " << _setDifficulty;
         
         if (_lastJobID != "") {
             _miner->new_job(
@@ -208,7 +167,7 @@ private:
     IExternalPOW2::ShareFoundResult on_share_found() {
         std::string jobID;
 		Height h;
-        _miner->get_last_found_share(jobID);
+        _miner->get_last_found_share(jobID, _lastFoundShare);
         if (jobID != _lastJobID) {
             LOG_INFO() << "solution expired" << TRACE(jobID);
             return IExternalPOW2::solution_expired;
@@ -222,28 +181,30 @@ private:
         memset(pDataIn + 36, 0x0, 4);
 
         memcpy(pDataIn + 40, (unsigned char*)_lastJobInput.m_pData, _lastJobInput.nBytes);
-        memcpy(pDataIn + 72, (unsigned char*)_lastJobNonce.m_pData, _lastJobNonce.nBytes);
+        memcpy(pDataIn + 72, (unsigned char*)_lastFoundShare.m_Nonce.m_pData, _lastFoundShare.m_Nonce.nBytes);
 
         x17r_hash(pDataOut, pDataIn, 80);
 
         Block::PoW sharePow;
         sharePow.m_Difficulty = _setDifficulty;
         if (!_fakeSolver && !sharePow.IsValid(pDataOut, 32, 0)) {
-            LOG_ERROR() << "share is invalid, id=" << _lastJobID;
+            LOG_ERROR() << "share is invalid, jobid=" << _lastJobID;
             return IExternalPOW2::solution_rejected;
         }
-        LOG_INFO() << "share found id=" << _lastJobID;
-        LOG_INFO() << "nonce=" << _lastJobNonce;
+        LOG_INFO() << "share found jobid=" << _lastJobID;
+        LOG_INFO() << "prev=" << _lastJobPrev;
+        LOG_INFO() << "jobinput=" << _lastJobInput;
+        LOG_INFO() << "nonce=" << _lastFoundShare.m_Nonce;
 
-        send_last_found_share(_lastJobNonce);
+        send_last_found_share();
         return IExternalPOW2::solution_accepted;
     }
 
-    void send_last_found_share(const uintBig_t<8>& nonce) {
+    void send_last_found_share() {
         if (!_connection || !_connection->is_connected()) return;
         _shareSubmitIndex += 1;
         std::string submit_id = std::to_string(_shareSubmitIndex);
-        stratum::MiningSubmit submit(submit_id, _lastJobID, to_hex((unsigned char*)_lastJobNonce.m_pData, _lastJobNonce.nBytes));
+        stratum::MiningSubmit submit(submit_id, _lastJobID, to_hex((unsigned char*)_lastFoundShare.m_Nonce.m_pData, _lastFoundShare.m_Nonce.nBytes));
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
             LOG_ERROR() << "Internal error";
             _reactor.stop();

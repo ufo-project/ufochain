@@ -200,9 +200,10 @@ private:
         _seed = seed;
     }
 
-    void get_last_found_share(std::string& jobID) override {
+    void get_last_found_share(std::string& jobID, Block::PoW& pow) override {
         std::lock_guard<std::mutex> lk(_mutex);
         jobID = _lastFoundJobID;
+        pow = _lastFoundShare;
     }
 
     void stop() override {
@@ -264,6 +265,7 @@ private:
                 {
                     std::lock_guard<std::mutex> lk(_mutex);
                     _lastFoundJobID = job.jobID;
+                    _lastFoundShare = job.pow;
                 }
                 job.callback();
             }
@@ -272,6 +274,7 @@ private:
 
     Job _currentJob;
     std::string _lastFoundJobID;
+    Block::PoW _lastFoundShare;
     uint64_t _seed;
     std::atomic<bool> _never_getjob;
     std::atomic<bool> _changed;

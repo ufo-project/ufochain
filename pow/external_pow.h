@@ -119,7 +119,7 @@ public:
 
     virtual void set_seed(uint64_t seed) = 0;
 
-    virtual void get_last_found_share(std::string& jobID) = 0;
+    virtual void get_last_found_share(std::string& jobID, Block::PoW& pow) = 0;
 
     virtual void stop_current() = 0;
 
