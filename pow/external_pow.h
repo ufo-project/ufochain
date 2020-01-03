@@ -117,6 +117,8 @@ public:
         const ShareFound& callback,
         const CancelCallback& cancelCallback) = 0;
 
+    virtual void set_enonce(std::string enonceStr) = 0;
+
     virtual void set_seed(uint64_t seed) = 0;
 
     virtual void get_last_found_share(std::string& jobID, Block::PoW& pow) = 0;

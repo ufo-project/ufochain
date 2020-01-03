@@ -46,6 +46,7 @@ class PoolStratumClient : public stratum::ParserCallback {
     Block::PoW _lastFoundShare;
     bool _tls;
     bool _fakeSolver;
+    uint32_t _enonce_len;
     uint64_t _shareSubmitIndex;
     Difficulty _setDifficulty;
 
@@ -64,7 +65,8 @@ public:
         _tls(false),
         _fakeSolver(false),
         _shareSubmitIndex(1000),
-        _setDifficulty(ufo::Rules().DA.Difficulty0)
+        _setDifficulty(ufo::Rules().DA.Difficulty0),
+        _enonce_len(0)
     {
         _timer->start(0, false, BIND_THIS_MEMFN(on_reconnect));
         _miner = IExternalPOW2::create_local_solver(false);
@@ -72,7 +74,7 @@ public:
 
 private:
     bool on_raw_message(void* data, size_t size) {
-        LOG_DEBUG() << "got " << std::string((char*)data, size-1);
+        LOG_DEBUG() << "got " << std::string((char*)data, size - 1);
         return stratum::parse_json_msg(data, size, *this);
     }
 
@@ -92,10 +94,27 @@ private:
             return false;
         }
 
-        uint64_t enonce_seed = strtoull(subscribe_result.enonce.c_str(), nullptr, 0);
-        _miner->set_seed(enonce_seed);
+        std::string enonce = subscribe_result.enonce;
+        std::transform(enonce.begin(), enonce.end(), enonce.begin(), ::tolower);
 
-        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code << " , enonce " << enonce_seed;
+        if (enonce.length() != 4 && enonce.length() != 6 && enonce.length() != 8) {
+            LOG_ERROR() << "mining_subscribe_result failed, invalid enonce " << enonce;
+            return false;
+        }
+
+        for (auto iter = enonce.begin(); iter != enonce.end(); ++iter) {
+            if ((*iter) < '0' ||
+                ((*iter) > '9' && (*iter) < 'a') ||
+                (*iter) > 'f') {
+                LOG_ERROR() << "mining_subscribe_result failed, invalid enonce " << enonce;
+                return false;
+            }
+        }
+
+        _enonce_len = enonce.length() / 2;
+        _miner->set_enonce(enonce.c_str());
+
+        LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code << ", enonce " << enonce;
         return true;
     }
 
@@ -132,7 +151,7 @@ private:
             BIND_THIS_MEMFN(on_share_found),
             []() { return false; }
         );
-        LOG_INFO() << "new job: jobid " << _lastJobID << " , jobPrev  " << _lastJobPrev << " , jobinput " << _lastJobInput << " , difficulty " << _setDifficulty;
+        LOG_INFO() << "new job: jobid " << _lastJobID << ", jobPrev  " << _lastJobPrev << ", jobinput " << _lastJobInput << ", difficulty " << _setDifficulty;
 
         return true;
     }
@@ -148,9 +167,15 @@ private:
             return false;
         }
 
-        target = target / d;
+        if (d > 1) {
+            target /= int(ceil(d));
+        }
+        else {
+            double dd = 1 / d;
+            target *= int(floor(dd));
+        }
         _setDifficulty.Pack(target);
-        LOG_DEBUG() << "mining_set_difficulty, " << set_difficulty.difficulty << " , difficulty " << _setDifficulty;
+        LOG_DEBUG() << "mining_set_difficulty to " << set_difficulty.difficulty << ", difficulty " << _setDifficulty;
         
         if (_lastJobID != "") {
             _miner->new_job(
@@ -158,7 +183,7 @@ private:
                 BIND_THIS_MEMFN(on_share_found),
                 []() { return false; }
             );
-            LOG_INFO() << "new job(set_difficulty): jobid " << _lastJobID << " , jobPrev  " << _lastJobPrev << " , jobinput " << _lastJobInput << " , difficulty " << _setDifficulty;
+            LOG_INFO() << "new job(set_difficulty): jobid " << _lastJobID << ", jobPrev  " << _lastJobPrev << ", jobinput " << _lastJobInput << ", difficulty " << _setDifficulty;
         }
 
         return true;
@@ -196,6 +221,11 @@ private:
         LOG_INFO() << "jobinput=" << _lastJobInput;
         LOG_INFO() << "nonce=" << _lastFoundShare.m_Nonce;
 
+        // ignore reduplicative calculation in a job
+        uint64_t newSeed;
+        _lastFoundShare.m_Nonce.Export(newSeed);
+        _miner->set_seed(newSeed);
+
         send_last_found_share();
         return IExternalPOW2::solution_accepted;
     }
@@ -204,7 +234,17 @@ private:
         if (!_connection || !_connection->is_connected()) return;
         _shareSubmitIndex += 1;
         std::string submit_id = std::to_string(_shareSubmitIndex);
-        stratum::MiningSubmit submit(submit_id, _lastJobID, to_hex((unsigned char*)_lastFoundShare.m_Nonce.m_pData, _lastFoundShare.m_Nonce.nBytes));
+
+        uint64_t nonce;
+        _lastFoundShare.m_Nonce.Export(nonce);
+        nonce &= ((uint64_t(1) << (_enonce_len * 8)) - 1);
+
+        char nonceStr[64];
+        uint32_t nonce_len = 8 - _enonce_len;
+        std::string fmtStr = std::string("%0") + std::to_string(nonce_len * 2) + std::string("x");
+        snprintf(nonceStr, 64, fmtStr.c_str(), nonce);
+
+        stratum::MiningSubmit submit(submit_id, _lastJobID, std::string(nonceStr));
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
             LOG_ERROR() << "Internal error";
             _reactor.stop();

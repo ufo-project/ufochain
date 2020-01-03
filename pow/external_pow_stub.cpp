@@ -85,6 +85,7 @@ private:
 
         _changed = false;
         job = _currentJob;
+
         job.pow.m_Nonce = ++_seed;
         return true;
     }
@@ -153,7 +154,8 @@ std::unique_ptr<IExternalPOW> IExternalPOW::create_local_solver(bool fakeSolver)
 
 class ExternalPOWStub2 : public IExternalPOW2 {
 public:
-    explicit ExternalPOWStub2(bool fakeSolver) : _seed(0), _never_getjob(true), _changed(false), _stop(false), _fakeSolver(fakeSolver) {
+    explicit ExternalPOWStub2(bool fakeSolver) : _enonce(0), _enonce_len(0), _seed(0), _never_getjob(true), _changed(false), _stop(false), _fakeSolver(fakeSolver) {
+        ECC::GenRandom(&_seed, 8);
         _thread.start(BIND_THIS_MEMFN(thread_func));
     }
 
@@ -195,6 +197,12 @@ private:
         _changed = true;
     }
 
+    void set_enonce(std::string enonceStr) override {
+        std::lock_guard<std::mutex> lk(_mutex);
+        _enonce_len = enonceStr.length() / 2;
+        sscanf(enonceStr.c_str(), "%x", &_enonce);
+    }
+
     void set_seed(uint64_t seed) override {
         std::lock_guard<std::mutex> lk(_mutex);
         _seed = seed;
@@ -221,9 +229,14 @@ private:
        
         if (_stop) return false;
 
+        uint32_t nonce_len = 8 - _enonce_len;
+
+        uint64_t nonce_start = _enonce << (nonce_len * 8);
+        nonce_start |= ((uint64_t(1) << (nonce_len * 8)) - 1) & _seed;
+
         _changed = false;
         job = _currentJob;
-        job.pow.m_Nonce = ++_seed;
+        job.pow.m_Nonce = ++nonce_start;
         return true;
     }
 
@@ -275,6 +288,8 @@ private:
     Job _currentJob;
     std::string _lastFoundJobID;
     Block::PoW _lastFoundShare;
+    uint32_t _enonce;
+    uint32_t _enonce_len;
     uint64_t _seed;
     std::atomic<bool> _never_getjob;
     std::atomic<bool> _changed;
