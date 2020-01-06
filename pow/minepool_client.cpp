@@ -20,6 +20,7 @@
 #include "utility/io/timer.h"
 #include "utility/helpers.h"
 #include "x17r/x17r.h"
+#include "sstream"
 #include <boost/program_options.hpp>
 
 #define LOG_VERBOSE_ENABLED 0
@@ -221,9 +222,7 @@ private:
         LOG_INFO() << "nonce=" << _lastFoundShare.m_Nonce;
 
         // ignore reduplicative calculation in a job
-        uint64_t newSeed;
-        _lastFoundShare.m_Nonce.Export(newSeed);
-        _miner->set_seed(newSeed);
+        _miner->reset_seed();
 
         send_last_found_share();
         return IExternalPOW2::solution_accepted;
@@ -233,17 +232,14 @@ private:
         if (!_connection || !_connection->is_connected()) return;
         _shareSubmitIndex += 1;
         std::string submit_id = std::to_string(_shareSubmitIndex);
+        
+        std::stringstream s;
+        s << _lastFoundShare.m_Nonce;
+        std::string nonceStr;
+        s >> nonceStr;
+        nonceStr = nonceStr.substr(_enonce_len * 2, nonceStr.length());
 
-        uint64_t nonce;
-        _lastFoundShare.m_Nonce.Export(nonce);
-        nonce &= ((uint64_t(1) << (_enonce_len * 8)) - 1);
-
-        char nonceStr[64];
-        uint32_t nonce_len = 8 - _enonce_len;
-        std::string fmtStr = std::string("%0") + std::to_string(nonce_len * 2) + std::string("x");
-        snprintf(nonceStr, 64, fmtStr.c_str(), nonce);
-
-        stratum::MiningSubmit submit(submit_id, _lastJobID, std::string(nonceStr));
+        stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr);
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
             LOG_ERROR() << "Internal error";
             _reactor.stop();

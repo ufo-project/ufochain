@@ -203,9 +203,9 @@ private:
         sscanf(enonceStr.c_str(), "%x", &_enonce);
     }
 
-    void set_seed(uint64_t seed) override {
+    void reset_seed() override {
         std::lock_guard<std::mutex> lk(_mutex);
-        _seed = seed;
+        ECC::GenRandom(&_seed, 8);
     }
 
     void get_last_found_share(std::string& jobID, Block::PoW& pow) override {
