@@ -224,7 +224,7 @@ namespace ufo
         const char* SWAP_AMOUNT = "swap_amount";
         const char* SWAP_FEERATE = "swap_feerate";
         const char* SWAP_COIN = "swap_coin";
-        const char* SWAP_UFO_SIDE = "swap_UFO_side";
+        const char* SWAP_UFO_SIDE = "swap_ufo_side";
         const char* SWAP_TX_HISTORY = "swap_tx_history";
         const char* NODE_POLL_PERIOD = "node_poll_period";
         // values
