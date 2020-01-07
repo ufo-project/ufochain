@@ -76,11 +76,14 @@ namespace ufo
     bool Difficulty::IsTargetReached(const uint256& hash) const
     {
         arith_uint256 bnTarget;
+        arith_uint256 bnHash;
         bool fGetTarget = get_Target(bnTarget);
         if (!fGetTarget)
             return false;
 
-        if (UintToArith256(hash) > bnTarget)
+        bnHash = UintToArith256(hash);
+
+        if (bnHash > bnTarget)
             return false;
 
         return true;

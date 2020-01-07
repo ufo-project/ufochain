@@ -117,7 +117,7 @@ public:
         const ShareFound& callback,
         const CancelCallback& cancelCallback) = 0;
 
-    virtual void set_enonce(std::string enonceStr) = 0;
+    virtual void set_enonce(const std::string& enonceStr) = 0;
 
     virtual void reset_seed() = 0;
 

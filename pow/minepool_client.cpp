@@ -121,8 +121,8 @@ private:
 
     bool on_message(const stratum::MiningSubmitResult& submit_result) override {
         std::string share_submit_id = submit_result.id;
-        if (submit_result.code < 0) {
-            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused";
+        if (submit_result.code != IExternalPOW2::ShareFoundResultCode::solution_accepted) {
+            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused, code: " << submit_result.code;
             return true;
         }
 
@@ -210,12 +210,16 @@ private:
 
         x17r_hash(pDataOut, pDataIn, 80);
 
+        LOG_DEBUG() << "pDataIn=" << to_hex(pDataIn, 80);
+        LOG_DEBUG() << "pDataOut=" << to_hex(pDataOut, 32);
+
         Block::PoW sharePow;
         sharePow.m_Difficulty = _setDifficulty;
         if (!_fakeSolver && !sharePow.IsValid(pDataOut, 32, 0)) {
             LOG_ERROR() << "share is invalid, jobid=" << _lastJobID;
             return IExternalPOW2::solution_rejected;
         }
+        LOG_INFO() << "_setDifficulty=" << _setDifficulty;
         LOG_INFO() << "share found jobid=" << _lastJobID;
         LOG_INFO() << "prev=" << _lastJobPrev;
         LOG_INFO() << "jobinput=" << _lastJobInput;
