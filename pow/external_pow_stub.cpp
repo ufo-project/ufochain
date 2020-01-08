@@ -200,7 +200,9 @@ private:
     void set_enonce(const std::string& enonceStr) override {
         std::lock_guard<std::mutex> lk(_mutex);
         _enonce_len = enonceStr.length() / 2;
-        auto _ = sscanf(enonceStr.c_str(), "%x", &_enonce);
+        uint32_t ui32;
+        auto _ = sscanf(enonceStr.c_str(), "%x", &ui32);
+        _enonce = ui32;
     }
 
     void reset_seed() override {
