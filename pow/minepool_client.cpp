@@ -80,8 +80,9 @@ private:
     }
 
     bool on_message(const stratum::MiningAuthorizeResult& authorize_result) override {
-        if (authorize_result.code < 0) {
+        if (authorize_result.code != 0) {
             LOG_ERROR() << "mining_authorize_result, login to " << _serverAddress << " failed, try again later";
+            LOG_DEBUG() << "mining_authorize_result, code=" << authorize_result.code;
             return false;
         }
 
@@ -90,8 +91,9 @@ private:
     }
 
     bool on_message(const stratum::MiningSubscribeResult& subscribe_result) override {
-        if (subscribe_result.code < 0) {
+        if (subscribe_result.code != 0) {
             LOG_ERROR() << "mining_subscribe_result failed, try again later";
+            LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code;
             return false;
         }
 
