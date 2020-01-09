@@ -1,6 +1,8 @@
 run_cmake_x64.bat
 setenv_x64.bat
+ufo_version.gen
+ufo_version.gen.orig
+ui/ufo.rc
 *.gen
 *.qm
-*.gen
 bin/*
