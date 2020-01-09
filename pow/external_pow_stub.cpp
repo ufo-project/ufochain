@@ -224,6 +224,9 @@ private:
 
     void stop_current() override {
         // TODO do we need it?
+        std::lock_guard<std::mutex> lk(_mutex);
+        _changed = true;
+        _never_getjob = true;
     }
 
     bool get_new_job(Job& job) {

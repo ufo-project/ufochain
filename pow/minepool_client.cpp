@@ -241,7 +241,7 @@ private:
         s << _lastFoundShare.m_Nonce;
         std::string nonceStr;
         s >> nonceStr;
-        nonceStr = nonceStr.substr(_enonce_len * 2, nonceStr.length());
+        nonceStr = nonceStr.substr((size_t)_enonce_len * 2, nonceStr.length());
 
         stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr);
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
@@ -285,6 +285,10 @@ private:
     void on_disconnected(io::ErrorCode error) {
         LOG_INFO() << "disconnected, error=" << io::error_str(error) << ", rescheduling";
         _connection.reset();
+        // cancel original mining job
+        LOG_INFO() << "stop original mining job and try to reconnect";
+        _miner->stop_current();
+        // try to reconnect
         _timer->start(RECONNECT_TIMEOUT, false, BIND_THIS_MEMFN(on_reconnect));
     }
 
