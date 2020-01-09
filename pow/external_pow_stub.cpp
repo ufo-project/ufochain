@@ -184,9 +184,6 @@ private:
     ) override
     {
         std::lock_guard<std::mutex> lk(_mutex);
-        if (_currentJob.input == input) {
-            return;
-        }
         _currentJob.jobID = jobID;
         _currentJob.prev = prev;
         _currentJob.input = input;
