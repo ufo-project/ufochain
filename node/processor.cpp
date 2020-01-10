@@ -2447,59 +2447,64 @@ Difficulty NodeProcessor::get_NextDifficulty()
 
 	uint32_t height = m_Cursor.m_Full.m_Height;
 	if (height != 0 && height % r.DA.DiffAdjustBlocks == 0) {
-	// adjust
-	uint32_t blockHeight0;
-	uint32_t blockInteval;
-	if ((height - r.DA.DiffAdjustBlocks) < Rules::HeightGenesis) {
-		blockHeight0 = height - r.DA.DiffAdjustBlocks + 1;
-		blockInteval = r.DA.DiffAdjustBlocks - 1;
+	    // adjust
+	    uint32_t blockHeight0;
+	    uint32_t blockInteval;
+	    if ((height - r.DA.DiffAdjustBlocks) < Rules::HeightGenesis) {
+		    blockHeight0 = height - r.DA.DiffAdjustBlocks + 1;
+		    blockInteval = r.DA.DiffAdjustBlocks - 1;
+	    }
+	    else {
+		    blockHeight0 = height - r.DA.DiffAdjustBlocks;
+		    blockInteval = r.DA.DiffAdjustBlocks;
+	    }
+
+	    uint64_t row0 = FindActiveAtStrict(blockHeight0);
+	    Block::SystemState::Full s;
+	    m_DB.get_State(row0, s);
+
+	    uint32_t timestamp0 = s.m_TimeStamp;
+	    uint32_t timestamp1 = m_Cursor.m_Full.m_TimeStamp;
+
+	    assert(timestamp1 > timestamp0);
+
+	    uint32_t deltaTime = timestamp1 - timestamp0;
+	    uint32_t expectTime = blockInteval * r.DA.Target_s;
+
+	    Difficulty diff = m_Cursor.m_Full.m_PoW.m_Difficulty;
+	    arith_uint256 diffTarget;
+	    diff.Unpack(diffTarget);
+
+	    if ((deltaTime * 1.0 / expectTime) > 4)
+	    {
+		    diffTarget *= 4;
+	    }
+	    else if ((deltaTime * 1.0 / expectTime) < 0.25)
+	    {
+		    diffTarget /= 4;
+	    }
+	    else
+	    {
+		    diffTarget /= expectTime;
+		    diffTarget *= deltaTime;
+	    }
+
+        if (diffTarget > UintToArith256(Rules::PowLimit)) {
+            diffTarget = UintToArith256(Rules::PowLimit);
+        }
+
+	    diff.Pack(diffTarget);
+
+	    return diff;
 	}
 	else {
-		blockHeight0 = height - r.DA.DiffAdjustBlocks;
-		blockInteval = r.DA.DiffAdjustBlocks;
-	}
-
-	uint64_t row0 = FindActiveAtStrict(blockHeight0);
-	Block::SystemState::Full s;
-	m_DB.get_State(row0, s);
-
-	uint32_t timestamp0 = s.m_TimeStamp;
-	uint32_t timestamp1 = m_Cursor.m_Full.m_TimeStamp;
-
-	assert(timestamp1 > timestamp0);
-
-	uint32_t deltaTime = timestamp1 - timestamp0;
-	uint32_t expectTime = blockInteval * r.DA.Target_s;
-
-	Difficulty diff = m_Cursor.m_Full.m_PoW.m_Difficulty;
-	arith_uint256 diffTarget;
-	diff.Unpack(diffTarget);
-
-	if ((deltaTime * 1.0 / expectTime) > 4)
-	{
-		diffTarget *= 4;
-	}
-	else if ((deltaTime * 1.0 / expectTime) < 0.25)
-	{
-		diffTarget /= 4;
-	}
-	else
-	{
-		diffTarget /= expectTime;
-		diffTarget *= deltaTime;
-	}
-	diff.Pack(diffTarget);
-
-	return diff;
-	}
-	else {
-	// use current block difficulty
-	if (height < r.DA.DiffAdjustBlocks) {
-		return Difficulty(r.DA.Difficulty0);
-	}
-	else {
-		return m_Cursor.m_Full.m_PoW.m_Difficulty;
-	}
+	    // use current block difficulty
+	    if (height < r.DA.DiffAdjustBlocks) {
+		    return Difficulty(r.DA.Difficulty0);
+	    }
+	    else {
+		    return m_Cursor.m_Full.m_PoW.m_Difficulty;
+	    }
 	}
 }
 
