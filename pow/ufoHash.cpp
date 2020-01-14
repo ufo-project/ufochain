@@ -24,50 +24,50 @@
 namespace ufo
 {
 
-struct Block::PoW::Helper
-{
-	//blake2b_state m_Blake;
-
-    //EquihashR<N_UFO,K_UFO,0> UfoHashI;
-    //EquihashR<N_UFO, K_UFO,3> UfoHashII;
-    /*
-    PoWScheme* getCurrentPoW(Height h) {
-	    if (h < Rules::get().pForks[1].m_Height) {
-		    return &UfoHashI;
-	    } else {
-		    return &UfoHashII;
-	    }
-    }
-
-    void Reset(const void* pInput, uint32_t nSizeInput, const NonceType& nonce, Height h)
+    struct Block::PoW::Helper
     {
-	    getCurrentPoW(h)->InitialiseState(m_Blake);
+	    //blake2b_state m_Blake;
 
-	    // H(I||...
-	    blake2b_update(&m_Blake, (uint8_t*) pInput, nSizeInput);
-	    blake2b_update(&m_Blake, nonce.m_pData, nonce.nBytes);
-    }
+        //EquihashR<N_UFO,K_UFO,0> UfoHashI;
+        //EquihashR<N_UFO, K_UFO,3> UfoHashII;
+        /*
+        PoWScheme* getCurrentPoW(Height h) {
+	        if (h < Rules::get().pForks[1].m_Height) {
+		        return &UfoHashI;
+	        } else {
+		        return &UfoHashII;
+	        }
+        }
 
-    bool TestDifficulty(const uint8_t* pSol, uint32_t nSol, Difficulty d) const
-    {
-	    ECC::Hash::Value hv;
-	    ECC::Hash::Processor() << Blob(pSol, nSol) >> hv;
+        void Reset(const void* pInput, uint32_t nSizeInput, const NonceType& nonce, Height h)
+        {
+	        getCurrentPoW(h)->InitialiseState(m_Blake);
 
-	    return d.IsTargetReached(hv);
-    }*/
-    bool TestDifficulty(const uint8_t* pDigest, uint32_t nDigest, Difficulty d) const
-    {
-        std::vector<unsigned char> vch;
-        vch.resize(nDigest);
+	        // H(I||...
+	        blake2b_update(&m_Blake, (uint8_t*) pInput, nSizeInput);
+	        blake2b_update(&m_Blake, nonce.m_pData, nonce.nBytes);
+        }
 
-        //for (int i = 0; i < nDigest; ++i)
-        //	vch[i] = *(pDigest + i);
+        bool TestDifficulty(const uint8_t* pSol, uint32_t nSol, Difficulty d) const
+        {
+	        ECC::Hash::Value hv;
+	        ECC::Hash::Processor() << Blob(pSol, nSol) >> hv;
 
-        std::copy(pDigest, pDigest + nDigest, vch.data());
+	        return d.IsTargetReached(hv);
+        }*/
+        bool TestDifficulty(const uint8_t* pDigest, uint32_t nDigest, Difficulty d) const
+        {
+            std::vector<unsigned char> vch;
+            vch.resize(nDigest);
 
-        uint256 v = uint256(vch);
+            //for (int i = 0; i < nDigest; ++i)
+            //	vch[i] = *(pDigest + i);
 
-        return d.IsTargetReached(v);
+            std::copy(pDigest, pDigest + nDigest, vch.data());
+
+            uint256 v = uint256(vch);
+
+            return d.IsTargetReached(v);
         }
     };
 

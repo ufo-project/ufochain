@@ -16,6 +16,7 @@
 #include <chrono>
 #include <sstream>
 #include "block_crypt.h"
+#include "utility/helpers.h"
 #include "x17r/x17r.h"
 
 namespace ufo
@@ -1184,7 +1185,7 @@ namespace ufo
 		CMP_MEMBER_EX(m_ChainWork)
 		CMP_MEMBER(m_TimeStamp)
 		//CMP_MEMBER(m_PoW.m_Difficulty.m_Packed)
-    CMP_MEMBER(m_PoW.m_Difficulty.nBitsPow)
+        CMP_MEMBER(m_PoW.m_Difficulty.nBitsPow)
 		CMP_MEMBER_EX(m_PoW.m_Nonce)
 		//CMP_MEMBER(m_PoW.m_Indices)
 		return 0;
@@ -1229,44 +1230,44 @@ namespace ufo
   //	hp >> out;
   //}
 
-  void Block::SystemState::Full::get_HashInternal(Merkle::Hash& out, bool bTotal) const
-  {
-    // Our formula:
-    ECC::Hash::Processor hp;
-    hp
-      << m_Height
-      << m_Prev
-      << m_ChainWork
-      << m_Kernels
-      << m_Definition
-      << m_TimeStamp
-      << m_PoW.m_Difficulty.nBitsPow;
+    void Block::SystemState::Full::get_HashInternal(Merkle::Hash& out, bool bTotal) const
+    {
+        // Our formula:
+        ECC::Hash::Processor hp;
+        hp
+            << m_Height
+            << m_Prev
+            << m_ChainWork
+            << m_Kernels
+            << m_Definition
+            << m_TimeStamp
+            << m_PoW.m_Difficulty.nBitsPow;
 
-    if (!bTotal) {
-      hp >> out;
+        if (!bTotal) {
+            hp >> out;
+        }
+        else {
+            Merkle::Hash v;
+            hp >> v;
+
+            //ECC::Hash::Processor hp2;
+            //hp2 << v << m_PoW.m_Nonce;
+            //hp2 >> out;
+
+            unsigned char pDataIn[80];
+            unsigned char pDataOut[32];
+
+            memset(pDataIn, 0x0, 4);
+            memcpy(pDataIn + 4, (unsigned char*)m_Prev.m_pData, m_Prev.nBytes);
+            memset(pDataIn + 36, 0x0, 4);
+
+            memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
+            memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
+
+            x17r_hash(pDataOut, pDataIn, 80);
+            memcpy(out.m_pData, pDataOut, 32);
+        }
     }
-    else {
-      Merkle::Hash v;
-      hp >> v;
-
-      //ECC::Hash::Processor hp2;
-      //hp2 << v << m_PoW.m_Nonce;
-      //hp2 >> out;
-
-      unsigned char pDataIn[80];
-      unsigned char pDataOut[32];
-
-      memset(pDataIn, 0x0, 4);
-      memcpy(pDataIn + 4, (unsigned char*)m_Prev.m_pData, m_Prev.nBytes);
-      memset(pDataIn + 36, 0x0, 4);
-
-      memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
-      memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
-
-      x17r_hash(pDataOut, pDataIn, 80);
-      memcpy(out.m_pData, pDataOut, 32);
-    }
-  }
 
 	void Block::SystemState::Full::get_HashForPoW(Merkle::Hash& hv) const
 	{
@@ -1304,7 +1305,7 @@ namespace ufo
 
 		Merkle::Hash hv;
 		//get_HashForPoW(hv);
-    get_Hash(hv);
+        get_Hash(hv);
 		return m_PoW.IsValid(hv.m_pData, hv.nBytes, m_Height);
 	}
 

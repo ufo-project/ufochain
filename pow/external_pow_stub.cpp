@@ -184,9 +184,6 @@ private:
     ) override
     {
         std::lock_guard<std::mutex> lk(_mutex);
-        if (_currentJob.input == input) {
-            return;
-        }
         _currentJob.jobID = jobID;
         _currentJob.prev = prev;
         _currentJob.input = input;
@@ -197,10 +194,12 @@ private:
         _changed = true;
     }
 
-    void set_enonce(std::string enonceStr) override {
+    void set_enonce(const std::string& enonceStr) override {
         std::lock_guard<std::mutex> lk(_mutex);
         _enonce_len = enonceStr.length() / 2;
-        sscanf(enonceStr.c_str(), "%x", &_enonce);
+        uint32_t ui32;
+        auto _ = sscanf(enonceStr.c_str(), "%x", &ui32);
+        _enonce = ui32;
     }
 
     void reset_seed() override {
@@ -222,6 +221,9 @@ private:
 
     void stop_current() override {
         // TODO do we need it?
+        std::lock_guard<std::mutex> lk(_mutex);
+        _changed = true;
+        _never_getjob = true;
     }
 
     bool get_new_job(Job& job) {
@@ -229,7 +231,7 @@ private:
 
         uint32_t nonce_len = 8 - _enonce_len;
 
-        uint64_t nonce_start = _enonce << (nonce_len * 8);
+        uint64_t nonce_start = uint64_t(_enonce) << (nonce_len * 8);
         nonce_start |= ((uint64_t(1) << (nonce_len * 8)) - 1) & _seed;
 
         _changed = false;
@@ -288,7 +290,7 @@ private:
     Job _currentJob;
     std::string _lastFoundJobID;
     Block::PoW _lastFoundShare;
-    uint32_t _enonce;
+    uint64_t _enonce;
     uint32_t _enonce_len;
     uint64_t _seed;
     std::atomic<bool> _never_getjob;

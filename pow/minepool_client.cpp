@@ -80,8 +80,9 @@ private:
     }
 
     bool on_message(const stratum::MiningAuthorizeResult& authorize_result) override {
-        if (authorize_result.code < 0) {
+        if (authorize_result.code != 0) {
             LOG_ERROR() << "mining_authorize_result, login to " << _serverAddress << " failed, try again later";
+            LOG_DEBUG() << "mining_authorize_result, code=" << authorize_result.code;
             return false;
         }
 
@@ -90,8 +91,9 @@ private:
     }
 
     bool on_message(const stratum::MiningSubscribeResult& subscribe_result) override {
-        if (subscribe_result.code < 0) {
+        if (subscribe_result.code != 0) {
             LOG_ERROR() << "mining_subscribe_result failed, try again later";
+            LOG_DEBUG() << "mining_subscribe_result, code=" << subscribe_result.code;
             return false;
         }
 
@@ -121,8 +123,8 @@ private:
 
     bool on_message(const stratum::MiningSubmitResult& submit_result) override {
         std::string share_submit_id = submit_result.id;
-        if (submit_result.code < 0) {
-            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused";
+        if (submit_result.code != IExternalPOW2::ShareFoundResultCode::solution_accepted) {
+            LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused, code: " << submit_result.code;
             return true;
         }
 
@@ -210,12 +212,16 @@ private:
 
         x17r_hash(pDataOut, pDataIn, 80);
 
+        LOG_DEBUG() << "pDataIn=" << to_hex(pDataIn, 80);
+        LOG_DEBUG() << "pDataOut=" << to_hex(pDataOut, 32);
+
         Block::PoW sharePow;
         sharePow.m_Difficulty = _setDifficulty;
         if (!_fakeSolver && !sharePow.IsValid(pDataOut, 32, 0)) {
             LOG_ERROR() << "share is invalid, jobid=" << _lastJobID;
             return IExternalPOW2::solution_rejected;
         }
+        LOG_INFO() << "_setDifficulty=" << _setDifficulty;
         LOG_INFO() << "share found jobid=" << _lastJobID;
         LOG_INFO() << "prev=" << _lastJobPrev;
         LOG_INFO() << "jobinput=" << _lastJobInput;
@@ -237,7 +243,7 @@ private:
         s << _lastFoundShare.m_Nonce;
         std::string nonceStr;
         s >> nonceStr;
-        nonceStr = nonceStr.substr(_enonce_len * 2, nonceStr.length());
+        nonceStr = nonceStr.substr((size_t)_enonce_len * 2, nonceStr.length());
 
         stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr);
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
@@ -281,6 +287,10 @@ private:
     void on_disconnected(io::ErrorCode error) {
         LOG_INFO() << "disconnected, error=" << io::error_str(error) << ", rescheduling";
         _connection.reset();
+        // cancel original mining job
+        LOG_INFO() << "stop original mining job and try to reconnect";
+        _miner->stop_current();
+        // try to reconnect
         _timer->start(RECONNECT_TIMEOUT, false, BIND_THIS_MEMFN(on_reconnect));
     }
 
