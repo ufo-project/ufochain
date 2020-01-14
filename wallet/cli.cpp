@@ -412,12 +412,11 @@ namespace
     WalletAddress GenerateNewAddress(
         const IWalletDB::Ptr& walletDB,
         const std::string& label,
-        IPrivateKeyKeeper::Ptr keyKeeper,
-        WalletAddress::ExpirationStatus expirationStatus = WalletAddress::ExpirationStatus::OneDay)
+        IPrivateKeyKeeper::Ptr keyKeeper)
     {
         WalletAddress address = storage::createAddress(*walletDB, keyKeeper);
 
-        address.setExpiration(expirationStatus);
+        address.setExpiration(WalletAddress::ExpirationStatus::Never);
         address.m_label = label;
         walletDB->saveAddress(address);
 
@@ -455,7 +454,7 @@ namespace
             return -1;
         }
         
-        GenerateNewAddress(walletDB, comment, keyKeeper, expirationStatus);
+        GenerateNewAddress(walletDB, comment, keyKeeper);
         return 0;
     }
 
