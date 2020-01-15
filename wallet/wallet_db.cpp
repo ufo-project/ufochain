@@ -3243,7 +3243,7 @@ namespace ufo::wallet
     WalletAddress::WalletAddress()
         : m_walletID(Zero)
         , m_createTime(0)
-        , m_duration(AddressExpiration24h)
+        , m_duration(AddressExpirationNever)
         , m_OwnID(false)
     {}
 

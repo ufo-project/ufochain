@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 cmake_policy(SET CMP0074 NEW)
 
-set(VERSION_MAJOR 4)
+set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
 set(VERSION_REVISION 0)
 set(GIT_COMMIT_HASH "unknown")
