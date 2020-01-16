@@ -149,9 +149,9 @@ if(SHOW_CODE_LOCATION)
 endif()
 
 # uncoment next line for testnet
-set(UFO_TESTNET TRUE)
+#set(UFO_TESTNET TRUE)
 # uncoment next line for mainnet
-#set(UFO_MAINNET TRUE)
+set(UFO_MAINNET TRUE)
 
 if(UFO_TESTNET)
     add_definitions(-DUFO_TESTNET)

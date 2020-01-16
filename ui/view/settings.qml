@@ -739,7 +739,7 @@ ColumnLayout {
                             Layout.preferredHeight: 32
 
                             SFText {
-                                property string beamUrl: "<a href='https://www.ufo.mw/'>beam.mw</a>"
+                                property string beamUrl: "<a href='https://www.ufo.link/'>ufo.link</a>"
                                 //% "blockchain explorer"
                                             property string explorerUrl: "<a href='%1'>%2</a>".arg(Style.explorerUrl).arg(qsTrId("explorer"))
                                 //: general settings, label for alow open external links
@@ -854,8 +854,8 @@ ColumnLayout {
                             font.styleName: "Bold"; font.weight: Font.Bold
                         }
                         SFText {
-                            property string beamEmail: "<a href='mailto:support@beam.mw'>support@beam.mw</a>"
-                            property string beamGithub: "<a href='https://github.com/BeamMW'>Github</a>"
+                            property string beamEmail: "<a href='mailto:support@ufo.link'>support@ufo.link</a>"
+                            property string beamGithub: "<a href='https://github.com/ufo-project'>Github</a>"
                             //% "To report a problem:"
                             property string rpm0: qsTrId("settings-report-problem-message-l0")
                             //% "1. Click “Save wallet logs” and choose a destination folder for log archive"
