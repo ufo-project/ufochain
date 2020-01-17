@@ -1,13 +1,8 @@
 101 ICON "icon.ico"
 
 1 VERSIONINFO
-<<<<<<< HEAD
-	FILEVERSION 4,0,14,0
-	PRODUCTVERSION 4,0,14,0
-=======
-	FILEVERSION 4,0,19,0
-	PRODUCTVERSION 4,0,19,0
->>>>>>> 4d7aab88865f31967ded6941b32e15dc5cc2f38d
+	FILEVERSION 4,0,26,0
+	PRODUCTVERSION 4,0,26,0
 	FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
 	FILEFLAGS 0x1L
@@ -24,20 +19,12 @@ BEGIN
 		BEGIN
 			VALUE "CompanyName", "Ufo Development Limited"
 			VALUE "FileDescription", "Ufo Wallet Testnet"
-<<<<<<< HEAD
-			VALUE "FileVersion", "4.0.14"
-=======
-			VALUE "FileVersion", "4.0.19"
->>>>>>> 4d7aab88865f31967ded6941b32e15dc5cc2f38d
+			VALUE "FileVersion", "4.0.26"
 			VALUE "InternalName", "Ufo Wallet Testnet.exe"
 			VALUE "LegalCopyright", "https://ufo.mw (C) 2018"
 			VALUE "OriginalFilename", "Ufo Wallet Testnet.exe"
 			VALUE "ProductName", "Ufo"
-<<<<<<< HEAD
-			VALUE "ProductVersion", "4.0.14"
-=======
-			VALUE "ProductVersion", "4.0.19"
->>>>>>> 4d7aab88865f31967ded6941b32e15dc5cc2f38d
+			VALUE "ProductVersion", "4.0.26"
 		END
 	END
     BLOCK "VarFileInfo"

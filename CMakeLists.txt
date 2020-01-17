@@ -128,7 +128,7 @@ if (UFO_NO_QT_UI_WALLET)
     set(UFO_QT_UI_WALLET FALSE)    
 endif()
 
-set(UFO_USE_STATIC TRUE)
+set(UFO_USE_STATIC FALSE)
 if(UFO_LINK_TYPE MATCHES "Static")
     set(UFO_USE_STATIC TRUE)
 endif()

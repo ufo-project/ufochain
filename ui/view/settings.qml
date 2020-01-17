@@ -127,19 +127,19 @@ ColumnLayout {
             Layout.fillWidth: true
         }
 
-        CustomSwitch {
-            id:                mode
-            //% "Swap"
-            text:              qsTrId("general-swap")
-            Layout.alignment:  Qt.AlignRight
-            checked:           settingsView.swapMode
-        }
+        // CustomSwitch {
+        //     id:                mode
+        //     //% "Swap"
+        //     text:              qsTrId("general-swap")
+        //     Layout.alignment:  Qt.AlignRight
+        //     checked:           settingsView.swapMode
+        // }
 
-        Binding {
-            target:   settingsView
-            property: "swapMode"
-            value:    mode.checked
-        }
+        // Binding {
+        //     target:   settingsView
+        //     property: "swapMode"
+        //     value:    mode.checked
+        // }
     }
 
     ScrollView {

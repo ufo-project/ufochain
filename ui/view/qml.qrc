@@ -198,5 +198,6 @@
         <file>controls/SeedInput.qml</file>
         <file>utils.js</file>
         <file>qmldir</file>
+        <file>assets/UFO.png</file>
     </qresource>
 </RCC>

@@ -583,11 +583,12 @@
     </message>
     <message id="wallet-receive-expires-24">
         <source>24 hours</source>
-        <translation>24 horas</translation>
+        <translation type="vanished">24 horas</translation>
     </message>
     <message id="wallet-receive-expires-never">
-        <source>Never</source>
-        <translation>Nunca</translation>
+        <source>24 hoursNever</source>
+        <oldsource>Never</oldsource>
+        <translation type="unfinished">Nunca</translation>
     </message>
     <message id="wallet-receive-qr-label">
         <source>Scan to send</source>

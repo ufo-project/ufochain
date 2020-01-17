@@ -143,11 +143,14 @@ Rectangle {
             }
         }
 
-        SvgImage {
+        Image {
             id: image
             y:  50
+            width: 70
+            height: 70 * image.sourceSize.height / image.sourceSize.width
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "qrc:/assets/logo.svg"
+            // source: "qrc:/assets/logo.svg"
+            source: "qrc:/assets/UFO.png"
             smooth: true
         }
 

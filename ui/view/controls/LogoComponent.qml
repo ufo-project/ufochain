@@ -26,7 +26,8 @@ ColumnLayout
         Layout.preferredWidth: 242
         Layout.preferredHeight: 208
         fillMode: Image.PreserveAspectFit
-        source: "qrc:/assets/start-logo.svg"
+        // source: "qrc:/assets/start-logo.svg"
+        source: "qrc:/assets/UFO.png"
     }
 
     SFText

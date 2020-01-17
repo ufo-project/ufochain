@@ -30,11 +30,11 @@ QString Theme::name()
 // static
 QString Theme::iconPath() 
 {
-#ifdef UFO_TESTNET
-    return ":/assets/icon_testnet.png";
-#elif UFO_MAINNET
+//#ifdef UFO_TESTNET
+//    return ":/assets/icon_testnet.png";
+//#elif UFO_MAINNET
     return ":/assets/icon.png";
-#else
-    return ":/assets/icon_masternet.png";
-#endif
+//#else
+//    return ":/assets/icon_masternet.png";
+//#endif
 }

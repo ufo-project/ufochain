@@ -586,11 +586,12 @@
     </message>
     <message id="wallet-receive-expires-24">
         <source>24 hours</source>
-        <translation>24小时</translation>
+        <translation type="vanished">24小时</translation>
     </message>
     <message id="wallet-receive-expires-never">
-        <source>Never</source>
-        <translation>永不</translation>
+        <source>24 hoursNever</source>
+        <oldsource>Never</oldsource>
+        <translation type="unfinished">永不</translation>
     </message>
     <message id="wallet-receive-qr-label">
         <source>Scan to send</source>

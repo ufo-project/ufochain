@@ -52,16 +52,16 @@ ColumnLayout {
             text:                qsTrId("wallet-receive-title")
         }
 
-        CustomSwitch {
-            id:         mode
-            //% "Swap"
-            text:       qsTrId("general-swap")
-            x:          parent.width - width
-            checked:    false
-            onClicked: {
-                if (checked) onSwapMode();
-            }
-        }
+        // CustomSwitch {
+        //     id:         mode
+        //     //% "Swap"
+        //     text:       qsTrId("general-swap")
+        //     x:          parent.width - width
+        //     checked:    false
+        //     onClicked: {
+        //         if (checked) onSwapMode();
+        //     }
+        // }
     }
 
     RowLayout {
@@ -179,7 +179,7 @@ ColumnLayout {
 
                     model: [
                         //% "24 hours"
-                        qsTrId("wallet-receive-expires-24"),
+                        // qsTrId("wallet-receive-expires-24"),
                         //% "Never"
                         qsTrId("wallet-receive-expires-never")
                     ]
@@ -283,25 +283,29 @@ ColumnLayout {
         spacing:          25
 
         CustomButton {
-            //% "Close"
-            text:               qsTrId("general-close")
-            palette.buttonText: Style.content_main
-            icon.source:        "qrc:/assets/icon-cancel-white.svg"
-            onClicked:          {
-                if (receiveView.isValid()) viewModel.saveAddress();
-                onClosed();
-            }
-        }
-
-        CustomButton {
             //% "Copy transaction address"
             text:               qsTrId("wallet-receive-copy-address")
             palette.buttonText: Style.content_opposite
             icon.color:         Style.content_opposite
             palette.button:     Style.active
             icon.source:        "qrc:/assets/icon-copy.svg"
-            onClicked:          UfoGlobals.copyToClipboard(viewModel.receiverAddress)
+            onClicked:          { 
+                UfoGlobals.copyToClipboard(viewModel.receiverAddress);
+                if (receiveView.isValid()) viewModel.saveAddress();
+            }
             enabled:            receiveView.isValid()
+        }
+
+        CustomButton {
+            //% "Save"
+            // text:               qsTrId("general-close")
+            text:               "Save"
+            palette.buttonText: Style.content_main
+            // icon.source:        "qrc:/assets/icon-cancel-white.svg"
+            onClicked:          {
+                if (receiveView.isValid()) viewModel.saveAddress();
+                onClosed();
+            }
         }
     }
 
