@@ -123,7 +123,7 @@ private:
 
     bool on_message(const stratum::MiningSubmitResult& submit_result) override {
         std::string share_submit_id = submit_result.id;
-        if (submit_result.code != IExternalPOW2::ShareFoundResultCode::solution_accepted) {
+        if (int(submit_result.code) != int(IExternalPOW2::ShareFoundResultCode::solution_accepted)) {
             LOG_WARNING() << "mining_submit, share_submit_id " << share_submit_id << " was refused, code: " << submit_result.code;
             return true;
         }
