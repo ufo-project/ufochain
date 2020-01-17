@@ -22,11 +22,17 @@ namespace ufo
 #ifdef UFO_TESTNET
             "testnet-node01.ufo.link:20115",
             "testnet-node02.ufo.link:20115",
-            "testnet-node03.ufo.link:20115"
+            "testnet-node03.ufo.link:20115",
+            "202.181.144.43:20115",
+            "202.181.144.44:20115",
+            "202.181.144.45:20115"
 #else
             "mainnet-node01.ufo.link:20015",
             "mainnet-node02.ufo.link:20015",
-            "mainnet-node03.ufo.link:20015"
+            "mainnet-node03.ufo.link:20015",
+            "202.181.144.43:20015",
+            "202.181.144.44:20015",
+            "202.181.144.45:20015"
 #endif
         };
 

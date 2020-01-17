@@ -198,7 +198,7 @@ private:
         std::lock_guard<std::mutex> lk(_mutex);
         _enonce_len = enonceStr.length() / 2;
         uint32_t ui32;
-        auto _ = sscanf(enonceStr.c_str(), "%x", &ui32);
+        sscanf(enonceStr.c_str(), "%x", &ui32);
         _enonce = ui32;
     }
 
