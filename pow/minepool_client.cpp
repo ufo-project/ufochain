@@ -65,9 +65,9 @@ public:
         _lastJobID(""),
         _tls(false),
         _fakeSolver(false),
+        _enonce_len(0),
         _shareSubmitIndex(1000),
-        _setDifficulty(ufo::Rules().DA.Difficulty0),
-        _enonce_len(0)
+        _setDifficulty(ufo::Rules().DA.Difficulty0)
     {
         _timer->start(0, false, BIND_THIS_MEMFN(on_reconnect));
         _miner = IExternalPOW2::create_local_solver(false);

@@ -437,22 +437,6 @@ namespace
             : defaultComment;
         auto expiration = vm[cli::EXPIRATION_TIME].as<string>();
 
-        WalletAddress::ExpirationStatus expirationStatus;
-        if (expiration == cli::EXPIRATION_TIME_24H)
-        {
-            expirationStatus = WalletAddress::ExpirationStatus::OneDay;
-        }
-        else if (expiration == cli::EXPIRATION_TIME_NEVER)
-        {
-            expirationStatus = WalletAddress::ExpirationStatus::Never;
-        }
-        else
-        {
-            LOG_ERROR() << boost::format(kErrorAddrExprTimeInvalid) 
-                        % cli::EXPIRATION_TIME
-                        % expiration;
-            return -1;
-        }
         
         GenerateNewAddress(walletDB, comment, keyKeeper);
         return 0;
