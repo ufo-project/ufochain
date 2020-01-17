@@ -70,7 +70,7 @@ if(Git_FOUND)
         execute_process(
             COMMAND ${GIT_EXECUTABLE} rev-list HEAD --count
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            OUTPUT_VARIABLE VERSION_REVISION
+            #OUTPUT_VARIABLE VERSION_REVISION
             OUTPUT_STRIP_TRAILING_WHITESPACE
         )
 
@@ -446,7 +446,7 @@ elseif (LINUX)
     set(CPACK_GENERATOR "DEB")
     set(CPACK_DEBIAN_PACKAGE_NAME "ufowallet${UFO_SUFFIX_LOWER_CASE}")
     set(CPACK_DEBIAN_PACKAGE_VERSION ${PROJECT_VERSION})
-    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Ufo <mail@ufo-mw.com>")
+    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Ufo <mail@ufo.link>")
     set(CPACK_DEBIAN_PACKAGE_SECTION "Network")
 
 endif ()

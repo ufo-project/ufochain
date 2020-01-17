@@ -8,7 +8,6 @@ ui/ufo.rc
 *.qm
 bin/*
 ui/Info.plist
-ui/icon.ico
 ui/ufo.desktop
 ui/ufo.icns
 ui/ufo.png
