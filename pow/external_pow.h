@@ -71,4 +71,62 @@ public:
     virtual void stop() = 0;
 };
 
+
+class IExternalPOW2 {
+public:
+    enum ShareFoundResultCode { solution_accepted, solution_rejected, solution_expired };
+
+    struct ShareFoundResult {
+        ShareFoundResult(ShareFoundResultCode code) : _code(code) {}
+        virtual ~ShareFoundResult() = default;
+
+        bool operator ==(ShareFoundResultCode code) { return _code == code; }
+        bool operator !=(ShareFoundResultCode code) { return _code != code; }
+
+        ShareFoundResultCode _code;
+        std::string _blockhash;
+    };
+
+    using ShareFound = std::function<ShareFoundResult()>;
+
+    using CancelCallback = std::function<bool()>;
+
+    struct Options {
+        std::string apiKeysFile;
+        std::string certFile;
+        std::string privKeyFile;
+    };
+
+    // creates stratum server
+    static std::unique_ptr<IExternalPOW2> create(
+        const Options& o, io::Reactor& reactor, io::Address listenTo, unsigned noncePrefixDigits
+    );
+
+    // creates local solver (stub)
+    static std::unique_ptr<IExternalPOW2> create_local_solver(bool fakeSolver);
+
+    static std::unique_ptr<IExternalPOW2> create_opencl_solver(const std::vector<int32_t>& devices);
+
+    virtual ~IExternalPOW2() = default;
+
+    virtual void new_job(
+        const std::string& jobID,
+        const Merkle::Hash& prev,
+        const Merkle::Hash& input,
+        const Difficulty& setDiff,
+        const ShareFound& callback,
+        const CancelCallback& cancelCallback) = 0;
+
+    virtual void set_enonce(const std::string& enonceStr) = 0;
+
+    virtual void reset_seed() = 0;
+
+    virtual void get_last_found_share(std::string& jobID, Block::PoW& pow) = 0;
+
+    virtual void stop_current() = 0;
+
+    virtual void stop() = 0;
+};
+
+
 } //namespace

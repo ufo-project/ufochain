@@ -25,7 +25,16 @@ namespace ufo::stratum {
     macro(2, job, Job) \
     macro(3, solution, Solution) \
     macro(4, result, Result) \
-    macro(5, cancel, Cancel)
+    macro(5, cancel, Cancel) \
+    macro(6, mining_authorize, MiningAuthorize) \
+    macro(7, mining_subscribe, MiningSubscribe) \
+    macro(8, mining_submit, MiningSubmit) \
+    macro(9, mining_notify, MiningNotify) \
+    macro(10, mining_set_difficulty, MiningSetDifficulty) \
+    macro(11, mining_authorize_result, MiningAuthorizeResult) \
+    macro(12, mining_subscribe_result, MiningSubscribeResult) \
+    macro(13, mining_submit_result, MiningSubmitResult)
+
 
 #define STRATUM_RESULTS(macro) \
     macro(0, no_error, "Success") \
@@ -36,6 +45,7 @@ namespace ufo::stratum {
     macro(-32001, unknown_method, "Unknown method") \
     macro(-32002, empty_id, "ID is empty") \
     macro(-32003, login_failed, "Login failed")
+
 
 enum Method {
 #define DEF_METHOD(_, M, __) M,
@@ -92,7 +102,6 @@ struct Login : Message {
 struct Job : Message {
     std::string prev;
     std::string input;
-    //uint32_t difficulty=0;
     uint32_t nbits;
     Height height=0;
 
@@ -113,7 +122,6 @@ struct Cancel : Message {
 /// Miner posts a solution
 struct Solution : Message {
     std::string nonce;
-    //std::string output;
 
     Solution() = default;
 
@@ -138,6 +146,78 @@ struct Result : Message {
         description(get_result_msg(_code))
     {}
 };
+
+struct MiningAuthorize : Message {
+    std::string miner;
+    std::string minertype;
+
+    MiningAuthorize() = default;
+
+    MiningAuthorize(const std::string& _id, const std::string& _minerAddress, const std::string& _workerName);
+};
+
+struct MiningSubscribe : Message {
+    std::string minertype;
+
+    MiningSubscribe() = default;
+
+    MiningSubscribe(const std::string& _id);
+};
+
+struct MiningSubmit : Message {
+    std::string minertype;
+    std::string jobid;
+    std::string nonce;
+
+    MiningSubmit() = default;
+
+    MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce);
+};
+
+struct MiningNotify : Message {
+    std::string jobid;
+    std::string prev;
+    std::string input;
+
+    MiningNotify() = default;
+
+    MiningNotify(const std::string& _id, const std::string& _jobid, const std::string& _prev, const std::string& _input);
+};
+
+struct MiningSetDifficulty : Message {
+    std::string difficulty;
+
+    MiningSetDifficulty() = default;
+
+    MiningSetDifficulty(const std::string& _id, const std::string& _difficulty);
+};
+
+struct MiningAuthorizeResult : Message {
+    ResultCode code = no_error;
+
+    MiningAuthorizeResult() = default;
+
+    MiningAuthorizeResult(const std::string& _id, ResultCode _code);
+};
+
+struct MiningSubscribeResult : Message {
+    ResultCode code = no_error;
+    std::string enonce;
+
+    MiningSubscribeResult() = default;
+
+    MiningSubscribeResult(const std::string& _id, ResultCode _code, const std::string& _enonce);
+};
+
+struct MiningSubmitResult : Message {
+    ResultCode code = no_error;
+
+    MiningSubmitResult() = default;
+
+    MiningSubmitResult(const std::string& _id, ResultCode _code);
+};
+
+
 
 struct ParserCallback {
     virtual ~ParserCallback() = default;

@@ -20,12 +20,19 @@ namespace ufo
         std::vector<std::string> result
         {
 #ifdef UFO_TESTNET
-          "192.168.1.122:20015"
+            "testnet-node01.ufo.link:20115",
+            "testnet-node02.ufo.link:20115",
+            "testnet-node03.ufo.link:20115",
+            "202.181.144.43:20115",
+            "202.181.144.44:20115",
+            "202.181.144.45:20115"
 #else
-            //"eu-node01.masternet.ufo.mw:8100",
-            //"eu-node02.masternet.ufo.mw:8100",
-            //"eu-node03.masternet.ufo.mw:8100",
-            //"eu-node04.masternet.ufo.mw:8100"
+            "mainnet-node01.ufo.link:20015",
+            "mainnet-node02.ufo.link:20015",
+            "mainnet-node03.ufo.link:20015",
+            "202.181.144.43:20015",
+            "202.181.144.44:20015",
+            "202.181.144.45:20015"
 #endif
         };
 
@@ -37,33 +44,11 @@ namespace ufo
         std::vector<std::string> result
         {
 #if defined(UFO_TESTNET)
-            "ap-node01.testnet.ufo.mw:8100",
-            "ap-node02.testnet.ufo.mw:8100",
-            "ap-node03.testnet.ufo.mw:8100",
-            "eu-node01.testnet.ufo.mw:8100",
-            "eu-node02.testnet.ufo.mw:8100",
-            "eu-node03.testnet.ufo.mw:8100",
-            "us-node01.testnet.ufo.mw:8100",
-            "us-node02.testnet.ufo.mw:8100",
-            "us-node03.testnet.ufo.mw:8100"
+            
 #elif defined(UFO_MAINNET)
-            "eu-node01.mainnet.ufo.mw:8100",
-            "eu-node02.mainnet.ufo.mw:8100",
-            "eu-node03.mainnet.ufo.mw:8100",
-            "us-node01.mainnet.ufo.mw:8100",
-            "us-node02.mainnet.ufo.mw:8100",
-            "us-node03.mainnet.ufo.mw:8100",
-            "us-node04.mainnet.ufo.mw:8100",
-            "ap-node01.mainnet.ufo.mw:8100",
-            "ap-node02.mainnet.ufo.mw:8100",
-            "ap-node03.mainnet.ufo.mw:8100",
-            "ap-node04.mainnet.ufo.mw:8100",
-            "eu-node04.mainnet.ufo.mw:8100"
+           
 #else
-            // "ap-node01.masternet.ufo.mw:8100",
-            // "ap-node02.masternet.ufo.mw:8100",
-            // "ap-node03.masternet.ufo.mw:8100",
-            // "ap-node04.masternet.ufo.mw:8100"
+            
 #endif
         };
 

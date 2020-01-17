@@ -16,6 +16,7 @@
 #include <chrono>
 #include <sstream>
 #include "block_crypt.h"
+#include "utility/helpers.h"
 #include "x17r/x17r.h"
 
 namespace ufo
@@ -940,8 +941,8 @@ namespace ufo
 	const Height Rules::HeightGenesis	= 1;
 	const Amount Rules::Coin			= 100000000;
 
-
-  const uint256 Rules::PowLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+    // use the same powlimit as RVN
+    const uint256 Rules::PowLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
 	Rules::Rules()
 	{
@@ -959,13 +960,25 @@ namespace ufo
 			0x39, 0x81, 0x47, 0x67, 0x6e, 0x16, 0x62, 0xf4,
 			0x3c, 0x26, 0xa5, 0x26, 0xd2, 0xe2, 0x20, 0x63,
 		};*/
-    Prehistoric = {
-      // Change last byte from 0x63 to 0x64
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x25, 0x2d, 0x12, 0x33, 0xb4, 0x5d, 0xb2,
-      0x39, 0x81, 0x47, 0x67, 0x6e, 0x16, 0x62, 0xf4,
-      0x3c, 0x26, 0xa5, 0x26, 0xd2, 0xe2, 0x20, 0x64,
-    };
+
+#ifdef UFO_TESTNET
+        Prehistoric = {
+            // BTC Block #613063
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x09, 0x92, 0x90, 0x57, 0x7a, 0x9f, 0x54,
+            0x2e, 0x27, 0x1e, 0x04, 0xf2, 0x50, 0x94, 0xef,
+            0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
+        };
+#else
+        Prehistoric = {
+            // BTC Block #613064
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x02, 0x9c, 0x06, 0x7d, 0xdc, 0x03, 0xd0,
+            0x39, 0xa2, 0x7f, 0x69, 0xeb, 0x33, 0x16, 0x7e,
+            0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
+        };
+#endif
+
 		ZeroObject(pForks);
 
 		pForks[1].m_Height = MaxHeight; // not decided yet 
@@ -1094,7 +1107,7 @@ namespace ufo
 			<< DA.WindowMedian0
 			<< DA.WindowMedian1
 			//<< DA.Difficulty0.m_Packed
-      << DA.Difficulty0.nBitsPow
+            << DA.Difficulty0.nBitsPow
 			<< MaxRollback
 			<< uint32_t(720) // deprecated parameter
 			//<< (uint32_t) Block::PoW::K
@@ -1184,7 +1197,7 @@ namespace ufo
 		CMP_MEMBER_EX(m_ChainWork)
 		CMP_MEMBER(m_TimeStamp)
 		//CMP_MEMBER(m_PoW.m_Difficulty.m_Packed)
-    CMP_MEMBER(m_PoW.m_Difficulty.nBitsPow)
+        CMP_MEMBER(m_PoW.m_Difficulty.nBitsPow)
 		CMP_MEMBER_EX(m_PoW.m_Nonce)
 		//CMP_MEMBER(m_PoW.m_Indices)
 		return 0;
@@ -1229,44 +1242,44 @@ namespace ufo
   //	hp >> out;
   //}
 
-  void Block::SystemState::Full::get_HashInternal(Merkle::Hash& out, bool bTotal) const
-  {
-    // Our formula:
-    ECC::Hash::Processor hp;
-    hp
-      << m_Height
-      << m_Prev
-      << m_ChainWork
-      << m_Kernels
-      << m_Definition
-      << m_TimeStamp
-      << m_PoW.m_Difficulty.nBitsPow;
+    void Block::SystemState::Full::get_HashInternal(Merkle::Hash& out, bool bTotal) const
+    {
+        // Our formula:
+        ECC::Hash::Processor hp;
+        hp
+            << m_Height
+            << m_Prev
+            << m_ChainWork
+            << m_Kernels
+            << m_Definition
+            << m_TimeStamp
+            << m_PoW.m_Difficulty.nBitsPow;
 
-    if (!bTotal) {
-      hp >> out;
+        if (!bTotal) {
+            hp >> out;
+        }
+        else {
+            Merkle::Hash v;
+            hp >> v;
+
+            //ECC::Hash::Processor hp2;
+            //hp2 << v << m_PoW.m_Nonce;
+            //hp2 >> out;
+
+            unsigned char pDataIn[80];
+            unsigned char pDataOut[32];
+
+            memset(pDataIn, 0x0, 4);
+            memcpy(pDataIn + 4, (unsigned char*)m_Prev.m_pData, m_Prev.nBytes);
+            memset(pDataIn + 36, 0x0, 4);
+
+            memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
+            memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
+
+            x17r_hash(pDataOut, pDataIn, 80);
+            memcpy(out.m_pData, pDataOut, 32);
+        }
     }
-    else {
-      Merkle::Hash v;
-      hp >> v;
-
-      //ECC::Hash::Processor hp2;
-      //hp2 << v << m_PoW.m_Nonce;
-      //hp2 >> out;
-
-      unsigned char pDataIn[80];
-      unsigned char pDataOut[32];
-
-      memset(pDataIn, 0x0, 4);
-      memcpy(pDataIn + 4, (unsigned char*)m_Prev.m_pData, m_Prev.nBytes);
-      memset(pDataIn + 36, 0x0, 4);
-
-      memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
-      memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
-
-      x17r_hash(pDataOut, pDataIn, 80);
-      memcpy(out.m_pData, pDataOut, 32);
-    }
-  }
 
 	void Block::SystemState::Full::get_HashForPoW(Merkle::Hash& hv) const
 	{
@@ -1304,7 +1317,7 @@ namespace ufo
 
 		Merkle::Hash hv;
 		//get_HashForPoW(hv);
-    get_Hash(hv);
+        get_Hash(hv);
 		return m_PoW.IsValid(hv.m_pData, hv.nBytes, m_Height);
 	}
 

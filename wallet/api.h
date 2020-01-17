@@ -69,7 +69,7 @@ namespace ufo::wallet
         boost::optional<std::string> comment;
 
         enum Expiration { Expired, Never, OneDay };
-        boost::optional<Expiration> expiration;
+        //boost::optional<Expiration> expiration;
     };
 
     struct CreateAddress : AddressData

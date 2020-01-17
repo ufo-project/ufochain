@@ -101,7 +101,7 @@ namespace ufo
 		static const Height HeightGenesis; // height of the 1st block, defines the convention. Currently =1
 		static const Amount Coin; // how many quantas in a single coin. Just cosmetic, has no meaning to the processing (which is in terms of quantas)
 
-    static const uint256 PowLimit;
+        static const uint256 PowLimit;
 
 		struct {
 			// emission parameters
@@ -128,7 +128,8 @@ namespace ufo
 			//Difficulty Difficulty0	= Difficulty(8 << Difficulty::s_MantissaBits); // 2^8 = 256
 			//Difficulty Difficulty0 = Difficulty(1);
 			uint32_t DiffAdjustBlocks = 50;  // Adjust difficulty once for 50 blocks
-			Difficulty Difficulty0 = Difficulty(0x1e0fffff);
+            // use the same difficulty as RVN
+			Difficulty Difficulty0 = Difficulty(0x1e00ffff);
 			struct {
 				// damp factor. Adjustment of actual dt toward expected, effectively dampens
 				uint32_t M = 1; // Multiplier of the actual dt
@@ -452,9 +453,7 @@ namespace ufo
 		};
 	};
 
-	struct Transaction
-		:public TxBase
-		,public TxVectors::Full
+	struct Transaction : public TxBase, public TxVectors::Full
 	{
 		typedef std::shared_ptr<Transaction> Ptr;
 
@@ -486,7 +485,7 @@ namespace ufo
 			// Parameters recommended by BTG are 144/5, to make it asic-resistant (~1GB average, spikes about 1.5GB). On CPU solve time about 1 minutes
 			// The following are the parameters for testnet, to make it of similar size, and much faster solve time, to test concurrency and difficulty adjustment
 			//static const uint32_t N = 150;
-      //static const uint32_t N = 96;
+            //static const uint32_t N = 96;
 			//static const uint32_t K = 5;
 
 			//static const uint32_t nNumIndices		= 1 << K; // 32
@@ -507,8 +506,8 @@ namespace ufo
 
 			using Cancel = std::function<bool(bool bRetrying)>;
 			// Difficulty and Nonce must be initialized. During the solution it's incremented each time by 1.
-      // returns false only if cancelled
-      bool Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& = [](bool) { return false; });
+            // returns false only if cancelled
+            bool Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& = [](bool) { return false; });
 
 		private:
 			struct Helper;

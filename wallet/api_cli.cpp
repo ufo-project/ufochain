@@ -286,7 +286,7 @@ namespace
                 {
                     address.setLabel(*data.comment);
                 }
-
+                /*
                 if (data.expiration)
                 {
                     switch (*data.expiration)
@@ -302,6 +302,8 @@ namespace
                         break;
                     }
                 }
+                */
+                address.setExpiration(WalletAddress::ExpirationStatus::Never);
             }
 
             void onMessage(const JsonRpcId& id, const CreateAddress& data) override 

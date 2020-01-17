@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=Ufo Wallet Testnet
+Name=Ufo Wallet
 Comment=Scalable confidential cryptocurrency
-Exec=/usr/bin/UfoWalletTestnet %U
+Exec=/usr/bin/UfoWallet %U
 Icon=ufo
 Terminal=false
 Type=Application
 Categories=Network
 MimeType=application/x-ufo-item;
-GenericName=Ufo Wallet Testnet
+GenericName=Ufo Wallet

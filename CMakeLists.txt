@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 cmake_policy(SET CMP0074 NEW)
 
-set(VERSION_MAJOR 4)
+set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
 set(VERSION_REVISION 0)
 set(GIT_COMMIT_HASH "unknown")
@@ -149,9 +149,9 @@ if(SHOW_CODE_LOCATION)
 endif()
 
 # uncoment next line for testnet
-set(UFO_TESTNET TRUE)
+#set(UFO_TESTNET TRUE)
 # uncoment next line for mainnet
-#set(UFO_MAINNET TRUE)
+set(UFO_MAINNET TRUE)
 
 if(UFO_TESTNET)
     add_definitions(-DUFO_TESTNET)
@@ -202,6 +202,9 @@ if(MSVC)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX-")
     endif()
 
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Oi")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Oi")
+	
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4100") # unreferenced formal parameter
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4324") # '__blake2b_state': structure was padded due to alignment specifier
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:__cplusplus")
@@ -237,7 +240,7 @@ else()
         endif()
     endif()
 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pthread")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pthread -std=c++11")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb3")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 

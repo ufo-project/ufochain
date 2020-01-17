@@ -24,138 +24,138 @@
 namespace ufo
 {
 
-struct Block::PoW::Helper
-{
-	//blake2b_state m_Blake;
-
-	//EquihashR<N_UFO,K_UFO,0> UfoHashI;
-	//EquihashR<N_UFO, K_UFO,3> UfoHashII;
-  /*
-	PoWScheme* getCurrentPoW(Height h) {
-		if (h < Rules::get().pForks[1].m_Height) {
-			return &UfoHashI;
-		} else {
-			return &UfoHashII;
-		}
-	}
-
-	void Reset(const void* pInput, uint32_t nSizeInput, const NonceType& nonce, Height h)
-	{
-		getCurrentPoW(h)->InitialiseState(m_Blake);
-
-		// H(I||...
-		blake2b_update(&m_Blake, (uint8_t*) pInput, nSizeInput);
-		blake2b_update(&m_Blake, nonce.m_pData, nonce.nBytes);
-	}
-
-	bool TestDifficulty(const uint8_t* pSol, uint32_t nSol, Difficulty d) const
-	{
-		ECC::Hash::Value hv;
-		ECC::Hash::Processor() << Blob(pSol, nSol) >> hv;
-
-		return d.IsTargetReached(hv);
-	}*/
-  bool TestDifficulty(const uint8_t* pDigest, uint32_t nDigest, Difficulty d) const
-  {
-    std::vector<unsigned char> vch;
-    vch.resize(nDigest);
-
-      //for (int i = 0; i < nDigest; ++i)
-      //	vch[i] = *(pDigest + i);
-
-      std::copy(pDigest, pDigest + nDigest, vch.data());
-
-      uint256 v = uint256(vch);
-
-      return d.IsTargetReached(v);
-    }
-  };
-
-  bool Block::PoW::Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& fnCancel)
-  {
-    Helper hlp;
-
-  /*
-  std::function<bool(const ufo::ByteBuffer&)> fnValid = [this, &hlp](const ufo::ByteBuffer& solution)
+    struct Block::PoW::Helper
     {
-        if (!hlp.TestDifficulty(&solution.front(), (uint32_t) solution.size(), m_Difficulty))
-        return false;
-      assert(solution.size() == m_Indices.size());
-            std::copy(solution.begin(), solution.end(), m_Indices.begin());
-            return true;
-        };
-  */
+	    //blake2b_state m_Blake;
 
-  /*
-    std::function<bool(EhSolverCancelCheck)> fnCancelInternal = [fnCancel](EhSolverCancelCheck pos) {
-        return fnCancel(false);
+        //EquihashR<N_UFO,K_UFO,0> UfoHashI;
+        //EquihashR<N_UFO, K_UFO,3> UfoHashII;
+        /*
+        PoWScheme* getCurrentPoW(Height h) {
+	        if (h < Rules::get().pForks[1].m_Height) {
+		        return &UfoHashI;
+	        } else {
+		        return &UfoHashII;
+	        }
+        }
+
+        void Reset(const void* pInput, uint32_t nSizeInput, const NonceType& nonce, Height h)
+        {
+	        getCurrentPoW(h)->InitialiseState(m_Blake);
+
+	        // H(I||...
+	        blake2b_update(&m_Blake, (uint8_t*) pInput, nSizeInput);
+	        blake2b_update(&m_Blake, nonce.m_pData, nonce.nBytes);
+        }
+
+        bool TestDifficulty(const uint8_t* pSol, uint32_t nSol, Difficulty d) const
+        {
+	        ECC::Hash::Value hv;
+	        ECC::Hash::Processor() << Blob(pSol, nSol) >> hv;
+
+	        return d.IsTargetReached(hv);
+        }*/
+        bool TestDifficulty(const uint8_t* pDigest, uint32_t nDigest, Difficulty d) const
+        {
+            std::vector<unsigned char> vch;
+            vch.resize(nDigest);
+
+            //for (int i = 0; i < nDigest; ++i)
+            //	vch[i] = *(pDigest + i);
+
+            std::copy(pDigest, pDigest + nDigest, vch.data());
+
+            uint256 v = uint256(vch);
+
+            return d.IsTargetReached(v);
+        }
     };
-  */
 
-    assert(nSizePrev == 32);
-    assert(nSizeInput == 32);
-    //Merkle::Hash hv;
-    //memcpy(hv.m_pData, (unsigned char*)pInput, 32);
+    bool Block::PoW::Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& fnCancel)
+    {
+        Helper hlp;
 
-    unsigned char pDataIn[80];
-    unsigned char pDataOut[32];
+        /*
+        std::function<bool(const ufo::ByteBuffer&)> fnValid = [this, &hlp](const ufo::ByteBuffer& solution)
+        {
+            if (!hlp.TestDifficulty(&solution.front(), (uint32_t) solution.size(), m_Difficulty))
+            return false;
+            assert(solution.size() == m_Indices.size());
+                std::copy(solution.begin(), solution.end(), m_Indices.begin());
+                return true;
+            };
+        */
 
-  while (true)
-  {
-    //try {
+        /*
+        std::function<bool(EhSolverCancelCheck)> fnCancelInternal = [fnCancel](EhSolverCancelCheck pos) {
+            return fnCancel(false);
+        };
+        */
 
-    //	if (hlp.m_Eh.OptimisedSolve(hlp.m_Blake, fnValid, fnCancelInternal))
-    //		break;
+        assert(nSizePrev == 32);
+        assert(nSizeInput == 32);
+        //Merkle::Hash hv;
+        //memcpy(hv.m_pData, (unsigned char*)pInput, 32);
 
-    //} catch (const EhSolverCancelledException&) {
-    //	return false;
+        unsigned char pDataIn[80];
+        unsigned char pDataOut[32];
+
+        while (true)
+        {
+            //try {
+
+            //	if (hlp.m_Eh.OptimisedSolve(hlp.m_Blake, fnValid, fnCancelInternal))
+            //		break;
+
+            //} catch (const EhSolverCancelledException&) {
+            //	return false;
+            //}
+
+            //ECC::Hash::Processor hp;
+            //Merkle::Hash out;
+            //hp << hv << m_Nonce;
+            //hp >> out;
+
+            //hlp.Reset(out.m_pData, out.nBytes, m_Nonce);
+
+            // change to use x17r 
+            memset(pDataIn, 0x0, 4);
+            memcpy(pDataIn + 4, (unsigned char*)pPrev, nSizePrev);
+            memset(pDataIn + 36, 0x0, 4);
+
+            memcpy(pDataIn + 40, (unsigned char*)pInput, nSizeInput);
+            memcpy(pDataIn + 72, (unsigned char*)m_Nonce.m_pData, m_Nonce.nBytes);
+
+            x17r_hash(pDataOut, pDataIn, 80);
+
+            if (hlp.TestDifficulty(pDataOut, 32, m_Difficulty)) {
+                break;
+            }
+
+            if (fnCancel(true))
+                return false; // retry not allowed
+
+            m_Nonce.Inc();
+        }
+
+        return true;
+    }
+
+    //bool Block::PoW::IsValid(const void* pInput, uint32_t nSizeInput, Height h) const
+    //{
+    //	Helper hlp;
+    //	hlp.Reset(pInput, nSizeInput, m_Nonce, h);
+    //
+    //	std::vector<uint8_t> v(m_Indices.begin(), m_Indices.end());
+    //    return
+    //		hlp.getCurrentPoW(h)->IsValidSolution(hlp.m_Blake, v) &&
+    //		hlp.TestDifficulty(&m_Indices.front(), (uint32_t) m_Indices.size(), m_Difficulty);
     //}
 
-      //ECC::Hash::Processor hp;
-      //Merkle::Hash out;
-      //hp << hv << m_Nonce;
-      //hp >> out;
-
-      //hlp.Reset(out.m_pData, out.nBytes, m_Nonce);
-
-      // change to use x17r 
-      memset(pDataIn, 0x0, 4);
-      memcpy(pDataIn + 4, (unsigned char*)pPrev, nSizePrev);
-      memset(pDataIn + 36, 0x0, 4);
-
-      memcpy(pDataIn + 40, (unsigned char*)pInput, nSizeInput);
-      memcpy(pDataIn + 72, (unsigned char*)m_Nonce.m_pData, m_Nonce.nBytes);
-
-      x17r_hash(pDataOut, pDataIn, 80);
-
-      if (hlp.TestDifficulty(pDataOut, 32, m_Difficulty)) {
-        break;
-      }
-
-      if (fnCancel(true))
-        return false; // retry not allowed
-
-      m_Nonce.Inc();
+    bool Block::PoW::IsValid(const void* pInput, uint32_t nSizeInput, Height h) const
+    {
+        Helper hlp;
+        return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
     }
-
-    return true;
-  }
-
-  //bool Block::PoW::IsValid(const void* pInput, uint32_t nSizeInput, Height h) const
-  //{
-  //	Helper hlp;
-  //	hlp.Reset(pInput, nSizeInput, m_Nonce, h);
-  //
-  //	std::vector<uint8_t> v(m_Indices.begin(), m_Indices.end());
-  //    return
-  //		hlp.getCurrentPoW(h)->IsValidSolution(hlp.m_Blake, v) &&
-  //		hlp.TestDifficulty(&m_Indices.front(), (uint32_t) m_Indices.size(), m_Difficulty);
-  //}
-
-bool Block::PoW::IsValid(const void* pInput, uint32_t nSizeInput, Height h) const
-{
-  Helper hlp;
-  return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
-}
 } // namespace ufo
 

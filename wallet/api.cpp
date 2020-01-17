@@ -74,7 +74,7 @@ namespace ufo::wallet
 
             data.comment = comment;
         }
-
+        /*
         if (existsJsonParam(params, "expiration"))
         {
             std::string expiration = params["expiration"];
@@ -89,8 +89,9 @@ namespace ufo::wallet
             if(Items.count(expiration) == 0)
                 throw jsonrpc_exception{ ApiError::InvalidJsonRpc, "Unknown value for the 'expiration' parameter.", id };
 
-            data.expiration = Items[expiration];
+            data.expiration = AddressData::Never;
         }
+        */
     }
 
     void WalletApi::onCreateAddressMessage(const JsonRpcId& id, const nlohmann::json& params)
