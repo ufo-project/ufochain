@@ -34,21 +34,27 @@ If you want to get a static release build, change ```set(UFO_USE_STATIC FALSE)``
 
 1. Install dependencies
 
-```sudo add-apt-repository ppa:beineri/opt-qt-5.11.0-bionic
+```
+sudo add-apt-repository ppa:beineri/opt-qt-5.11.0-bionic
 sudo add-apt-repository ppa:mhier/libboost-latest
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install g++-8 libssl-dev curl wget git make
 sudo apt-get install libgl1-mesa-dev zlib1g-dev libboost1.67-dev
-sudo apt-get install qt511base qt511declarative qt511svg qt511tools```
+sudo apt-get install qt511base qt511declarative qt511svg qt511tools
+```
 	
 
 2. Install cmake
 
-```wget https://cmake.org/files/v3.13/cmake-3.13.0-Linux-x86_64.sh
-sudo sh ./cmake-3.13.0-Linux-x86_64.sh --skip-license --prefix=/usr```
+```
+wget https://cmake.org/files/v3.13/cmake-3.13.0-Linux-x86_64.sh
+sudo sh ./cmake-3.13.0-Linux-x86_64.sh --skip-license --prefix=/usr
+```
 
 
 3. Go to the Ufo project folder and start the release build
 
-```export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
-cmake -DCMAKE_BUILD_TYPE=Release && make -j4```
+```
+export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
+cmake -DCMAKE_BUILD_TYPE=Release && make -j4
+```
