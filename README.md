@@ -2,10 +2,10 @@
 
 ### Windows
 
-1. Install **cmake>=3.13.0** (https://cmake.org/download)
+1. Install **cmake>=3.13.0** (https://cmake.org/download).
 
 
-2. Install **Visual Studio >= 2017** (https://www.visualstudio.com/vs/), **Visual Studio 2019** is strongly recommended.
+2. Install **Visual Studio >= 2017** (https://www.visualstudio.com/vs/), and **Visual Studio 2019** is strongly recommended.
 
 
 3. Download and install **Boost** prebuilt binaries https://sourceforge.net/projects/boost/files/boost-binaries/1.68.0/boost_1_68_0-msvc-14.1-64.exe, also add ```BOOST_ROOT``` to the Environment Variables.
@@ -20,14 +20,18 @@
 6. Add .../qt511/5.11.1/msvc2017_64/bin and .../boost_1_68_0/lib64-msvc-14.1 to the System Path.
 
 
-7. ```git clone https://github.com/ufo-project/ufochain.git```
+7. Fetch the ufochain project
+
+```
+git clone https://github.com/ufo-project/ufochain.git
+```
 
 
 8. Cmake-gui -> Set Project Folder -> Configure -> Generate -> Open Project -> Build
 
 
-**Btw**:
-If you want to get a static release build, change ```set(UFO_USE_STATIC FALSE)``` to ```set(UFO_USE_STATIC TRUE)``` in CMakeList.txt, and use QT static lib (https://github.com/ufo-project/qt5-static-win)  to replace Qt dynamic lib in step 5.
+* **Btw**:
+If you want to get a static release build, change line 131 ```set(UFO_USE_STATIC FALSE)``` to ```set(UFO_USE_STATIC TRUE)``` at CMakeList.txt, and use QT static lib (https://github.com/ufo-project/qt5-static-win)  to replace Qt dynamic lib in step 5.
 
 
 ### Ubuntu 18.04
@@ -52,7 +56,14 @@ sudo sh ./cmake-3.13.0-Linux-x86_64.sh --skip-license --prefix=/usr
 ```
 
 
-3. Go to the Ufo project folder and start the release build
+3. Fetch the ufochain project
+
+```
+git clone https://github.com/ufo-project/ufochain.git
+```
+
+
+4. Go to the Ufo project folder and start the release build
 
 ```
 export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
