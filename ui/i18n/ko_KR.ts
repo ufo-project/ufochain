@@ -1563,7 +1563,8 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>거래를 완료하기 위해서는, Ufo 을 보낸 후 12시간 동안 온라인 상태이어야 합니다.</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <translation type="unfinished">거래를 완료하기 위해서는, Ufo 을 보낸 후 12시간 동안 온라인 상태이어야 합니다.</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

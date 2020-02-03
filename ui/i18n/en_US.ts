@@ -90,7 +90,7 @@
     </message>
     <message id="general-close">
         <source>Close</source>
-        <translation>Close</translation>
+        <translation>Save</translation>
     </message>
     <message id="general-details">
         <source>Details</source>
@@ -1561,7 +1561,8 @@ or send this address to the sender over secure channel</translation>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <translation type="unfinished">For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

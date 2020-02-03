@@ -645,7 +645,7 @@
     <message id="start-restore-message-line">
         <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
-        <translation type="unfinished">あなたはすでに存在するBeamウォレットを復元しようとしています。あなたが他のデバイスで使用しているウォレットを復元しようとすると、残高は最新になりますが、トランザクション履歴とアドレス情報はそれぞれのデバイスで保管されている為、再現されません。</translation>
+        <translation type="unfinished">あなたはすでに存在するUfoウォレットを復元しようとしています。あなたが他のデバイスで使用しているウォレットを復元しようとすると、残高は最新になりますが、トランザクション履歴とアドレス情報はそれぞれのデバイスで保管されている為、再現されません。</translation>
     </message>
     <message id="start-migration-message">
         <source>Your wallet will be migrated to v.</source>
@@ -860,7 +860,7 @@
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
         <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">予期せぬ理由です。ウォレットのログをBeamサポートに送信してください</translation>
+        <translation type="unfinished">予期せぬ理由です。ウォレットのログをUfoサポートに送信してください</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -869,7 +869,7 @@
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
         <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">受信者の署名が無効です。ウォレットのログをBeamサポートに送信してください</translation>
+        <translation type="unfinished">受信者の署名が無効です。ウォレットのログをUfoサポートに送信してください</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -878,7 +878,7 @@
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
         <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">トランザクションが無効です。ウォレットのログをBeamサポートに送信してください</translation>
+        <translation type="unfinished">トランザクションが無効です。ウォレットのログをUfoサポートに送信してください</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -907,7 +907,7 @@
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
         <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">支払が受信者によって署名されてました。ウォレットログをBeamサポートまで送信してください</translation>
+        <translation type="unfinished">支払が受信者によって署名されてました。ウォレットログをUfoサポートまで送信してください</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1563,7 +1563,8 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>トランザクションを完了する為に、Beamを送信した後12時間オンラインでいてください</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <translation type="unfinished">トランザクションを完了する為に、Ufoを送信した後12時間オンラインでいてください</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

@@ -90,7 +90,7 @@
     </message>
     <message id="general-close">
         <source>Close</source>
-        <translation>关闭</translation>
+        <translation>保存</translation>
     </message>
     <message id="general-details">
         <source>Details</source>
@@ -648,7 +648,7 @@
     <message id="start-restore-message-line">
         <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
-        <translation type="unfinished">您正在尝试还原已存在的Beam钱包
+        <translation type="unfinished">您正在尝试还原已存在的Ufo钱包
 请注意：如果您在其他设备上使用该钱包，您的余额将是最新的，但交易历史和地址将分别保存在每个设备上</translation>
     </message>
     <message id="start-migration-message">
@@ -872,7 +872,7 @@
     <message id="tx-failture-undefined">
         <source>Unexpected reason, please send wallet logs to Ufo support</source>
         <oldsource>Unexpected reason, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">异常原因，请将钱包日志发送到Beam技术小组</translation>
+        <translation type="unfinished">异常原因，请将钱包日志发送到Ufo技术小组</translation>
     </message>
     <message id="tx-failture-cancelled">
         <source>Transaction cancelled</source>
@@ -881,7 +881,7 @@
     <message id="tx-failture-receiver-signature-invalid">
         <source>Receiver signature in not valid, please send wallet logs to Ufo support</source>
         <oldsource>Receiver signature in not valid, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">收款人签名无效，请将钱包日志发送到Beam技术小组</translation>
+        <translation type="unfinished">收款人签名无效，请将钱包日志发送到Ufo技术小组</translation>
     </message>
     <message id="tx-failture-not-registered-in-blockchain">
         <source>Failed to register transaction with the blockchain, see node logs for details</source>
@@ -890,7 +890,7 @@
     <message id="tx-failture-not-valid">
         <source>Transaction is not valid, please send wallet logs to Ufo support</source>
         <oldsource>Transaction is not valid, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">交易无效，请将钱包日志发送到Beam技术小组</translation>
+        <translation type="unfinished">交易无效，请将钱包日志发送到Ufo技术小组</translation>
     </message>
     <message id="tx-failture-kernel-invalid">
         <source>Invalid kernel proof provided</source>
@@ -919,7 +919,7 @@
     <message id="tx-failture-not-signed-by-receiver">
         <source>Payment not signed by the receiver, please send wallet logs to Ufo support</source>
         <oldsource>Payment not signed by the receiver, please send wallet logs to Ufo support</oldsource>
-        <translation type="unfinished">付款未被收款人签名，请发送钱包日志至Beam技术小组</translation>
+        <translation type="unfinished">付款未被收款人签名，请发送钱包日志至Ufo技术小组</translation>
     </message>
     <message id="tx-failture-max-height-to-high">
         <source>Kernel maximum height is too high</source>
@@ -1042,7 +1042,7 @@
     <message id="open-external-message">
         <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
         <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
-        <translation type="unfinished">Beam钱包需要获取权限以在浏览器中打开外部链接
+        <translation type="unfinished">Ufo钱包需要获取权限以在浏览器中打开外部链接
 
 在浏览器中打开外部外链会暴露您的IP地址；如不想暴露IP地址，请选择“取消”；您可以随时在设置中修改该选项</translation>
     </message>
@@ -1579,7 +1579,8 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>为使交易顺利完成，您需要在支付完Beam后12小时内上线同步钱包</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <translation type="unfinished">为使交易顺利完成，您需要在支付完Ufo后12小时内上线同步钱包</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

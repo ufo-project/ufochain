@@ -1567,7 +1567,8 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <translation>Для завершения транзакции вы должны быть онлайн в течение 12 часов после отправки.</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <translation type="unfinished">Для завершения транзакции вы должны быть онлайн в течение 12 часов после отправки.</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>
