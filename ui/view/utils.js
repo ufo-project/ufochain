@@ -102,10 +102,12 @@ function getAmountWithoutCurrency(amountWithCurrency) {
 }
 
 function currenciesList() {
-    return ["BEAM", "BTC", "LTC", "QTUM"]
+    //return ["BEAM", "BTC", "LTC", "QTUM"]
+    return ["UFO", "BTC", "LTC", "QTUM"]
 }
 
-const symbolBeam  = '\uEAFB'
+//const symbolBeam  = '\uEAFB'
+const symbolBeam  = 'UFO'
 const symbolBtc   = '\u20BF'
 const symbolLtc   = '\u0141'
 const symbolQtum  = '\uEAFD'

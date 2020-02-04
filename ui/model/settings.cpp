@@ -47,21 +47,25 @@ namespace
 
     const char* kDefaultLocale = "en_US";
 
+    //const std::map<QString, QString> kSupportedLangs { 
+    //    { "zh_CN", "Chinese Simplified"},
+    //    { "en_US", "English" },
+    //    { "es_ES", "Español"},
+    //    { "be_BY", "Беларуская"},
+    //    { "nl_NL", "Dutch"},
+    //    { "fr_FR", "Française"},
+    //    { "ja_JP", ""},
+    //    { "ru_RU", "Русский" },
+    //    { "fi_FI", "Suomi" },
+    //    { "sv_SE", "Svenska"},
+    //    { "th_TH", ""},
+    //    { "tr_TR", "Türkçe"},
+    //    { "vi_VI", "Tiếng việt"},
+    //    { "ko_KR", ""}
+    //};
+
     const std::map<QString, QString> kSupportedLangs { 
-        { "zh_CN", "Chinese Simplified"},
-        { "en_US", "English" },
-        { "es_ES", "Español"},
-        { "be_BY", "Беларуская"},
-        { "nl_NL", "Dutch"},
-        { "fr_FR", "Française"},
-        { "ja_JP", ""},
-        { "ru_RU", "Русский" },
-        { "fi_FI", "Suomi" },
-        { "sv_SE", "Svenska"},
-        { "th_TH", ""},
-        { "tr_TR", "Türkçe"},
-        { "vi_VI", "Tiếng việt"},
-        { "ko_KR", ""}
+        { "en_US", "English" }
     };
 
     const vector<string> kOutDatedPeers = ufo::getOutdatedDefaultPeers();

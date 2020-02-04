@@ -31,7 +31,7 @@ AbstractColors {
     property color caps_warning:          "#000000"
 
     property string linkStyle: "<style>a:link {color: '#00f6d2'; text-decoration: none;}</style>"
-    property string explorerUrl: "https://explorer.ufo.mw/"
+    property string explorerUrl: "http://explorer.ufo.link/"
 
     property color swapCurrencyPaneGrRight:     "#00458f"
     property color swapCurrencyPaneGrLeftBEAM:  "#00f6d2"
