@@ -42,12 +42,12 @@ function handleMousePointer(mouse, element) {
 }
 
 function openExternal(externalLink, settings, dialog) {
-    if (settings.isAllowedBeamMWLinks) {
+    if (settings.isAllowedUfoMWLinks) {
         Qt.openUrlExternally(externalLink);
     } else {
         dialog.externalUrl = externalLink;
         dialog.onOkClicked = function () {
-            settings.isAllowedBeamMWLinks = true;
+            settings.isAllowedUfoMWLinks = true;
         };
         dialog.open();
     }
@@ -56,12 +56,12 @@ function openExternal(externalLink, settings, dialog) {
 function handleExternalLink(mouse, element, settings, dialog) {
     if (element.cursorShape == Qt.PointingHandCursor) {
         var externalLink = element.parent.linkAt(mouse.x, mouse.y);
-        if (settings.isAllowedBeamMWLinks) {
+        if (settings.isAllowedUfoMWLinks) {
             Qt.openUrlExternally(externalLink);
         } else {
             dialog.externalUrl = externalLink;
             dialog.onOkClicked = function () {
-                settings.isAllowedBeamMWLinks = true;
+                settings.isAllowedUfoMWLinks = true;
             };
             dialog.open();
         }
