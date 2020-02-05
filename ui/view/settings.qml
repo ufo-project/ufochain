@@ -758,7 +758,7 @@ ColumnLayout {
                                     onClicked: {
                                         if(!Utils.handleExternalLink(mouse, allowOpenExternalArea, viewModel, externalLinkConfirmation))
                                         {
-                                            viewModel.isAllowedBeamMWLinks = !viewModel.isAllowedBeamMWLinks;
+                                            viewModel.isAllowedUfoMWLinks = !viewModel.isAllowedUfoMWLinks;
                                         }
                                     }
                                     hoverEnabled: true
@@ -775,10 +775,10 @@ ColumnLayout {
                             CustomSwitch {
                                 id: allowBeamMWLinks
                                 Layout.preferredWidth: 30
-                                checked: viewModel.isAllowedBeamMWLinks
+                                checked: viewModel.isAllowedUfoMWLinks
                                 Binding {
                                     target: viewModel
-                                    property: "isAllowedBeamMWLinks"
+                                    property: "isAllowedUfoMWLinks"
                                     value: allowBeamMWLinks.checked
                                 }
                             }
