@@ -5,7 +5,7 @@
     <name></name>
     <message id="general-beam">
         <source>BEAM</source>
-        <translation>BEAM</translation>
+        <translation>UFO</translation>
     </message>
     <message id="general-groth">
         <source>GROTH</source>
