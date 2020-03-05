@@ -36,7 +36,18 @@ If you want to get a static release build, change line 131 ```set(UFO_USE_STATIC
 
 ### Ubuntu 18.04
 
-1. Install dependencies
+1. Upgrade gcc and libstdc++
+
+```
+sudo apt update
+sudo apt install wget gcc-8 unzip libssl1.0.0 software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+sudo apt-get install --only-upgrade libstdc++6
+```
+
+
+2. Install dependencies
 
 ```
 sudo add-apt-repository ppa:beineri/opt-qt-5.11.0-bionic
@@ -48,7 +59,7 @@ sudo apt-get install qt511base qt511declarative qt511svg qt511tools
 ```
 	
 
-2. Install cmake
+3. Install cmake
 
 ```
 wget https://cmake.org/files/v3.13/cmake-3.13.0-Linux-x86_64.sh
@@ -56,14 +67,14 @@ sudo sh ./cmake-3.13.0-Linux-x86_64.sh --skip-license --prefix=/usr
 ```
 
 
-3. Fetch the ufochain project
+4. Fetch the ufochain project
 
 ```
 git clone https://github.com/ufo-project/ufochain.git
 ```
 
 
-4. Go to the Ufo project folder and start the release build
+5. Go to the Ufo project folder and start the release build
 
 ```
 export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
