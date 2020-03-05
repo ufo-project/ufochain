@@ -146,8 +146,8 @@ Rectangle {
         Image {
             id: image
             y:  50
-            width: 70
-            height: 70 * image.sourceSize.height / image.sourceSize.width
+            width: 70 * 0.8
+            height: 70 * image.sourceSize.height / image.sourceSize.width * 0.8
             anchors.horizontalCenter: parent.horizontalCenter
             // source: "qrc:/assets/logo.svg"
             source: "qrc:/assets/UFO.png"

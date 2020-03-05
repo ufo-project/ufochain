@@ -159,7 +159,7 @@ Control {
                 lightFont:         false
                 fontSize:          16
                 currencySymbol:    Utils.symbolBeam
-                iconSource:        "qrc:/assets/icon-beam.svg"
+                iconSource:        "qrc:/assets/icon.png"
                 iconSize:          Qt.size(22, 22)
                 copyMenuEnabled:   true
                 //% "Available"
