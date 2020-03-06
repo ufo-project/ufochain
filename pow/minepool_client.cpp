@@ -47,16 +47,18 @@ class PoolStratumClient : public stratum::ParserCallback {
     Block::PoW _lastFoundShare;
     bool _tls;
     bool _fakeSolver;
+    bool _alwaysReconn;
     uint32_t _enonce_len;
     uint64_t _shareSubmitIndex;
     Difficulty _setDifficulty;
 
 public:
-    PoolStratumClient(io::Reactor& reactor, const io::Address& serverAddress, std::string minerAddress, std::string workerName) :
+    PoolStratumClient(io::Reactor& reactor, const io::Address& serverAddress, std::string minerAddress, std::string workerName, bool alwaysReconn) :
         _reactor(reactor),
         _serverAddress(serverAddress),
         _minerAddress(std::move(minerAddress)),
         _workerName(std::move(workerName)),
+        _alwaysReconn(alwaysReconn),
         _lineProtocol(
             BIND_THIS_MEMFN(on_raw_message),
             BIND_THIS_MEMFN(on_write)
@@ -332,9 +334,15 @@ private:
             return false;
         }
         if (!_lineProtocol.new_data_from_stream(data, size)) {
-            LOG_ERROR() << "closing connection";
-            _reactor.stop();
-            return false;
+            if (_alwaysReconn) {
+                on_disconnected(errorCode);
+                return false;
+            }
+            else {
+                LOG_ERROR() << "closing connection";
+                _reactor.stop();
+                return false;
+            }
         }
         return true;
     }
@@ -346,6 +354,7 @@ struct Options {
     std::string serverAddress;
     std::string minerAddress;
     std::string workerName;
+    bool alwaysReconn;
     int logLevel=LOG_LEVEL_DEBUG;
     unsigned logRotationPeriod = 3*60*60*1000; // 3 hours
 };
@@ -376,7 +385,7 @@ int main(int argc, char* argv[]) {
         logRotateTimer->start(
             options.logRotationPeriod, true, []() { Logger::get()->rotate(); }
         );
-        PoolStratumClient client(*reactor, connectTo, options.minerAddress, options.workerName);
+        PoolStratumClient client(*reactor, connectTo, options.minerAddress, options.workerName, options.alwaysReconn);
         reactor->run();
         LOG_INFO() << "stopping...";
     } catch (const std::exception& e) {
@@ -397,6 +406,7 @@ bool parse_cmdline(int argc, char* argv[], Options& o) {
     ("server", po::value<std::string>(&o.serverAddress)->required(), "server address")
     ("miner-address", po::value<std::string>(&o.minerAddress)->required(), "miner address")
     ("worker-name", po::value<std::string>(&o.workerName)->required(), "worker name")
+    ("always-reconn", po::bool_switch(&o.alwaysReconn)->default_value(false), "always reconnect while stream error")
     ;
 
 #ifdef NDEBUG
