@@ -3,7 +3,7 @@ cmake_policy(SET CMP0074 NEW)
 
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_REVISION 0)
+set(VERSION_REVISION 1)
 set(GIT_COMMIT_HASH "unknown")
 
 set(UFO_SUFFIX_LOWER_CASE "testnet")
