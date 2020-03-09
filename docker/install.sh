@@ -25,8 +25,8 @@ git clone https://github.com/ufo-project/ufochain.git
 cd ufochain
 
 # fix filename character case not work on linux
-cp ui/icons/ufo_mainnet.png ui/icons/UFO_mainnet.png
-cp ui/icons/ufo_mainnet.icns ui/icons/UFO_mainnet.icns
+# cp ui/icons/ufo_mainnet.png ui/icons/UFO_mainnet.png
+# cp ui/icons/ufo_mainnet.icns ui/icons/UFO_mainnet.icns
 
 export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
 cmake -DCMAKE_BUILD_TYPE=Release && make -j4

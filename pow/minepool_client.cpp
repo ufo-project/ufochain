@@ -58,7 +58,6 @@ public:
         _serverAddress(serverAddress),
         _minerAddress(std::move(minerAddress)),
         _workerName(std::move(workerName)),
-        _alwaysReconn(alwaysReconn),
         _lineProtocol(
             BIND_THIS_MEMFN(on_raw_message),
             BIND_THIS_MEMFN(on_write)
@@ -67,6 +66,7 @@ public:
         _lastJobID(""),
         _tls(false),
         _fakeSolver(false),
+        _alwaysReconn(alwaysReconn),
         _enonce_len(0),
         _shareSubmitIndex(1000),
         _setDifficulty(ufo::Rules().DA.Difficulty0)
