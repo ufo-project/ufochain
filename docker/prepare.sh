@@ -1,9 +1,9 @@
 #!/bin/bash
 
 apt-get -y update
-apt-get -y install wget gcc-8 unzip libssl1.0.0 software-properties-common
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt-get -y update
+apt-get -y install wget gcc-8 unzip libssl1.0.0 software-properties-common
 apt-get -y install --only-upgrade libstdc++6
 
 add-apt-repository -y ppa:beineri/opt-qt-5.11.0-bionic
