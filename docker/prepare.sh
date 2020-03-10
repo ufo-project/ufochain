@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get -y update
-add-apt-repository -y ppa:ubuntu-toolchain-r/test
+add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
 apt-get -y update
 apt-get -y install wget gcc-8 unzip libssl1.0.0 software-properties-common
 apt-get -y install --only-upgrade libstdc++6
