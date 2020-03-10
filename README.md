@@ -40,9 +40,9 @@ If you want to get a static release build, change line 131 ```set(UFO_USE_STATIC
 
 ```
 sudo apt update
-sudo apt install wget gcc-8 unzip libssl1.0.0 software-properties-common
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
+sudo apt install wget gcc-8 unzip libssl1.0.0 software-properties-common
 sudo apt-get install --only-upgrade libstdc++6
 ```
 
