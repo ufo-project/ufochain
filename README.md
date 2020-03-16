@@ -80,3 +80,42 @@ git clone https://github.com/ufo-project/ufochain.git
 export PATH=/opt/qt511/bin:$PATH && export CC=gcc-8 && export CXX=g++-8
 cmake -DCMAKE_BUILD_TYPE=Release && make -j4
 ```
+
+* **Btw**:
+If you want to get a static link with NO-QT-GUI release build
+
+1.  Get OpenSSL-1.1.0k and build static libraries
+
+```
+wget https://www.openssl.org/source/old/1.1.0/openssl-1.1.0k.tar.gz
+tar xvfz openssl-1.1.0k.tar.gz
+cd openssl-1.1.0k
+./config 
+make -j4
+```
+
+2.  Get Boost-1.67.0 and build static libraries
+
+```
+wget https://iweb.dl.sourceforge.net/project/boost/boost/1.67.0/boost_1_67_0.zip
+unzip boost_1_67_0.zip
+cd boost_1_67_0
+sh bootstrap.sh
+./b2 link=static
+```
+
+3.  Modify and change line 131 ```set(UFO_USE_STATIC FALSE)``` to ```set(UFO_USE_STATIC TRUE)``` at CMakeList.txt, and then
+add two lines in line 14 just as 
+
+```
+set(OPENSSL_ROOT_DIR "<your openssl source file dir>")
+set(BOOST_ROOT "<your boost source file dir>")
+```
+
+4.  Build static link and NO-QT-QUI release
+
+```
+cmake -DCMAKE_BUILD_TYPE=Release -DUFO_QT_UI_WALLET=FALSE .
+make -j4
+```
+
