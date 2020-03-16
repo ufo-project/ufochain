@@ -90,7 +90,7 @@
     </message>
     <message id="general-close">
         <source>Close</source>
-        <translation>Save</translation>
+        <translation>Close</translation>
     </message>
     <message id="general-details">
         <source>Details</source>
@@ -571,7 +571,7 @@
     </message>
     <message id="wallet-receive-title">
         <source>Receive</source>
-        <translation>Receive Ufo</translation>
+        <translation>Receive UFO</translation>
     </message>
     <message id="wallet-receive-my-addr-label">
         <source>My address (auto-generated)</source>
@@ -604,7 +604,7 @@
     </message>
     <message id="send-title">
         <source>Send</source>
-        <translation>Send Ufo</translation>
+        <translation>Send UFO</translation>
     </message>
     <message id="send-send-to-label">
         <source>Transaction token or contact</source>
@@ -1561,8 +1561,8 @@ or send this address to the sender over secure channel</translation>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
-        <translation type="unfinished">For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</translation>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
+        <translation type="unfinished">For the transaction to complete, you should get online during the 12 hours after UFO are sent.</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>

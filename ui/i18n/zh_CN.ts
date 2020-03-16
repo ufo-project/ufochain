@@ -90,7 +90,7 @@
     </message>
     <message id="general-close">
         <source>Close</source>
-        <translation>保存</translation>
+        <translation>关闭</translation>
     </message>
     <message id="general-details">
         <source>Details</source>
@@ -1579,7 +1579,7 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
-        <oldsource>For the transaction to complete, you should get online during the 12 hours after Ufos are sent.</oldsource>
+        <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
         <translation type="unfinished">为使交易顺利完成，您需要在支付完Ufo后12小时内上线同步钱包</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">

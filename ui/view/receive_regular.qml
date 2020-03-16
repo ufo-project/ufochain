@@ -298,8 +298,7 @@ ColumnLayout {
 
         CustomButton {
             //% "Save"
-            text:               qsTrId("general-close")
-            //text:               "Save"
+            text:               qsTrId("edit-addr-save-button")
             palette.buttonText: Style.content_main
             // icon.source:        "qrc:/assets/icon-cancel-white.svg"
             onClicked:          {
