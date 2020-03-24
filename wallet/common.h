@@ -179,8 +179,6 @@ namespace ufo::wallet
         Message = 5,
         MyID = 6,
         PeerID = 7,
-        //Inputs = 8,
-        //Outputs = 9,
         CreateTime = 10,
         IsInitiator = 11,
         PeerMaxHeight = 12,
