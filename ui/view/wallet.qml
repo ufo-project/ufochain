@@ -260,6 +260,12 @@ Item {
                     placeholderText: qsTrId("wallet-search-transactions-placeholder")
                 }
                 CustomToolButton {
+                	Layout.alignment: Qt.AlignVCenter 
+                	icon.source: "qrc:/assets/icon-save.svg"
+                	onClicked: {
+                	}
+                }
+                CustomToolButton {
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                     icon.source: "qrc:/assets/icon-proof.svg"
                     //% "Verify payment"

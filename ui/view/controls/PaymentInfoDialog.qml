@@ -270,7 +270,7 @@
                 {
                     if (model)
                     {
-                        textCopied("Sender: " + model.sender + "\nReceiver: " + model.receiver + "\nAmount: " + model.amountValue + " BEAM" + "\nKernel ID: " + model.kernelID);
+                        textCopied("Sender: " + model.sender + "\nReceiver: " + model.receiver + "\nAmount: " + model.amountValue + " UFO" + "\nKernel ID: " + model.kernelID);
                     }
                 }
 
