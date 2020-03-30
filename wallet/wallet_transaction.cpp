@@ -193,6 +193,8 @@ namespace ufo::wallet
                 assert(IsInitiator());
                 if (txState == State::Initial)
                 {
+                    LOG_DEBUG() << GetTxID() << " state from " << State::Initial << " to " << State::Invitation;
+
                     SendInvitation(builder, isSender);
                     SetState(State::Invitation);
                 }
@@ -226,11 +228,15 @@ namespace ufo::wallet
 						uint8_t nCode = proto::TxStatus::Ok; // compiler workaround (ref to static const)
 						SetParameter(TxParameterID::TransactionRegistered, nCode);
 
+                        LOG_DEBUG() << GetTxID() << " state from " << State::Initial << " to " << State::KernelConfirmation;
+
                         SetState(State::KernelConfirmation);
                         ConfirmKernel(builder.GetKernelID());
                     }
                     else
                     {
+                        LOG_DEBUG() << GetTxID() << " state from " << State::Initial << " to " << State::InvitationConfirmation;
+
                         SetState(State::InvitationConfirmation);
                     }
                     return;
@@ -296,6 +302,8 @@ namespace ufo::wallet
             {
                 if (txState == State::Invitation)
                 {
+                    LOG_DEBUG() << GetTxID() << " state from " << State::Invitation << " to " << State::PeerConfirmation;
+
                     UpdateTxDescription(TxStatus::Registering);
                     ConfirmTransaction(builder, !hasPeersInputsAndOutputs);
                     SetState(State::PeerConfirmation);
@@ -323,6 +331,10 @@ namespace ufo::wallet
                 OnFailed(TxFailureReason::InvalidTransaction, true);
                 return;
             }
+
+            LOG_DEBUG() << "register_tx: " << GetTxID();
+            LOG_DEBUG() << GetTxID() << " state to " << State::Registration;
+
             GetGateway().register_tx(GetTxID(), transaction);
             SetState(State::Registration);
             return;
@@ -347,6 +359,8 @@ namespace ufo::wallet
         GetParameter(TxParameterID::KernelProofHeight, hProof);
         if (!hProof)
         {
+            LOG_DEBUG() << GetTxID() << " state to " << State::KernelConfirmation;
+
             SetState(State::KernelConfirmation);
             ConfirmKernel(builder.GetKernelID());
             return;

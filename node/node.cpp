@@ -2155,6 +2155,8 @@ void Node::Peer::OnMsg(proto::NewTransaction&& msg)
         ThrowUnexpected(); // our deserialization permits NULL Ptrs.
     // However the transaction body must have already been checked for NULLs
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " NewTransaction";
+
     if (msg.m_Fluff)
         m_This.OnTransactionFluff(std::move(msg.m_Transaction), this, NULL);
     else
@@ -2292,6 +2294,7 @@ uint8_t Node::OnTransactionStem(Transaction::Ptr&& ptx, const Peer* pPeer)
 
 	Transaction::Context::Params pars;
 	Transaction::Context ctx(pars);
+
     bool bTested = false;
     TxPool::Stem::Element* pDup = NULL;
 
@@ -2877,6 +2880,8 @@ void Node::Peer::OnMsg(proto::HaveTransaction&& msg)
     TxPool::Fluff::Element::Tx key;
     key.m_Key = msg.m_ID;
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " HaveTransaction " << msg.m_ID;
+
     TxPool::Fluff::TxSet::iterator it = m_This.m_TxPool.m_setTxs.find(key);
     if (m_This.m_TxPool.m_setTxs.end() != it)
         return; // already have it
@@ -2893,6 +2898,8 @@ void Node::Peer::OnMsg(proto::GetTransaction&& msg)
 {
     TxPool::Fluff::Element::Tx key;
     key.m_Key = msg.m_ID;
+
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetTransaction " << msg.m_ID;
 
     TxPool::Fluff::TxSet::iterator it = m_This.m_TxPool.m_setTxs.find(key);
     if (m_This.m_TxPool.m_setTxs.end() == it)
@@ -2916,6 +2923,8 @@ void Node::Peer::OnMsg(proto::GetCommonState&& msg)
     proto::ProofCommonState msgOut;
 
     Processor& p = m_This.m_Processor; // alias
+
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetCommonState";
 
     for (size_t i = 0; i < msg.m_IDs.size(); i++)
     {
@@ -2946,6 +2955,8 @@ void Node::Peer::OnMsg(proto::GetProofState&& msg)
     if (msg.m_Height < Rules::HeightGenesis)
         ThrowUnexpected();
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetProofState";
+
     proto::ProofState msgOut;
 
     Processor& p = m_This.m_Processor;
@@ -2972,6 +2983,8 @@ void Node::Peer::OnMsg(proto::GetProofKernel&& msg)
 {
     proto::ProofKernel msgOut;
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetProofKernel " << msg.m_ID;
+
     Processor& p = m_This.m_Processor;
 	if (!p.IsFastSync())
 	{
@@ -2992,6 +3005,8 @@ void Node::Peer::OnMsg(proto::GetProofKernel2&& msg)
 {
     proto::ProofKernel2 msgOut;
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetProofKernel2 " << msg.m_ID;
+
 	Processor& p = m_This.m_Processor;
 	if (!p.IsFastSync())
 		msgOut.m_Height = p.get_ProofKernel(msgOut.m_Proof, msg.m_Fetch ? &msgOut.m_Kernel : NULL, msg.m_ID);
@@ -3000,6 +3015,8 @@ void Node::Peer::OnMsg(proto::GetProofKernel2&& msg)
 
 void Node::Peer::OnMsg(proto::GetProofUtxo&& msg)
 {
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetProofUtxo";
+
     struct Traveler :public UtxoTree::ITraveler
     {
         proto::ProofUtxo m_Msg;
@@ -3094,6 +3111,8 @@ void Node::Peer::OnMsg(proto::GetProofChainWork&& msg)
 {
     proto::ProofChainWork msgOut;
 
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetProofChainWork";
+
     Processor& p = m_This.m_Processor;
     if (!p.IsFastSync() && p.BuildCwp())
     {
@@ -3142,14 +3161,20 @@ void Node::Peer::OnMsg(proto::BbsMsg&& msg)
 
 	Timestamp t = getTimestamp();
 
-    if (msg.m_TimePosted > t + Rules::get().DA.MaxAhead_s)
-		return; // too much ahead of time
+    if (msg.m_TimePosted > t + Rules::get().DA.MaxAhead_s) {
+        LOG_INFO() << "Peer " << m_RemoteAddr << " BbsMsg" << " too much ahead of time";
+        return; // too much ahead of time
+    }
 
-    if (msg.m_TimePosted + m_This.m_Cfg.m_Bbs.m_MessageTimeout_s < t)
+    if (msg.m_TimePosted + m_This.m_Cfg.m_Bbs.m_MessageTimeout_s < t) {
+        LOG_INFO() << "Peer " << m_RemoteAddr << " BbsMsg" << " too old";
         return; // too old
+    }
 
-    if (msg.m_TimePosted + Rules::get().DA.MaxAhead_s < m_This.m_Bbs.m_HighestPosted_s)
+    if (msg.m_TimePosted + Rules::get().DA.MaxAhead_s < m_This.m_Bbs.m_HighestPosted_s) {
+        LOG_INFO() << "Peer " << m_RemoteAddr << " BbsMsg" << " don't allow too much out-of-order messages";
         return; // don't allow too much out-of-order messages
+    }
 
     NodeDB& db = m_This.m_Processor.get_DB();
     NodeDB::WalkerBbs wlk(db);
@@ -3161,6 +3186,8 @@ void Node::Peer::OnMsg(proto::BbsMsg&& msg)
 
     Bbs::CalcMsgKey(wlk.m_Data);
 
+    LOG_DEBUG() << "receive BbsMsg, msgKey: " << wlk.m_Data.m_Key;
+    
     if (db.BbsFind(wlk.m_Data.m_Key))
         return; // already have it
 
@@ -3226,6 +3253,8 @@ void Node::Peer::OnMsg(proto::BbsHaveMsg&& msg)
 		// stupid compiler insists on parentheses here!
 		return; // already waiting for it
 	}
+
+    LOG_DEBUG() << "send BbsGetMsg, m_Key: " << msg.m_Key;
 
     proto::BbsGetMsg msgOut;
     msgOut.m_Key = msg.m_Key;
@@ -3310,6 +3339,8 @@ void Node::Peer::BroadcastBbs(Bbs::Subscription& s)
 
 void Node::Peer::OnMsg(proto::BbsResetSync&& msg)
 {
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " BbsResetSync";
+
 	if (!m_This.m_Cfg.m_Bbs.IsEnabled())
 		ThrowUnexpected();
 
@@ -3319,6 +3350,8 @@ void Node::Peer::OnMsg(proto::BbsResetSync&& msg)
 
 void Node::Peer::OnMsg(proto::GetUtxoEvents&& msg)
 {
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " GetUtxoEvents";
+
     proto::UtxoEvents msgOut;
 
     if (Flags::Viewer & m_Flags)
@@ -3362,6 +3395,8 @@ void Node::Peer::OnMsg(proto::GetUtxoEvents&& msg)
 
 void Node::Peer::OnMsg(proto::BlockFinalization&& msg)
 {
+    LOG_DEBUG() << "Peer " << m_RemoteAddr << " BlockFinalization";
+
     if (!(Flags::Owner & m_Flags) ||
         !(Flags::Finalizing & m_Flags))
         ThrowUnexpected();

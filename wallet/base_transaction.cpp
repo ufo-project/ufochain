@@ -320,6 +320,8 @@ namespace ufo::wallet
 
     void BaseTransaction::NotifyFailure(TxFailureReason reason)
     {
+        LOG_ERROR() << GetTxID() << " NotifyFailure. " << GetFailureMessage(reason);
+
         TxStatus s = TxStatus::Failed;
         GetParameter(TxParameterID::Status, s);
 

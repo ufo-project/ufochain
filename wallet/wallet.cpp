@@ -384,6 +384,7 @@ namespace ufo::wallet
     // TODO: make SetTxParameter const reference
     void Wallet::send_tx_params(const WalletID& peerID, SetTxParameter&& msg)
     {
+        LOG_DEBUG() << "send_tx_params, peerID: " << peerID.m_Pk << " txID: " << msg.m_TxID;
         for (auto& endpoint : m_MessageEndpoints)
         {
             endpoint->Send(peerID, msg);
@@ -402,6 +403,8 @@ namespace ufo::wallet
 
     void Wallet::OnWalletMessage(const WalletID& myID, const SetTxParameter& msg)
     {
+        LOG_DEBUG() << "OnWalletMessage, myID: " << myID.m_Pk << " txID: " << msg.m_TxID;
+
         auto t = GetTransaction(myID, msg);
         if (!t)
         {
