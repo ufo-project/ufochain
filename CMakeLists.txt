@@ -3,7 +3,7 @@ cmake_policy(SET CMP0074 NEW)
 
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_REVISION 1)
+set(VERSION_REVISION 2)
 set(GIT_COMMIT_HASH "unknown")
 
 set(UFO_SUFFIX_LOWER_CASE "testnet")
@@ -128,7 +128,7 @@ if (UFO_NO_QT_UI_WALLET)
     set(UFO_QT_UI_WALLET FALSE)    
 endif()
 
-set(UFO_USE_STATIC FALSE)
+set(UFO_USE_STATIC TRUE)
 if(UFO_LINK_TYPE MATCHES "Static")
     set(UFO_USE_STATIC TRUE)
 endif()

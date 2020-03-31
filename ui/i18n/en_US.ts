@@ -5,7 +5,8 @@
     <name></name>
     <message id="general-beam">
         <source>BEAM</source>
-        <translation>UFO</translation>
+        <oldsource>UFO</oldsource>
+        <translation type="unfinished">UFO</translation>
     </message>
     <message id="general-groth">
         <source>GROTH</source>
@@ -918,8 +919,8 @@
         <translation>Transaction has invalid state</translation>
     </message>
     <message id="tx-curency-name">
-        <source>BEAM</source>
-        <translation type="vanished">BEAM</translation>
+        <source>UFO</source>
+        <translation type="vanished">UFO</translation>
     </message>
     <message id="tx-curency-sub-name">
         <source>GROTH</source>
@@ -1732,10 +1733,12 @@ Please check the swap token and try again.</translation>
     </message>
     <message id="swap-details-beam-lock-kernel-id">
         <source>BEAM lock transaction kernel ID</source>
+        <oldsource>UFO lock transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message id="swap-details-beam-redeem-kernel-id">
         <source>BEAM redeem transaction kernel ID</source>
+        <oldsource>UFO redeem transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message id="swap-details-redeem-tx-id">
@@ -1748,6 +1751,7 @@ Please check the swap token and try again.</translation>
     </message>
     <message id="swap-details-beam-refund-kernel-id">
         <source>BEAM refund transaction kernel ID</source>
+        <oldsource>UFO refund transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message id="swap-details-refund-tx-id">

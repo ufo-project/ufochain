@@ -5,7 +5,8 @@
     <name></name>
     <message id="general-beam">
         <source>BEAM</source>
-        <translation>UFO</translation>
+        <oldsource>UFO</oldsource>
+        <translation type="unfinished">UFO</translation>
     </message>
     <message id="general-groth">
         <source>GROTH</source>
@@ -918,8 +919,8 @@
         <translation>거래가 유효하지 않은 상태이다</translation>
     </message>
     <message id="tx-curency-name">
-        <source>BEAM</source>
-        <translation type="vanished">BEAM</translation>
+        <source>UFO</source>
+        <translation type="vanished">UFO</translation>
     </message>
     <message id="tx-curency-sub-name">
         <source>GROTH</source>
@@ -1736,11 +1737,13 @@ Please check the swap token and try again.</oldsource>
     </message>
     <message id="swap-details-beam-lock-kernel-id">
         <source>BEAM lock transaction kernel ID</source>
-        <translation type="unfinished">BEAM lock transaction kernel ID</translation>
+        <oldsource>UFO lock transaction kernel ID</oldsource>
+        <translation type="unfinished">UFO lock transaction kernel ID</translation>
     </message>
     <message id="swap-details-beam-redeem-kernel-id">
         <source>BEAM redeem transaction kernel ID</source>
-        <translation type="unfinished">BEAM redeem transaction kernel ID</translation>
+        <oldsource>UFO redeem transaction kernel ID</oldsource>
+        <translation type="unfinished">UFO redeem transaction kernel ID</translation>
     </message>
     <message id="swap-details-redeem-tx-id">
         <source>redeem transaction ID</source>
@@ -1752,7 +1755,8 @@ Please check the swap token and try again.</oldsource>
     </message>
     <message id="swap-details-beam-refund-kernel-id">
         <source>BEAM refund transaction kernel ID</source>
-        <translation type="unfinished">BEAM refund transaction kernel ID</translation>
+        <oldsource>UFO refund transaction kernel ID</oldsource>
+        <translation type="unfinished">UFO refund transaction kernel ID</translation>
     </message>
     <message id="swap-details-refund-tx-id">
         <source>refund transaction ID</source>

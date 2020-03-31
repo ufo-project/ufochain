@@ -4,7 +4,7 @@
 <context>
     <name></name>
     <message id="general-beam">
-        <source>BEAM</source>
+        <source>UFO</source>
         <translation>UFO</translation>
     </message>
     <message id="general-groth">
@@ -643,7 +643,7 @@
         <translation>Hyväksy</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <source>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
         <translation type="unfinished">Olet palauttamassa vanhaa lompakkoa. Huomioithan, että jos olet jo käyttänyt lompakkoa toisella laitteella, tapahtumahistoria sekä tallentamasi osoitteet eivät siirry uudelle laitteelle palautuksen yhteydessä. Tapahtumat sekä osoitteet tallennetaan erikseen kullekin laitteelle. Lompakkosi saldo kuitenkin palautetaan ja on käytettävissä ajantasaisena uudessa laitteessa.</translation>
     </message>
@@ -918,8 +918,8 @@
         <translation>Tapahtuman tila on virheellinen</translation>
     </message>
     <message id="tx-curency-name">
-        <source>BEAM</source>
-        <translation type="vanished">BEAM</translation>
+        <source>UFO</source>
+        <translation type="vanished">UFO</translation>
     </message>
     <message id="tx-curency-sub-name">
         <source>GROTH</source>
@@ -1027,7 +1027,7 @@
         <translation>Ulkoinen linkki</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
         <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
         <translation type="unfinished">Ufo-lompakkosovellus vaatii luvan sovelluksen ulkoisten linkkien avaamiseen selaimessasi. Tämä toiminto paljastaa IP-osoitteesi ulkoisen palvelimen ylläpitäjälle. Välttääksesi tämän valitse -Peruuta-. Voit myöhemmin muuttaa asetuksia milloin vain.</translation>
     </message>
@@ -1481,7 +1481,7 @@ please review your settings and try again.</oldsource>
         <translation>UFOin vastaanotto</translation>
     </message>
     <message id="atomic-swap-send-beam">
-        <source>Send BEAM</source>
+        <source>Send UFO</source>
         <oldsource>Send UFO</oldsource>
         <translation type="unfinished">UFOin lähetys</translation>
     </message>
@@ -1562,7 +1562,7 @@ please review your settings and try again.</oldsource>
         <translation>Luo uusi Trezor-lompakko</translation>
     </message>
     <message id="wallet-receive-text-online-time">
-        <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
+        <source>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</source>
         <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
         <translation type="unfinished">Jotta maksutapahtuma onnistuu, tulee sinun avata lompakkosi 12 tunnin sisällä lähetyksestä.</translation>
     </message>
@@ -1735,12 +1735,12 @@ Please check the swap token and try again.</oldsource>
         <translation type="unfinished">lock transaction confirmations</translation>
     </message>
     <message id="swap-details-beam-lock-kernel-id">
-        <source>BEAM lock transaction kernel ID</source>
-        <translation type="unfinished">BEAM lock transaction kernel ID</translation>
+        <source>UFO lock transaction kernel ID</source>
+        <translation type="unfinished">UFO lock transaction kernel ID</translation>
     </message>
     <message id="swap-details-beam-redeem-kernel-id">
-        <source>BEAM redeem transaction kernel ID</source>
-        <translation type="unfinished">BEAM redeem transaction kernel ID</translation>
+        <source>UFO redeem transaction kernel ID</source>
+        <translation type="unfinished">UFO redeem transaction kernel ID</translation>
     </message>
     <message id="swap-details-redeem-tx-id">
         <source>redeem transaction ID</source>
@@ -1751,8 +1751,8 @@ Please check the swap token and try again.</oldsource>
         <translation type="unfinished">redeem transaction confirmations</translation>
     </message>
     <message id="swap-details-beam-refund-kernel-id">
-        <source>BEAM refund transaction kernel ID</source>
-        <translation>BEAM-palautustapahtuman kernel id</translation>
+        <source>UFO refund transaction kernel ID</source>
+        <translation>UFO-palautustapahtuman kernel id</translation>
     </message>
     <message id="swap-details-refund-tx-id">
         <source>refund transaction ID</source>
