@@ -66,7 +66,8 @@ namespace
 
     const std::map<QString, QString> kSupportedLangs { 
         { "en_US", "English" },
-        { "ko_KR", "Korean"}
+        { "ko_KR", "Korean"},
+        { "zh_CN", "Chinese Simplified"},
     };
 
     const vector<string> kOutDatedPeers = ufo::getOutdatedDefaultPeers();
