@@ -1212,7 +1212,7 @@ or send this address to the sender over secure channel</translation>
     </message>
     <message id="open-in-explorer">
         <source>Open in Blockchain Explorer</source>
-        <translation>Open in Blockchain Explorer</translation>
+        <translation type="vanished">Open in Blockchain Explorer</translation>
     </message>
     <message id="restore-finish-alert-button">
         <source>I understand</source>

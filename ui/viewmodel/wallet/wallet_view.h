@@ -55,6 +55,7 @@ public:
     Q_INVOKABLE void deleteTx(QVariant variantTxID);
     Q_INVOKABLE PaymentInfoItem* getPaymentInfo(QVariant variantTxID);
     Q_INVOKABLE bool isAllowedUfoMWLinks() const;
+	Q_INVOKABLE bool saveToFile(const QString str, QString path);
 
 public slots:
     void onTxStatus(ufo::wallet::ChangeAction action, const std::vector<ufo::wallet::TxDescription>& items);

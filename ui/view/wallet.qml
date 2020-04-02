@@ -2,6 +2,7 @@ import QtQuick 2.11
 import QtQuick.Controls 1.2
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Styles 1.2
+import QtQuick.Dialogs 1.3
 import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.3
 import Ufo.Wallet 1.0
@@ -23,6 +24,31 @@ Item {
     }
 
     property bool toSend: false
+
+    FileDialog {
+        id: fileDialog
+        title: "save transactions"
+        visible: false
+        selectExisting: false
+        nameFilters: ["csv文件 (*.csv)"]
+        property var txModel: null
+
+        onAccepted: {
+            var str = "Create on,Sending address,Receiving address,Amount,Fee,Comment,Transaction Id,Kernel Id\r\n";
+            for(var i = 0; i < txModel.count; i++){
+                var tx = txModel.get(i);
+                str += tx["timeCreated"] + ",";
+                str += tx["addressFrom"] + ",";
+                str += tx["addressTo"] + ",";
+                str += tx["amountGeneral"] + ",";
+                str += tx["fee"] + ",";
+                str += tx["comment"] + ",";
+                str += tx["txID"] + ",";
+                str += tx["kernelID"] + "\r\n";
+            }
+            viewModel.saveToFile(str,fileDialog.fileUrl);
+        }
+    }
 
     ConfirmationDialog {
         id: deleteTransactionDialog
@@ -263,6 +289,8 @@ Item {
                 	Layout.alignment: Qt.AlignVCenter 
                 	icon.source: "qrc:/assets/icon-save.svg"
                 	onClicked: {
+                        fileDialog.open()
+                        fileDialog.txModel = transactionsTable.model
                 	}
                 }
                 CustomToolButton {

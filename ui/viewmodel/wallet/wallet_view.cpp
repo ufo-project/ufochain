@@ -174,6 +174,21 @@ bool WalletViewModel::isAllowedUfoMWLinks() const
     return _settings.isAllowedUfoMWLinks();
 }
 
+bool WalletViewModel::saveToFile(const QString str, QString path)
+{
+	if (path.startsWith("file:///")) path.remove(0, 8);
+	QFile file(path);
+	if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+		QTextStream out(&file);
+		out << str;
+		file.close();
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 void WalletViewModel::allowUfoMWLinks(bool value)
 {
     _settings.setAllowedUfoMWLinks(value);

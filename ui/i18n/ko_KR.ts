@@ -1212,7 +1212,7 @@
     </message>
     <message id="open-in-explorer">
         <source>Open in Blockchain Explorer</source>
-        <translation>블록체인 탐색기에서 열기</translation>
+        <translation type="vanished">블록체인 탐색기에서 열기</translation>
     </message>
     <message id="restore-finish-alert-button">
         <source>I understand</source>

@@ -1228,7 +1228,7 @@
     </message>
     <message id="open-in-explorer">
         <source>Open in Blockchain Explorer</source>
-        <translation>在区块链浏览器中打开</translation>
+        <translation type="vanished">在区块链浏览器中打开</translation>
     </message>
     <message id="restore-finish-alert-button">
         <source>I understand</source>
