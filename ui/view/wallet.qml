@@ -86,7 +86,7 @@ Item {
         visible: false
         property var txModel: null
         onSaveClicked: {
-            var str = "Create on,Sending address,Receiving address,Amount,Fee,Comment,Transaction Id,Kernel Id\r\n";
+            var str = "Create on,Sending address,Receiving address,Amount,Fee,Comment,Transaction Id,Kernel Id,Status\r\n";
             for(var i = 0; i < txModel.count; i++){
                 var tx = txModel.get(i);
                 str += tx["timeCreated"] + ",";
@@ -96,7 +96,8 @@ Item {
                 str += tx["fee"] + ",";
                 str += tx["comment"] + ",";
                 str += tx["txID"] + ",";
-                str += tx["kernelID"] + "\r\n";
+                str += tx["kernelID"] + ",";
+                str += tx["status"] + "\r\n";
             }
             viewModel.saveToFile(str,saveTrxDialog.fileName + ".csv");
         }
