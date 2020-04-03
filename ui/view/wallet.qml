@@ -30,7 +30,7 @@ Item {
         title: "save transactions"
         visible: false
         selectExisting: false
-        nameFilters: ["csv文件 (*.csv)"]
+        nameFilters: ["*.csv"]
         property var txModel: null
 
         onAccepted: {
