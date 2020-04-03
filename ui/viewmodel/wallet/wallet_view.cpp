@@ -21,6 +21,7 @@
 #include <QtCore/qbuffer.h>
 #include <QUrlQuery>
 #include <QClipboard>
+#include <QDesktopServices>
 
 #include "qrcode/QRCodeGenerator.h"
 #include "utility/helpers.h"
@@ -182,6 +183,7 @@ bool WalletViewModel::saveToFile(const QString str, QString path)
 		QTextStream out(&file);
 		out << str;
 		file.close();
+		QDesktopServices::openUrl(QDir::currentPath());
 		return true;
 	}
 	else {

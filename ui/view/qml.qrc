@@ -187,6 +187,7 @@
         <file>controls/TransactionDetails.qml</file>
         <file>controls/SwapTransactionDetails.qml</file>
         <file>controls/PaymentInfoDialog.qml</file>
+        <file>controls/SaveTransactionsDialog.qml</file>
         <file>assets/icon-copy-blue.svg</file>
         <file>assets/icon-details.svg</file>
         <file>assets/beta-label.svg</file>
