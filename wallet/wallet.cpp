@@ -492,6 +492,8 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestUtxo& r)
     {
+        LOG_DEBUG() << "OnRequestComplete MyRequestUtxo";
+
         if (r.m_Res.m_Proofs.empty())
             return; // Right now nothing is concluded from empty proofs
 
@@ -508,9 +510,12 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestKernel& r)
     {
+        LOG_DEBUG() << "OnRequestComplete MyRequestKernel" << "[" << r.m_TxID << "]" << "   ,kernelID: " << r.m_Msg.m_ID;
+
         auto it = m_ActiveTransactions.find(r.m_TxID);
         if (m_ActiveTransactions.end() == it)
         {
+            LOG_DEBUG() << "m_ActiveTransactions.end() == it";
             return;
         }
         auto tx = it->second;
@@ -518,6 +523,7 @@ namespace ufo::wallet
         {
             m_WalletDB->get_History().AddStates(&r.m_Res.m_Proof.m_State, 1); // why not?
 
+            LOG_DEBUG() << "SetParameter r.m_Res.m_Proof.m_State.m_Height";
             if (tx->SetParameter(TxParameterID::KernelProofHeight, r.m_Res.m_Proof.m_State.m_Height, r.m_SubTxID))
             {
                 AsyncContextHolder holder(*this);
@@ -526,6 +532,7 @@ namespace ufo::wallet
         }
         else
         {
+            LOG_DEBUG() << "SetParameter sTip.m_Height";
             Block::SystemState::Full sTip;
             get_tip(sTip);
             tx->SetParameter(TxParameterID::KernelUnconfirmedHeight, sTip.m_Height, r.m_SubTxID);
@@ -535,15 +542,19 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestKernel2& r)
     {
+        LOG_DEBUG() << "OnRequestComplete MyRequestKernel2" << "[" << r.m_TxID << "]";
+
         auto it = m_ActiveTransactions.find(r.m_TxID);
         if (m_ActiveTransactions.end() == it)
         {
+            LOG_DEBUG() << "m_ActiveTransactions.end() == it";
             return;
         }
         auto tx = it->second;
 
         if (r.m_Res.m_Kernel)
         {
+            LOG_DEBUG() << "SetParameter r.m_Res.m_Height";
             tx->SetParameter(TxParameterID::Kernel, r.m_Res.m_Kernel, r.m_SubTxID);
             tx->SetParameter(TxParameterID::KernelProofHeight, r.m_Res.m_Height, r.m_SubTxID);
         }
@@ -551,6 +562,7 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestBbsMsg& r)
     {
+        LOG_DEBUG() << "OnRequestComplete MyRequestBbsMsg";
         assert(false);
     }
 
