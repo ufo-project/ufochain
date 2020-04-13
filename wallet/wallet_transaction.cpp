@@ -373,6 +373,7 @@ namespace ufo::wallet
 
     void SimpleTransaction::SendInvitation(const BaseTxBuilder& builder, bool isSender)
     {
+        LOG_INFO() << GetTxID() << " SendInvitation";
         SetTxParameter msg;
         msg.AddParameter(TxParameterID::Amount, builder.GetAmount())
             .AddParameter(TxParameterID::Fee, builder.GetFee())
@@ -392,6 +393,7 @@ namespace ufo::wallet
 
     void SimpleTransaction::ConfirmInvitation(const BaseTxBuilder& builder, bool sendUtxos)
     {
+        LOG_INFO() << GetTxID() << " ConfirmInvitation";
         LOG_INFO() << GetTxID() << " Transaction accepted. Kernel: " << builder.GetKernelIDString();
         SetTxParameter msg;
         msg
@@ -442,6 +444,7 @@ namespace ufo::wallet
 
     void SimpleTransaction::ConfirmTransaction(const BaseTxBuilder& builder, bool sendUtxos)
     {
+        LOG_INFO() << GetTxID() << " ConfirmTransaction";
         uint32_t nVer = 0;
         if (GetParameter(TxParameterID::PeerProtoVersion, nVer))
         {
@@ -462,6 +465,7 @@ namespace ufo::wallet
 
     void SimpleTransaction::NotifyTransactionRegistered()
     {
+        LOG_INFO() << GetTxID() << " NotifyTransactionRegistered";
         SetTxParameter msg;
 		uint8_t nCode = proto::TxStatus::Ok; // compiler workaround (ref to static const)
         msg.AddParameter(TxParameterID::TransactionRegistered, nCode);

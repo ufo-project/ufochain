@@ -357,6 +357,7 @@ namespace ufo::wallet
 
     bool BaseTransaction::SendTxParameters(SetTxParameter && msg) const
     {
+        LOG_INFO() << GetTxID() << " SendTxParameters";
         msg.m_TxID = GetTxID();
         msg.m_Type = GetType();
 
@@ -364,6 +365,7 @@ namespace ufo::wallet
         if (GetParameter(TxParameterID::MyID, msg.m_From)
             && GetParameter(TxParameterID::PeerID, peerID))
         {
+            LOG_INFO() << " send_tx_params";
             GetGateway().send_tx_params(peerID, move(msg));
             return true;
         }
