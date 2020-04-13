@@ -5,8 +5,7 @@
     <name></name>
     <message id="general-beam">
         <source>BEAM</source>
-        <oldsource>UFO</oldsource>
-        <translation type="unfinished">UFO</translation>
+        <translation>UFO</translation>
     </message>
     <message id="general-groth">
         <source>GROTH</source>
@@ -205,7 +204,7 @@
     </message>
     <message id="wallet-txs-date-time">
         <source>Created on</source>
-        <translation type="unfinished">Created on</translation>
+        <translation>创建时间</translation>
     </message>
     <message id="wallet-txs-copy-addr-cm">
         <source>Copy address</source>
@@ -612,11 +611,11 @@
     </message>
     <message id="send-send-to-label">
         <source>Transaction token or contact</source>
-        <translation type="unfinished">Transaction token or contact</translation>
+        <translation>目标地址</translation>
     </message>
     <message id="send-contact-placeholder">
         <source>Please specify contact or transaction token</source>
-        <translation type="unfinished">Please specify contact or transaction token</translation>
+        <translation>请输入付款目标地址</translation>
     </message>
     <message id="send-amount-label">
         <source>Transaction amount</source>
@@ -838,7 +837,7 @@
     </message>
     <message id="loading-view-download-blocks">
         <source>Synching with blockchain</source>
-        <translation type="unfinished">Synching with blockchain</translation>
+        <translation type="unfinished">从区块链同步数据中</translation>
     </message>
     <message id="loading-view-scaning-utxo">
         <source>Loading wallet data %d/%d</source>
@@ -1409,7 +1408,7 @@ Update your settings and try again.</oldsource>
     </message>
     <message id="general-comment-local">
         <source>Comments are local and won&apos;t be shared</source>
-        <translation type="unfinished">Comments are local and won&apos;t be shared</translation>
+        <translation>备注存放于本地 不与他人共享</translation>
     </message>
     <message id="send-total-label">
         <source>Total UTXO value</source>
@@ -1467,7 +1466,7 @@ please review your settings and try again.</oldsource>
     </message>
     <message id="loading-view-rebuild-utxos">
         <source>Rebuilding wallet data</source>
-        <translation type="unfinished">Rebuilding wallet data</translation>
+        <translation>重建钱包数据</translation>
     </message>
     <message id="loading-view-estimate-hours">
         <source>h.</source>
@@ -1581,7 +1580,7 @@ please review your settings and try again.</oldsource>
     <message id="wallet-receive-text-online-time">
         <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
         <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
-        <translation type="unfinished">为使交易顺利完成，您需要在支付完Ufo后12小时内上线同步钱包</translation>
+        <translation type="unfinished">为使交易顺利完成，您需要在支付完UFO后12小时内上线同步钱包</translation>
     </message>
     <message id="send-confirmation-pwd-text-online-time">
         <source>For the transaction to complete, the recipient must get online within the next 12 hours and you should get online within 2 hours afterwards.</source>
@@ -1670,7 +1669,7 @@ Please try again later or create an offer yourself.</oldsource>
     </message>
     <message id="wallet-txs-status-own-sent">
         <source>sent to own address</source>
-        <translation type="unfinished">sent to own address</translation>
+        <translation>向本钱包付款</translation>
     </message>
     <message id="wallet-txs-status-own-sending">
         <source>sending to own address</source>

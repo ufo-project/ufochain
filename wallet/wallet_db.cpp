@@ -2249,6 +2249,7 @@ namespace ufo::wallet
                 {
                     if (pit->second && blob == *(pit->second))
                     {
+                        LOG_DEBUG() << "TxID: " << txID << ", setTxParameter: pit->second && blob == *(pit->second)";
                         return false;
                     }
                 }
@@ -2268,6 +2269,7 @@ namespace ufo::wallet
                 // already set
                 if (paramID < TxParameterID::PrivateFirstParam)
                 {
+                    LOG_DEBUG() << "TxID: " << txID << ", setTxParameter: paramID" << (int)paramID;
                     return false;
                 }
 
@@ -2280,9 +2282,11 @@ namespace ufo::wallet
 
                 if (shouldNotifyAboutChanges)
                 {
+                    LOG_DEBUG() << "TxID: " << txID << ", shouldNotifyAboutChanges 1";
                     auto tx = getTx(txID);
                     if (tx.is_initialized())
                     {
+                        LOG_DEBUG() << "TxID: " << txID << ", notifyTransactionChanged 1";
                         notifyTransactionChanged(ChangeAction::Updated, { *tx });
                     }
                 }
@@ -2302,9 +2306,11 @@ namespace ufo::wallet
         stm.step();
         if (shouldNotifyAboutChanges)
         {
+            LOG_DEBUG() << "TxID: " << txID << ", shouldNotifyAboutChanges 2";
             auto tx = getTx(txID);
             if (tx.is_initialized())
             {
+                LOG_DEBUG() << "TxID: " << txID << ", notifyTransactionChanged 1";
                 notifyTransactionChanged(hasTx ? ChangeAction::Updated : ChangeAction::Added, { *tx });
             }
         }

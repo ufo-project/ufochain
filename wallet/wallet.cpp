@@ -510,7 +510,7 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestKernel& r)
     {
-        LOG_DEBUG() << "OnRequestComplete MyRequestKernel" << "[" << r.m_TxID << "]" << "   ,kernelID: " << r.m_Msg.m_ID;
+        LOG_DEBUG() << "OnRequestComplete MyRequestKernel " << r.m_TxID << " ,kernelID: " << r.m_Msg.m_ID;
 
         auto it = m_ActiveTransactions.find(r.m_TxID);
         if (m_ActiveTransactions.end() == it)
@@ -542,7 +542,7 @@ namespace ufo::wallet
 
     void Wallet::OnRequestComplete(MyRequestKernel2& r)
     {
-        LOG_DEBUG() << "OnRequestComplete MyRequestKernel2" << "[" << r.m_TxID << "]";
+        LOG_DEBUG() << "OnRequestComplete MyRequestKernel2 " << r.m_TxID;
 
         auto it = m_ActiveTransactions.find(r.m_TxID);
         if (m_ActiveTransactions.end() == it)
