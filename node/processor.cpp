@@ -1537,16 +1537,16 @@ bool NodeProcessor::HandleTreasury(const Blob& blob)
 
 	std::vector<Treasury::Data::Burst> vBursts = td.get_Bursts();
 
-	std::ostringstream os;
-	os << "Treasury check. Total bursts=" << vBursts.size();
+	//std::ostringstream os;
+	//os << "Treasury check. Total bursts=" << vBursts.size();
 
 	for (size_t i = 0; i < vBursts.size(); i++)
 	{
 		const Treasury::Data::Burst& b = vBursts[i];
-		os << "\n\t" << "Height=" << b.m_Height << ", Value=" << b.m_Value;
+		//os << "\n\t" << "Height=" << b.m_Height << ", Value=" << b.m_Value;
 	}
 
-	LOG_INFO() << os.str();
+	//LOG_INFO() << os.str();
 
 	for (size_t iG = 0; iG < td.m_vGroups.size(); iG++)
 	{
@@ -1576,8 +1576,11 @@ bool NodeProcessor::HandleTreasury(const Blob& blob)
 
 			SerializeBuffer sb = ser.buffer();
 			m_DB.TxoAdd(id0, Blob(sb.first, static_cast<uint32_t>(sb.second)));
+
+            Rules::CommitmentSetInTreasury.insert(td.m_vGroups[iG].m_Data.m_vOutputs[i]->m_Commitment);
 		}
 	}
+    LOG_INFO() << "Loading " << Rules::CommitmentSetInTreasury.size() << " commitments from treasury outputs...";
 
 	return true;
 }
@@ -1921,12 +1924,21 @@ bool NodeProcessor::HandleValidatedTx(TxBase::IReader&& r, Height h, bool bFwd)
 	}
 
 	bool bOk = true;
-	for (; r.m_pUtxoIn; r.NextUtxoIn(), nInp++)
-		if (!HandleBlockElement(*r.m_pUtxoIn, h, bFwd))
-		{
-			bOk = false;
-			break;
-		}
+    for (; r.m_pUtxoIn; r.NextUtxoIn(), nInp++) {
+        // check to make sure utxo input is not in treasury outputs;
+        auto p = Rules::CommitmentSetInTreasury.find(r.m_pUtxoIn->m_Commitment);
+        if (p != Rules::CommitmentSetInTreasury.end()) {
+            LOG_WARNING() << "UtxoIn->m_Commitment: " << r.m_pUtxoIn->m_Commitment << " in Rules::CommitmentSetInTreasury";
+            bOk = false;
+            break;
+        }
+
+        if (!HandleBlockElement(*r.m_pUtxoIn, h, bFwd))
+        {
+            bOk = false;
+            break;
+        }
+    }
 
 	if (bOk)
 		for (; r.m_pUtxoOut; r.NextUtxoOut(), nOut++)
@@ -2319,10 +2331,10 @@ NodeProcessor::DataStatus::Enum NodeProcessor::OnTreasury(const Blob& blob)
 		<< blob
 		>> hv;
 
-  if (Rules::get().TreasuryChecksum != hv) {
-    LOG_INFO() << "TreasuryChecksum != hv";
-    return DataStatus::Invalid;
-  }
+    if (Rules::get().TreasuryChecksum != hv) {
+        LOG_INFO() << "TreasuryChecksum != hv";
+        return DataStatus::Invalid;
+    }
 
 	if (IsTreasuryHandled())
 		return DataStatus::Rejected;

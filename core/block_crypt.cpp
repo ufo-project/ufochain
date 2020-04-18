@@ -944,6 +944,8 @@ namespace ufo
     // use the same powlimit as RVN
     const uint256 Rules::PowLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
+    std::set<ECC::Point> Rules::CommitmentSetInTreasury;
+
 	Rules::Rules()
 	{
 		TreasuryChecksum = {

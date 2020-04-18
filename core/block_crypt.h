@@ -14,6 +14,7 @@
 
 #pragma once
 #include <limits>
+#include <set>
 #include "ecc_native.h"
 #include "merkle.h"
 #include "difficulty.h"
@@ -102,6 +103,8 @@ namespace ufo
 		static const Amount Coin; // how many quantas in a single coin. Just cosmetic, has no meaning to the processing (which is in terms of quantas)
 
         static const uint256 PowLimit;
+        
+        static std::set<ECC::Point> CommitmentSetInTreasury;
 
 		struct {
 			// emission parameters
