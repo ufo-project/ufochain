@@ -1,4 +1,4 @@
-// Copyright 2018 The Beam Team
+// Copyright 2018 The Ufo Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.mw.beam.beamwallet.core.entities;
+package com.mw.ufo.ufowallet.core.entities;
 
 import java.util.*; 
-import com.mw.beam.beamwallet.core.entities.dto.WalletAddressDTO;
-import com.mw.beam.beamwallet.core.entities.dto.PaymentInfoDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.WalletAddressDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.PaymentInfoDTO;
 
 public class Wallet
 {
@@ -48,7 +48,7 @@ public class Wallet
     public native void saveAddressChanges(String addr, String name, boolean isNever, boolean makeActive, boolean makeExpired);
 
     // not implemented
-    public native void changeCurrentWalletIDs(); //const beam::WalletID& senderID, const beam::WalletID& receiverID);
+    public native void changeCurrentWalletIDs(); //const ufo::WalletID& senderID, const ufo::WalletID& receiverID);
     public native void setNodeAddress(); //const std::string& addr);
 
 }

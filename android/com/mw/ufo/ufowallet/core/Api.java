@@ -1,4 +1,4 @@
-// Copyright 2018 The Beam Team
+// Copyright 2018 The Ufo Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.mw.beam.beamwallet.core;
+package com.mw.ufo.ufowallet.core;
 
-import  com.mw.beam.beamwallet.core.entities.Wallet;
+import  com.mw.ufo.ufowallet.core.entities.Wallet;
 
 public class Api
 {

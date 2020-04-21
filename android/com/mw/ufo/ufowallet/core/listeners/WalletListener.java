@@ -1,4 +1,4 @@
-// Copyright 2018 The Beam Team
+// Copyright 2018 The Ufo Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.mw.beam.beamwallet.core.listeners;
+package com.mw.ufo.ufowallet.core.listeners;
 
-import com.mw.beam.beamwallet.core.entities.dto.WalletStatusDTO;
-import com.mw.beam.beamwallet.core.entities.dto.UtxoDTO;
-import com.mw.beam.beamwallet.core.entities.dto.TxDescriptionDTO;
-import com.mw.beam.beamwallet.core.entities.dto.WalletAddressDTO;
-import com.mw.beam.beamwallet.core.entities.dto.PaymentInfoDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.WalletStatusDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.UtxoDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.TxDescriptionDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.WalletAddressDTO;
+import com.mw.ufo.ufowallet.core.entities.dto.PaymentInfoDTO;
 
-import com.mw.beam.beamwallet.core.entities.Wallet;
+import com.mw.ufo.ufowallet.core.entities.Wallet;
 
 public class WalletListener
 {
@@ -28,7 +28,7 @@ public class WalletListener
 
 	static void onStatus(WalletStatusDTO status)
 	{
-		System.out.println(">>>>>>>>>>>>>> async status in Java, available=" + status.available/1000000 + " BEAM and " + status.available%1000000 + " GROTH, maturing=" + status.maturing);
+		System.out.println(">>>>>>>>>>>>>> async status in Java, available=" + status.available/1000000 + " UFO and " + status.available%1000000 + " GROTH, maturing=" + status.maturing);
 		System.out.println("height is " + status.system.height);
 	}
 

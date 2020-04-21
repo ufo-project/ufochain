@@ -1,4 +1,4 @@
-// Copyright 2018 The Beam Team
+// Copyright 2018 The Ufo Team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import com.mw.beam.beamwallet.core.*;
-import com.mw.beam.beamwallet.core.entities.*;
-import com.mw.beam.beamwallet.core.entities.dto.*;
-import com.mw.beam.beamwallet.core.listeners.*;
+import com.mw.ufo.ufowallet.core.*;
+import com.mw.ufo.ufowallet.core.entities.*;
+import com.mw.ufo.ufowallet.core.entities.dto.*;
+import com.mw.ufo.ufowallet.core.listeners.*;
 
 import java.util.Arrays;
 
@@ -42,7 +42,7 @@ public class WalletJNI
 
 		Wallet wallet;
 
-		String nodeAddr = "172.104.249.212:8101";
+		String nodeAddr = "160.19.49.116:20115";
 
 		if(api.isWalletInitialized("test"))
 		{
