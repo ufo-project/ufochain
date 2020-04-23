@@ -9,7 +9,7 @@ namespace ufoui
 {
     enum class Currencies
     {
-        Ufo,
+        UFO,
         Bitcoin,
         Litecoin,
         Qtum,

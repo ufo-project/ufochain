@@ -35,7 +35,7 @@ namespace ufoui
         QString coinSign;
         switch (coinType)
         {
-            case Currencies::Ufo:
+            case Currencies::UFO:
                 //coinSign = QString::fromUtf16(u" \uEAFB");
                 coinSign = QString(" UFO");
                 break;
@@ -146,7 +146,7 @@ namespace ufoui
     {
         switch(currency)
         {
-            case Currencies::Ufo: return "ufo";
+            case Currencies::UFO: return "ufo";
             case Currencies::Bitcoin: return "btc";
             case Currencies::Litecoin: return "ltc";
             case Currencies::Qtum: return "qtum";

@@ -513,7 +513,7 @@ namespace ufo
 				const AssetID& aid = m_Commitment.m_X;
 				if (aid == Zero)
 				{
-					assert(false); // Currently zero kernels are not allowed, but if we change this eventually - this will allow attacker to emit default asset (i.e. Ufos).
+					assert(false); // Currently zero kernels are not allowed, but if we change this eventually - this will allow attacker to emit default asset (i.e. UFO).
 					// hence - extra verification
 					return false;
 				}

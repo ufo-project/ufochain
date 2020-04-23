@@ -58,7 +58,7 @@ QString TxObject::getComment() const
 
 QString TxObject::getAmount() const
 {
-    return AmountToString(m_tx.m_amount, Currencies::Ufo);
+    return AmountToString(m_tx.m_amount, Currencies::UFO);
 }
 
 QString TxObject::getAmountValue() const
@@ -95,7 +95,7 @@ QString TxObject::getFee() const
 {
     if (m_tx.m_fee)
     {
-        return AmountToString(m_tx.m_fee, Currencies::Ufo);
+        return AmountToString(m_tx.m_fee, Currencies::UFO);
     }
     return QString{};
 }

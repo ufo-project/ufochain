@@ -37,7 +37,7 @@ QString PaymentInfoItem::getReceiver() const
 
 QString PaymentInfoItem::getAmount() const
 {
-    return AmountToString(m_paymentInfo.m_Amount, Currencies::Ufo);
+    return AmountToString(m_paymentInfo.m_Amount, Currencies::UFO);
 }
 
 QString PaymentInfoItem::getAmountValue() const

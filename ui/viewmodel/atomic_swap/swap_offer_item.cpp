@@ -85,7 +85,7 @@ auto SwapOfferItem::amountSend() const -> QString
 {
     auto coinType = isUfoSide()
         ? getSwapCoinType()
-        : ufoui::Currencies::Ufo;
+        : ufoui::Currencies::UFO;
 
     return ufoui::AmountToString(rawAmountSend(), coinType);
 }
@@ -93,7 +93,7 @@ auto SwapOfferItem::amountSend() const -> QString
 auto SwapOfferItem::amountReceive() const -> QString
 {
     auto coinType = isUfoSide()
-        ? ufoui::Currencies::Ufo
+        ? ufoui::Currencies::UFO
         : getSwapCoinType();
     
     return ufoui::AmountToString(rawAmountReceive(), coinType);

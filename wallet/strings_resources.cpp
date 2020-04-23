@@ -18,7 +18,7 @@ namespace ufo
 {
     const char kDefaultConfigFile[] = "ufo-wallet.cfg";
     const char kTimeStampFormat3x3[] = "%Y.%m.%d %H:%M:%S";
-    const char kUFO[] = "Ufo";
+    const char kUFO[] = "UFO";
     const char kGROTH[] = "GROTH";
     // Coin statuses
     const char kCoinStatusAvailable[] = "Available";
@@ -100,15 +100,15 @@ namespace ufo
     // Swap Tx statuses
     const char kSwapTxStatusInitial[] = "initial";
     const char kSwapTxStatusInvitation[] = "invitation";
-    const char kSwapTxStatusBuildingUfoLockTX[] = "building Ufo LockTX";
-    const char kSwapTxStatusBuildingUfoRefundTX[] = "building Ufo RefundTX";
-    const char kSwapTxStatusBuildingUfoRedeemTX[] = "building Ufo RedeemTX";
+    const char kSwapTxStatusBuildingUfoLockTX[] = "building UFO LockTX";
+    const char kSwapTxStatusBuildingUfoRefundTX[] = "building UFO RefundTX";
+    const char kSwapTxStatusBuildingUfoRedeemTX[] = "building UFO RedeemTX";
     const char kSwapTxStatusHandlingContractTX[] = "handling LockTX";
     const char kSwapTxStatusSendingRefundTX[] = "sending RefundTX";
     const char kSwapTxStatusSendingRedeemTX[] = "sending RedeemTX";
-    const char kSwapTxStatusSendingUfoLockTX[] = "sending Ufo LockTX";
-    const char kSwapTxStatusSendingUfoRefundTX[] = "sending Ufo RefundTX";
-    const char kSwapTxStatusSendingUfoRedeemTX[] = "sending Ufo RedeemTX";
+    const char kSwapTxStatusSendingUfoLockTX[] = "sending UFO LockTX";
+    const char kSwapTxStatusSendingUfoRefundTX[] = "sending UFO RefundTX";
+    const char kSwapTxStatusSendingUfoRedeemTX[] = "sending UFO RedeemTX";
     const char kSwapTxStatusCompleted[] = "completed";
     const char kSwapTxStatusCancelled[] = "cancelled";
     const char kSwapTxStatusAborted[] = "aborted";
@@ -172,7 +172,7 @@ namespace ufo
     const char kTxHistoryTableFormat[] = "    %1%   %2%   %3%   %4%   %5%   %6%  ";
     const char kTxHistoryColumnDatetTime[] = "datetime";
     const char kTxHistoryColumnDirection[] = "direction";
-    const char kTxHistoryColumnAmount[] = "amount, Ufo";
+    const char kTxHistoryColumnAmount[] = "amount, UFO";
     const char kTxHistoryColumnStatus[] = "status";
     const char kTxHistoryColumnId[] = "ID";
     const char kTxHistoryColumnKernelId[] = "kernel ID";

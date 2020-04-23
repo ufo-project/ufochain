@@ -314,8 +314,8 @@ namespace ufo
         wallet_options.add_options()
             (cli::PASS, po::value<string>(), "password for the wallet")
             (cli::SEED_PHRASE, po::value<string>(), "phrase to generate secret key according to BIP-39.")
-            (cli::AMOUNT_FULL, po::value<Positive<double>>(), "amount to send (in Ufos, 1 Ufo = 100,000,000 groth)")
-            (cli::FEE_FULL, po::value<Nonnegative<Amount>>()->default_value(Nonnegative<Amount>(cli::kMinimumFee)), "fee (in Groth, 100,000,000 groth = 1 Ufo)")
+            (cli::AMOUNT_FULL, po::value<Positive<double>>(), "amount to send (in UFO, 1 UFO = 100,000,000 groth)")
+            (cli::FEE_FULL, po::value<Nonnegative<Amount>>()->default_value(Nonnegative<Amount>(cli::kMinimumFee)), "fee (in Groth, 100,000,000 groth = 1 UFO)")
             (cli::RECEIVER_ADDR_FULL, po::value<string>(), "address of receiver")
             (cli::NODE_ADDR_FULL, po::value<string>(), "address of node")
             (cli::WALLET_STORAGE, po::value<string>()->default_value("wallet.db"), "path to wallet file")
@@ -368,7 +368,7 @@ namespace ufo
             (cli::SWAP_COIN, po::value<string>(), "swap coin(btc, ltc, qtum)")
             (cli::SWAP_AMOUNT, po::value<Positive<Amount>>(), "swap amount in the smallest unit of the coin")
             (cli::SWAP_FEERATE, po::value<Positive<Amount>>(), "The specific feerate you are willing to pay(the smallest unit of the coin per KB)")
-            (cli::SWAP_UFO_SIDE, "Should be set by Ufo owner")
+            (cli::SWAP_UFO_SIDE, "Should be set by UFO owner")
             (cli::SWAP_TX_HISTORY, "show swap transactions history in info command")
             (cli::SWAP_TOKEN, po::value<string>(), "swap transaction token");
 
