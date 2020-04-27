@@ -119,3 +119,23 @@ cmake -DCMAKE_BUILD_TYPE=Release -DUFO_QT_UI_WALLET=FALSE .
 make -j4
 ```
 
+
+# How to run
+
+### ufo-node
+
+```
+./ufo-node --peer=mainnet-node01.ufo.link:20015,mainnet-node02.ufo.link:20015,mainnet-node03.ufo.link:20015 --treasury_path=treasury.bin --port=20015 
+```
+
+### explorer-node
+
+```
+./explorer-node --peer=mainnet-node01.ufo.link:20015,mainnet-node02.ufo.link:20015,mainnet-node03.ufo.link:20015 --api_port=20020
+```
+
+### wallet-api
+
+```
+./wallet-api --node_addr=mainnet-node01.ufo.link:20015,mainnet-node02.ufo.link:20015,mainnet-node03.ufo.link:20015 --pass=<your wallet pass> --use_http=1 --ip_whitelist=<ip allow to access>
+```
