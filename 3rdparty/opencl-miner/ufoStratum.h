@@ -1,4 +1,4 @@
-// BEAM OpenCL Miner
+// UFO OpenCL Miner
 // Stratum interface class
 // Copyright 2018 The Ufo Team	
 // Copyright 2018 Wilke Trei

@@ -33,7 +33,7 @@ AbstractColors {
     property string explorerUrl: ""
 
     property color swapCurrencyPaneGrRight:     "#00458f"
-    property color swapCurrencyPaneGrLeftBEAM:  "#00f6d2"
+    property color swapCurrencyPaneGrLeftUFO:  "#00f6d2"
     property color swapCurrencyPaneGrLeftBTC:   "#fcaf38"
     property color swapCurrencyPaneGrLeftLTC:   "#bebebe"
     property color swapCurrencyPaneGrLeftQTUM:  "#2e9ad0"

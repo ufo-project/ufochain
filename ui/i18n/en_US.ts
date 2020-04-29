@@ -3,8 +3,8 @@
 <TS version="2.1">
 <context>
     <name></name>
-    <message id="general-beam">
-        <source>BEAM</source>
+    <message id="general-ufo">
+        <source>UFO</source>
         <oldsource>UFO</oldsource>
         <translation type="unfinished">UFO</translation>
     </message>
@@ -644,7 +644,7 @@
         <translation>I agree</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <source>You are trying to restore an existing UFO Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
         <translation type="unfinished">You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</translation>
     </message>
@@ -1028,7 +1028,7 @@
         <translation>External link</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
         <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
         <translation type="unfinished">Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose &quot;Cancel&quot;. You can change your choice in app setting anytime.</translation>
     </message>
@@ -1090,7 +1090,7 @@ or send this address to the sender over secure channel</translation>
         <extracomment>settings tab, node section, title</extracomment>
         <translation>Node</translation>
     </message>
-    <message id="settings-general-allow-beammw-label">
+    <message id="settings-general-allow-ufo-label">
         <source>Allow access to %1 and %2 (to fetch exchanges and transaction data)</source>
         <extracomment>general settings, label for alow open external links</extracomment>
         <translation>Allow access to %1 and %2 (to fetch exchanges and transaction data)</translation>
@@ -1475,12 +1475,12 @@ or send this address to the sender over secure channel</translation>
         <source>Transactions</source>
         <translation>Transactions</translation>
     </message>
-    <message id="atomic-swap-receive-beam">
+    <message id="atomic-swap-receive-ufo">
         <source>Receive UFO</source>
         <translation>Receive UFO</translation>
     </message>
-    <message id="atomic-swap-send-beam">
-        <source>Send BEAM</source>
+    <message id="atomic-swap-send-ufo">
+        <source>Send UFO</source>
         <oldsource>Send UFO</oldsource>
         <translation type="unfinished">Send UFO</translation>
     </message>
@@ -1561,7 +1561,7 @@ or send this address to the sender over secure channel</translation>
         <translation>Create new Trezor wallet</translation>
     </message>
     <message id="wallet-receive-text-online-time">
-        <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
+        <source>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</source>
         <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
         <translation type="unfinished">For the transaction to complete, you should get online during the 12 hours after UFO are sent.</translation>
     </message>
@@ -1731,13 +1731,13 @@ Please check the swap token and try again.</translation>
         <source>lock transaction confirmations</source>
         <translation type="unfinished"></translation>
     </message>
-    <message id="swap-details-beam-lock-kernel-id">
-        <source>BEAM lock transaction kernel ID</source>
+    <message id="swap-details-ufo-lock-kernel-id">
+        <source>UFO lock transaction kernel ID</source>
         <oldsource>UFO lock transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>
-    <message id="swap-details-beam-redeem-kernel-id">
-        <source>BEAM redeem transaction kernel ID</source>
+    <message id="swap-details-ufo-redeem-kernel-id">
+        <source>UFO redeem transaction kernel ID</source>
         <oldsource>UFO redeem transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>
@@ -1749,8 +1749,8 @@ Please check the swap token and try again.</translation>
         <source>redeem transaction confirmations</source>
         <translation type="unfinished"></translation>
     </message>
-    <message id="swap-details-beam-refund-kernel-id">
-        <source>BEAM refund transaction kernel ID</source>
+    <message id="swap-details-ufo-refund-kernel-id">
+        <source>UFO refund transaction kernel ID</source>
         <oldsource>UFO refund transaction kernel ID</oldsource>
         <translation type="unfinished"></translation>
     </message>

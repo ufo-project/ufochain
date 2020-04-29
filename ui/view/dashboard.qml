@@ -11,6 +11,6 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: 40
         color: Style.content_main
-        text: "Welcome to Beam Testnet"
+        text: "Welcome to UFO Testnet"
     }
 }

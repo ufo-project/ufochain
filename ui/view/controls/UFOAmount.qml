@@ -18,7 +18,7 @@ Control {
     property bool    showDrop:        false
     property int     fontSize:        14
     property bool    lightFont:       true
-    property string  currencySymbol:  Utils.symbolBeam
+    property string  currencySymbol:  Utils.symbolUFO
     property string  iconSource:      ""
     property size    iconSize:        Qt.size(0, 0)
     property alias   copyMenuEnabled: amountText.copyMenuEnabled

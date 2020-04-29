@@ -192,7 +192,7 @@ namespace ufo::wallet
 
         bool IsUfoLockTimeExpired() const;
 
-        // wait SubTX in BEAM chain(request kernel proof), returns true if got kernel proof
+        // wait SubTX in UFO chain(request kernel proof), returns true if got kernel proof
         bool CompleteSubTx(SubTxID subTxID);
 
         bool GetKernelFromChain(SubTxID subTxID) const;

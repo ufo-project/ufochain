@@ -34,7 +34,7 @@ Control {
             opacity:  0.3
             gradient: Gradient {
                 GradientStop { position: 0.0; color: Style.swapCurrencyPaneGrRight }
-                GradientStop { position: 1.0; color: Style.swapCurrencyPaneGrLeftBEAM }
+                GradientStop { position: 1.0; color: Style.swapCurrencyPaneGrLeftUFO }
             }
         }
     }
@@ -76,12 +76,12 @@ Control {
                 text:           qsTrId("available-panel-maturing")
             }
 
-            BeamAmount {
+            UFOAmount {
                 amount:            lockedMaturing
                 spacing:           15
                 lightFont:         false
                 fontSize:          12
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
             }
         }
     }
@@ -118,12 +118,12 @@ Control {
                 text:           qsTrId("available-panel-change")
             }
 
-            BeamAmount {
+            UFOAmount {
                 amount:            receivingChange
                 spacing:           15
                 lightFont:         false
                 fontSize:          12
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 color:             Style.accent_incoming
                 prefix:            "+"
             }
@@ -137,12 +137,12 @@ Control {
                 text:           qsTrId("available-panel-incoming")
             }
 
-            BeamAmount {
+            UFOAmount {
                 amount:            receivingIncoming
                 spacing:           15
                 lightFont:         false
                 fontSize:          12
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 color:             Style.accent_incoming
                 prefix:            "+"
             }
@@ -153,12 +153,12 @@ Control {
         spacing: 0
         RowLayout{
             Layout.preferredWidth: parseFloat(receiving) > 0 || parseFloat(sending) > 0 ? parent.width / 2 : parent.width
-            BeamAmount {
+            UFOAmount {
                 amount:            available
                 spacing:           15
                 lightFont:         false
                 fontSize:          16
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 iconSource:        "qrc:/assets/icon.png"
                 iconSize:          Qt.size(22, 22)
                 copyMenuEnabled:   true
@@ -170,12 +170,12 @@ Control {
                 Layout.fillWidth: true
             }
 
-            BeamAmount {
+            UFOAmount {
                 id:                lockedAmount
                 amount:            locked
                 lightFont:         false
                 fontSize:          16
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 copyMenuEnabled:   true
                 //% "Locked"
                 caption:           qsTrId("available-panel-locked")
@@ -203,13 +203,13 @@ Control {
                 height:  45
             }
 
-            BeamAmount {
+            UFOAmount {
                 Layout.leftMargin: 20
                 amount:            sending
                 color:             Style.accent_outgoing
                 lightFont:         false
                 fontSize:          16
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 copyMenuEnabled:   true
                 //% "Sending"
                 caption:           qsTrId("available-panel-sending")
@@ -221,13 +221,13 @@ Control {
                 Layout.fillWidth: true
             }
 
-            BeamAmount {
+            UFOAmount {
                 id:                receivingAmount
                 amount:            receiving
                 color:             Style.accent_incoming
                 lightFont:         false
                 fontSize:          16
-                currencySymbol:    Utils.symbolBeam
+                currencySymbol:    Utils.symbolUFO
                 copyMenuEnabled:   true
                 //% "Receiving"
                 caption:           qsTrId("available-panel-receiving")

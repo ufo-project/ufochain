@@ -200,7 +200,7 @@ ColumnLayout {
                 text:              qsTrId("send-total-label") + ":"
             }
 
-            BeamAmount
+            UFOAmount
             {
                 Layout.topMargin:   15
                 Layout.rightMargin: 25
@@ -217,7 +217,7 @@ ColumnLayout {
                 text:              qsTrId("send-amount-label") + ":"
             }
 
-            BeamAmount
+            UFOAmount
             {
                 Layout.topMargin:   15
                 Layout.rightMargin: 25
@@ -233,7 +233,7 @@ ColumnLayout {
                 text:              qsTrId("general-change") + ":"
             }
 
-            BeamAmount
+            UFOAmount
             {
                 Layout.topMargin:   15
                 Layout.rightMargin: 25
@@ -251,7 +251,7 @@ ColumnLayout {
                 text:                qsTrId("send-remaining-label") + ":"
             }
 
-            BeamAmount
+            UFOAmount
             {
                 Layout.topMargin:    15
                 Layout.rightMargin:  25
@@ -286,8 +286,8 @@ ColumnLayout {
                 const dialogObject = dialogComponent.createObject(sendRegularView,
                     {
                         addressText: viewModel.receiverAddress,
-                        //% "BEAM"
-                        amountText: [viewModel.sendAmount, qsTrId("general-beam")].join(" "),
+                        //% "UFO"
+                        amountText: [viewModel.sendAmount, qsTrId("general-ufo")].join(" "),
                         //% "GROTH"
                         feeText: [Utils.amount2locale(viewModel.feeGrothes), qsTrId("general-groth")].join(" "),
                         onAcceptedCallback: acceptedCallback

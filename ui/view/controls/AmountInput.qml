@@ -8,7 +8,7 @@ ColumnLayout {
     id: control
 
     readonly property variant currencies: [
-        {label: "BEAM", feeLabel: UfoGlobals.ufoFeeRateLabel(), minFee: UfoGlobals.minFeeBeam(),     defaultFee: UfoGlobals.defFeeBeam()},
+        {label: "UFO", feeLabel: UfoGlobals.ufoFeeRateLabel(), minFee: UfoGlobals.minFeeUFO(),     defaultFee: UfoGlobals.defFeeUFO()},
         {label: "BTC",  feeLabel: UfoGlobals.btcFeeRateLabel(),  minFee: UfoGlobals.minFeeRateBtc(),  defaultFee: UfoGlobals.defFeeRateBtc()},
         {label: "LTC",  feeLabel: UfoGlobals.ltcFeeRateLabel(),  minFee: UfoGlobals.minFeeRateLtc(),  defaultFee: UfoGlobals.defFeeRateLtc()},
         {label: "QTUM", feeLabel: UfoGlobals.qtumFeeRateLabel(), minFee: UfoGlobals.minFeeRateQtum(), defaultFee: UfoGlobals.defFeeRateQtum()}
@@ -31,7 +31,7 @@ ColumnLayout {
     property string   currColor:   Style.content_main
     property bool     hasFee:      false
     property bool     multi:       false // changing this property in runtime would reset bindings
-    property int      currency:    Currency.CurrBeam
+    property int      currency:    Currency.CurrUFO
     property string   amount:      "0"
     property int      fee:         currencies[currency].defaultFee
     property alias    error:       errmsg.text
@@ -137,7 +137,7 @@ ColumnLayout {
         font.styleName:   "Bold"
         font.weight:      Font.Bold
         color:            Style.content_main
-        text:             control.currency == Currency.CurrBeam
+        text:             control.currency == Currency.CurrUFO
                                                                 //% "Transaction fee"
                                                                 ? qsTrId("general-fee")
                                                                 //% "Transaction fee rate"

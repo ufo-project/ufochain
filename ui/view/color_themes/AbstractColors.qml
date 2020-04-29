@@ -34,7 +34,7 @@ QtObject {
     property string explorerUrl;
 
     property color swapCurrencyPaneGrRight;
-    property color swapCurrencyPaneGrLeftBEAM;
+    property color swapCurrencyPaneGrLeftUFO;
     property color swapCurrencyPaneGrLeftBTC;
     property color swapCurrencyPaneGrLeftLTC;
     property color swapCurrencyPaneGrLeftQTUM;

@@ -5,7 +5,7 @@ Rectangle {
     property color borderColor: Style.swapCurrencyOptionsBorder
     property int borderSize: 0
     property alias rectOpacity: rect.opacity
-    property color gradLeft: Style.swapCurrencyPaneGrLeftBEAM
+    property color gradLeft: Style.swapCurrencyPaneGrLeftUFO
     property color gradRight: Style.swapCurrencyPaneGrRight
     property string currencyIcon: ""
     property var currencyIcons: []

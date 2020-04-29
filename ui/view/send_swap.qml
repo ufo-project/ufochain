@@ -25,10 +25,10 @@ ColumnLayout {
 
     function validateCoin() {
         var currency = viewModel.sendCurrency
-        if (currency == Currency.CurrBeam) {
+        if (currency == Currency.CurrUFO) {
             currency = viewModel.receiveCurrency;
 
-            if (currency == Currency.CurrBeam) return;
+            if (currency == Currency.CurrUFO) return;
         }
 
         var isOtherCurrActive  = false

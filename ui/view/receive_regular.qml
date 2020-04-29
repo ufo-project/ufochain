@@ -273,7 +273,7 @@ ColumnLayout {
         horizontalAlignment:   Text.AlignHCenter
         leftPadding:           15
         rightPadding:          15
-        //% "For the transaction to complete, you should get online during the 12 hours after Beams are sent."
+        //% "For the transaction to complete, you should get online during the 12 hours after UFO are sent."
         text: qsTrId("wallet-receive-text-online-time")
     }
 

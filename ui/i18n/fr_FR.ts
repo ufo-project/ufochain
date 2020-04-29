@@ -3,7 +3,7 @@
 <TS version="2.1" language="fr" sourcelanguage="en">
 <context>
     <name></name>
-    <message id="general-beam">
+    <message id="general-ufo">
         <source>UFO</source>
         <translation>UFO</translation>
     </message>
@@ -1090,7 +1090,7 @@ Vous essayez de restaurer un portefeuille Ufo existant. Veuillez noter que si vo
         <extracomment>settings tab, node section, title</extracomment>
         <translation>Noeud</translation>
     </message>
-    <message id="settings-general-allow-beammw-label">
+    <message id="settings-general-allow-ufo-label">
         <source>Allow access to %1 and %2 (to fetch exchanges and transaction data)</source>
         <extracomment>general settings, label for alow open external links</extracomment>
         <translation>Autoriser l&apos;accès à %1 et à %2 (pour récupérer les échanges et les données de transaction)</translation>
@@ -1477,11 +1477,11 @@ please review your settings and try again.</oldsource>
         <source>Transactions</source>
         <translation>Transactions</translation>
     </message>
-    <message id="atomic-swap-receive-beam">
+    <message id="atomic-swap-receive-ufo">
         <source>Receive UFO</source>
         <translation>Recevoir UFO</translation>
     </message>
-    <message id="atomic-swap-send-beam">
+    <message id="atomic-swap-send-ufo">
         <source>Send UFO</source>
         <oldsource>Send UFO</oldsource>
         <translation type="unfinished">Envoyer UFO</translation>
@@ -1735,11 +1735,11 @@ Please check the swap token and try again.</oldsource>
         <source>lock transaction confirmations</source>
         <translation type="unfinished">lock transaction confirmations</translation>
     </message>
-    <message id="swap-details-beam-lock-kernel-id">
+    <message id="swap-details-ufo-lock-kernel-id">
         <source>UFO lock transaction kernel ID</source>
         <translation type="unfinished">UFO lock transaction kernel ID</translation>
     </message>
-    <message id="swap-details-beam-redeem-kernel-id">
+    <message id="swap-details-ufo-redeem-kernel-id">
         <source>UFO redeem transaction kernel ID</source>
         <translation type="unfinished">UFO redeem transaction kernel ID</translation>
     </message>
@@ -1751,7 +1751,7 @@ Please check the swap token and try again.</oldsource>
         <source>redeem transaction confirmations</source>
         <translation type="unfinished">redeem transaction confirmations</translation>
     </message>
-    <message id="swap-details-beam-refund-kernel-id">
+    <message id="swap-details-ufo-refund-kernel-id">
         <source>UFO refund transaction kernel ID</source>
         <translation type="unfinished">UFO refund transaction kernel ID</translation>
     </message>

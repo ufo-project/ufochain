@@ -192,9 +192,9 @@ Item {
                                 .arg(viewModel.activeTxCount)
                             : "";
                     }
-                    gradLeft: Style.swapCurrencyPaneGrLeftBEAM
-                    currencyIcon: "qrc:/assets/icon-beam.svg"
-                    valueStr: [viewModel.ufoAvailable, Utils.symbolBeam].join(" ")
+                    gradLeft: Style.swapCurrencyPaneGrLeftUFO
+                    currencyIcon: "qrc:/assets/icon-ufo.svg"
+                    valueStr: [viewModel.ufoAvailable, Utils.symbolUFO].join(" ")
                     valueSecondaryStr: activeTxCountStr()
                     visible: true
                 }
@@ -357,22 +357,22 @@ Item {
                         SFText {
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignLeft
                             font.pixelSize: 14
-                            color: sendReceiveBeamSwitch.checked
+                            color: sendReceiveUFOSwitch.checked
                                 ? Qt.rgba(Style.content_main.r, Style.content_main.g, Style.content_main.b, 0.5)
                                 : Style.active
                             //% "Receive UFO"
-                            text: qsTrId("atomic-swap-receive-beam")
+                            text: qsTrId("atomic-swap-receive-ufo")
                             MouseArea {
                                 anchors.fill: parent
                                 acceptedButtons: Qt.LeftButton
                                 onClicked: {
-                                    sendReceiveBeamSwitch.checked = !sendReceiveBeamSwitch.checked;
+                                    sendReceiveUFOSwitch.checked = !sendReceiveUFOSwitch.checked;
                                 }
                             }
                         }
 
                         CustomSwitch {
-                            id: sendReceiveBeamSwitch
+                            id: sendReceiveUFOSwitch
                             alwaysGreen: true
                             Layout.alignment: Qt.AlignHCenter | Qt.AlignLeft
                         }
@@ -381,16 +381,16 @@ Item {
                             Layout.alignment:  Qt.AlignHCenter | Qt.AlignLeft
                             Layout.leftMargin: 10
                             font.pixelSize: 14
-                            color: sendReceiveBeamSwitch.checked
+                            color: sendReceiveUFOSwitch.checked
                                 ? Style.active
                                 : Qt.rgba(Style.content_main.r, Style.content_main.g, Style.content_main.b, 0.5)
-                            //% "Send BEAM"
-                            text: qsTrId("atomic-swap-send-beam")
+                            //% "Send UFO"
+                            text: qsTrId("atomic-swap-send-ufo")
                             MouseArea {
                                 anchors.fill: parent
                                 acceptedButtons: Qt.LeftButton
                                 onClicked: {
-                                    sendReceiveBeamSwitch.checked = !sendReceiveBeamSwitch.checked;
+                                    sendReceiveUFOSwitch.checked = !sendReceiveUFOSwitch.checked;
                                 }
                             }
                         }
@@ -511,8 +511,8 @@ Item {
                                     filterSyntax: SortFilterProxyModel.Wildcard
                                     filterCaseSensitivity: Qt.CaseInsensitive
                                 }
-                                filterRole: "isBeamSide"
-                                filterString: sendReceiveBeamSwitch.checked ? "false" : "true"
+                                filterRole: "isUFOSide"
+                                filterString: sendReceiveUFOSwitch.checked ? "false" : "true"
                                 filterSyntax: SortFilterProxyModel.Wildcard
                                 filterCaseSensitivity: Qt.CaseInsensitive
                             }
@@ -556,7 +556,7 @@ Item {
                                 width: parent.width
                                 height: offersTable.rowHeight
                                 property var swapCoin: styleData.value
-                                property var isSendBeam: offersTable.model.getRoleValue(styleData.row, "isBeamSide")
+                                property var isSendUFO: offersTable.model.getRoleValue(styleData.row, "isUFOSide")
                                 property var isOwnOffer: offersTable.model.getRoleValue(styleData.row, "isOwnOffer")
                                 
                                 anchors.fill: parent
@@ -569,15 +569,15 @@ Item {
                                     spacing: -4
                                     SvgImage {
                                         sourceSize: Qt.size(20, 20)
-                                        source: isSendBeam
-                                            ? "qrc:/assets/icon-beam.svg"
+                                        source: isSendUFO
+                                            ? "qrc:/assets/icon-ufo.svg"
                                             : getCoinIcon(swapCoin)
                                     }
                                     SvgImage {
                                         sourceSize: Qt.size(20, 20)
-                                        source: isSendBeam
+                                        source: isSendUFO
                                             ? getCoinIcon(swapCoin)
-                                            : "qrc:/assets/icon-beam.svg"
+                                            : "qrc:/assets/icon-ufo.svg"
                                     }
                                 }
                             }
@@ -834,7 +834,7 @@ Item {
                                         feeRate:                        txRolesMap && txRolesMap.feeRate ? txRolesMap.feeRate : ""
                                         comment:                        txRolesMap && txRolesMap.comment ? txRolesMap.comment : ""
                                         swapCoinName:                   txRolesMap && txRolesMap.swapCoin ? txRolesMap.swapCoin : ""
-                                        isBeamSide:                     txRolesMap && txRolesMap.isBeamSideSwap ? txRolesMap.isBeamSideSwap : false
+                                        isUFOSide:                     txRolesMap && txRolesMap.isUFOSideSwap ? txRolesMap.isUFOSideSwap : false
                                         isProofReceived:                txRolesMap && txRolesMap.isProofReceived ? txRolesMap.isProofReceived : false
                                         swapCoinLockTxId:               txRolesMap && txRolesMap.swapCoinLockTxId ? txRolesMap.swapCoinLockTxId : ""
                                         swapCoinLockTxConfirmations:    txRolesMap && txRolesMap.swapCoinLockTxConfirmations ? txRolesMap.swapCoinLockTxConfirmations : ""
@@ -842,9 +842,9 @@ Item {
                                         swapCoinRedeemTxConfirmations:  txRolesMap && txRolesMap.swapCoinRedeemTxConfirmations ? txRolesMap.swapCoinRedeemTxConfirmations : ""
                                         swapCoinRefundTxId:             txRolesMap && txRolesMap.swapCoinRefundTxId ? txRolesMap.swapCoinRefundTxId : ""
                                         swapCoinRefundTxConfirmations:  txRolesMap && txRolesMap.swapCoinRefundTxConfirmations ? txRolesMap.swapCoinRefundTxConfirmations : ""
-                                        beamLockTxKernelId:             txRolesMap && txRolesMap.ufoLockTxKernelId ? txRolesMap.ufoLockTxKernelId : ""
-                                        beamRedeemTxKernelId:           txRolesMap && txRolesMap.ufoRedeemTxKernelId ? txRolesMap.ufoRedeemTxKernelId : ""
-                                        beamRefundTxKernelId:           txRolesMap && txRolesMap.ufoRefundTxKernelId ? txRolesMap.ufoRefundTxKernelId : ""
+                                        ufoLockTxKernelId:             txRolesMap && txRolesMap.ufoLockTxKernelId ? txRolesMap.ufoLockTxKernelId : ""
+                                        ufoRedeemTxKernelId:           txRolesMap && txRolesMap.ufoRedeemTxKernelId ? txRolesMap.ufoRedeemTxKernelId : ""
+                                        ufoRefundTxKernelId:           txRolesMap && txRolesMap.ufoRefundTxKernelId ? txRolesMap.ufoRefundTxKernelId : ""
                                         
                                         onTextCopied: function (text) {
                                             UfoGlobals.copyToClipboard(text);
@@ -957,7 +957,7 @@ Item {
                                 width: parent.width
                                 height: transactionsTable.rowHeight
                                 property var swapCoin: styleData.value
-                                property var isSendBeam: transactionsTable.model.getRoleValue(styleData.row, "isBeamSideSwap")
+                                property var isSendUFO: transactionsTable.model.getRoleValue(styleData.row, "isUFOSideSwap")
                                 
                                 anchors.fill: parent
                                 anchors.leftMargin: 20
@@ -969,11 +969,11 @@ Item {
                                     spacing: -4
                                     SvgImage {
                                         sourceSize: Qt.size(20, 20)
-                                        source: isSendBeam ? getCoinIcon(swapCoin) : "qrc:/assets/icon-beam.svg"
+                                        source: isSendUFO ? getCoinIcon(swapCoin) : "qrc:/assets/icon-ufo.svg"
                                     }
                                     SvgImage {
                                         sourceSize: Qt.size(20, 20)
-                                        source: isSendBeam ? "qrc:/assets/icon-beam.svg" : getCoinIcon(swapCoin)
+                                        source: isSendUFO ? "qrc:/assets/icon-ufo.svg" : getCoinIcon(swapCoin)
                                     }
                                 }
                             }

@@ -739,15 +739,15 @@ ColumnLayout {
                             Layout.preferredHeight: 32
 
                             SFText {
-                                property string beamUrl: "<a href='https://www.ufo.link/'>ufo.link</a>"
+                                property string ufoUrl: "<a href='https://www.ufo.link/'>ufo.link</a>"
                                 //% "blockchain explorer"
                                 property string explorerUrl: "<a href='%1'>%2</a>".arg(Style.explorerUrl).arg(qsTrId("explorer"))
                                 //: general settings, label for alow open external links
                                 //% "Allow access to %1 and %2 (to fetch exchanges and transaction data)"
-                                text: Style.linkStyle + qsTrId("settings-general-allow-beammw-label").arg(beamUrl).arg(explorerUrl)
+                                text: Style.linkStyle + qsTrId("settings-general-allow-ufo-label").arg(ufoUrl).arg(explorerUrl)
                                 textFormat: Text.RichText
                                 font.pixelSize: 14
-                                color: allowBeamMWLinks.palette.text
+                                color: allowUFOLinks.palette.text
                                 wrapMode: Text.WordWrap
                                 Layout.preferredWidth: generalBlock.width - 95
                                 Layout.preferredHeight: 32
@@ -773,13 +773,13 @@ ColumnLayout {
                             }
 
                             CustomSwitch {
-                                id: allowBeamMWLinks
+                                id: allowUFOLinks
                                 Layout.preferredWidth: 30
                                 checked: viewModel.isAllowedUfoMWLinks
                                 Binding {
                                     target: viewModel
                                     property: "isAllowedUfoMWLinks"
-                                    value: allowBeamMWLinks.checked
+                                    value: allowUFOLinks.checked
                                 }
                             }
                         }
@@ -854,14 +854,14 @@ ColumnLayout {
                             font.styleName: "Bold"; font.weight: Font.Bold
                         }
                         SFText {
-                            property string beamEmail: "<a href='mailto:support@ufo.link'>support@ufo.link</a>"
-                            property string beamGithub: "<a href='https://github.com/ufo-project/ufochain'>Github</a>"
+                            property string ufoEmail: "<a href='mailto:support@ufo.link'>support@ufo.link</a>"
+                            property string ufoGithub: "<a href='https://github.com/ufo-project/ufochain'>Github</a>"
                             //% "To report a problem:"
                             property string rpm0: qsTrId("settings-report-problem-message-l0")
                             //% "1. Click “Save wallet logs” and choose a destination folder for log archive"
                             property string rpm1: qsTrId("settings-report-problem-message-l1")
                             //% "2. Send email to %1 or open a ticket in %2"
-                            property string rpm2: qsTrId("settings-report-problem-message-l2").arg(beamEmail).arg(beamGithub)
+                            property string rpm2: qsTrId("settings-report-problem-message-l2").arg(ufoEmail).arg(ufoGithub)
                             //% "3. Don’t forget to attach logs archive"
                             property string rpm3: qsTrId("settings-report-problem-message-l3")
                             Layout.topMargin: 7

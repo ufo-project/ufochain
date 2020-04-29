@@ -72,7 +72,7 @@
         <file>assets/fonts/SF-Pro-Display-HeavyItalic.otf</file>
         <file>assets/fonts/SF-Pro-Display-RegularItalic.otf</file>
         <file>assets/fonts/SF-Pro-Display-UltralightItalic.otf</file>
-        <file>assets/beam-circle.svg</file>
+        <file>assets/ufo-circle.svg</file>
         <file>assets/ltc-circle.svg</file>
         <file>assets/qtum-circle.svg</file>
         <file>assets/btc-circle.svg</file>
@@ -148,11 +148,11 @@
         <file>controls/CustomSwitch.qml</file>
         <file>controls/CustomCheckBox.qml</file>
         <file>controls/CustomComboBox.qml</file>
-        <file>controls/BeamAmount.qml</file>
+        <file>controls/UFOAmount.qml</file>
         <file>assets/copy-two-paper-sheets-interface-symbol.svg</file>
         <file>assets/eye.svg</file>
         <file>assets/icon-back.svg</file>
-        <file>assets/icon-beam.svg</file>
+        <file>assets/icon-ufo.svg</file>
         <file>assets/icon-btc.svg</file>
         <file>assets/icon-ltc.svg</file>
         <file>assets/icon-qtum.svg</file>

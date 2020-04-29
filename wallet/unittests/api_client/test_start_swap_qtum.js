@@ -14,7 +14,7 @@ client.connect(10000, '127.0.0.1', function () {
 			    "fee": 10,
 			    "swapAmount": 90000,
 			    "swapCoin": "qtum",
-			    "beamSide": true,
+			    "UFOSide": true,
 			    "address": "290146b2d32d2c83690ceeb8f2da41fb892a61130e01f298b216424d39552690431"
 			}
 		}) + '\n');

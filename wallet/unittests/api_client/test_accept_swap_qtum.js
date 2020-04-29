@@ -13,7 +13,7 @@ client.connect(10010, '127.0.0.1', function () {
 			    "amount": 1000,
 			    "swapAmount": 90000,
                 "swapCoin": "qtum",
-			    "beamSide": false,
+			    "UFOSide": false,
 			}
 		}) + '\n');
 });

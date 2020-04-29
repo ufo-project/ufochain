@@ -48,7 +48,7 @@ ColumnLayout {
 
     function currencyError() {
         if (viewModel.receiveCurrency == viewModel.sentCurrency) return true;
-        if (viewModel.receiveCurrency != Currency.CurrBeam && viewModel.sentCurrency != Currency.CurrBeam) return true;
+        if (viewModel.receiveCurrency != Currency.CurrUFO && viewModel.sentCurrency != Currency.CurrUFO) return true;
         return false;
     }
 
@@ -152,9 +152,9 @@ ColumnLayout {
                                             : qsTrId("send-less-than-fee")
 
                         onCurrencyChanged: {
-                            if(sentAmountInput.currency != Currency.CurrBeam) {
-                                if(receiveAmountInput.currency != Currency.CurrBeam) {
-                                    receiveAmountInput.currency = Currency.CurrBeam
+                            if(sentAmountInput.currency != Currency.CurrUFO) {
+                                if(receiveAmountInput.currency != Currency.CurrUFO) {
+                                    receiveAmountInput.currency = Currency.CurrUFO
                                 }
                             }
                         }
@@ -241,9 +241,9 @@ ColumnLayout {
                         currColor:        currencyError() ? Style.validator_error : Style.content_main
 
                         onCurrencyChanged: {
-                            if(receiveAmountInput.currency != Currency.CurrBeam) {
-                                if(sentAmountInput.currency != Currency.CurrBeam) {
-                                    sentAmountInput.currency = Currency.CurrBeam
+                            if(receiveAmountInput.currency != Currency.CurrUFO) {
+                                if(sentAmountInput.currency != Currency.CurrUFO) {
+                                    sentAmountInput.currency = Currency.CurrUFO
                                 }
                             }
                         }

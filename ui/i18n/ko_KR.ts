@@ -3,8 +3,8 @@
 <TS version="2.1" language="ko" sourcelanguage="en">
 <context>
     <name></name>
-    <message id="general-beam">
-        <source>BEAM</source>
+    <message id="general-ufo">
+        <source>UFO</source>
         <oldsource>UFO</oldsource>
         <translation type="unfinished">UFO</translation>
     </message>
@@ -644,7 +644,7 @@
         <translation>동의합니다</translation>
     </message>
     <message id="start-restore-message-line">
-        <source>You are trying to restore an existing Beam Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
+        <source>You are trying to restore an existing UFO Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</source>
         <oldsource>You are trying to restore an existing Ufo Wallet. Please notice that if you use your wallet on another device, your balance will be up to date, but  transaction history and addresses will be kept separately on each device.</oldsource>
         <translation type="unfinished">현재 이미 존재하는 Ufo 지갑을 복구하려고 하고 있습니다. 지갑을 다른 기기에서 사용한다면 그 잔고는 지속적으로 업데이트 되지만, 거래 내역은 기기 별로 분리되어서 저장될 것입니다.</translation>
     </message>
@@ -1028,7 +1028,7 @@
         <translation>외부 링크</translation>
     </message>
     <message id="open-external-message">
-        <source>Beam Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
+        <source>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</source>
         <oldsource>Ufo Wallet app requires permission to open external link in the browser. This action will expose your IP to the web server. To avoid it, choose -Cancel-. You can change your choice in app setting anytime.</oldsource>
         <translation type="unfinished">Ufo 지갑 앱은 브라우저에서 외부 링크를 열 수 있는 권한이 필요합니다. 이를 수행하면 당신의 IP 주소가 웹 서버에 노출 될 것입니다. 원하지 않는다면 -취소- 를 선택하십시오. 설정에서 언제든지 변경할 수 있습니다.</translation>
     </message>
@@ -1090,7 +1090,7 @@
         <extracomment>settings tab, node section, title</extracomment>
         <translation>노드</translation>
     </message>
-    <message id="settings-general-allow-beammw-label">
+    <message id="settings-general-allow-ufo-label">
         <source>Allow access to %1 and %2 (to fetch exchanges and transaction data)</source>
         <extracomment>general settings, label for alow open external links</extracomment>
         <translation>%1와 %2에게 접근을 허용합니다(거래 및 거래 데이터 가져오기)</translation>
@@ -1477,12 +1477,12 @@ please review your settings and try again.</oldsource>
         <source>Transactions</source>
         <translation>거래내역</translation>
     </message>
-    <message id="atomic-swap-receive-beam">
+    <message id="atomic-swap-receive-ufo">
         <source>Receive UFO</source>
         <translation>UFO 받기</translation>
     </message>
-    <message id="atomic-swap-send-beam">
-        <source>Send BEAM</source>
+    <message id="atomic-swap-send-ufo">
+        <source>Send UFO</source>
         <oldsource>Send UFO</oldsource>
         <translation type="unfinished">UFO 보내기</translation>
     </message>
@@ -1563,7 +1563,7 @@ please review your settings and try again.</oldsource>
         <translation type="unfinished">Create new Trezor wallet</translation>
     </message>
     <message id="wallet-receive-text-online-time">
-        <source>For the transaction to complete, you should get online during the 12 hours after Beams are sent.</source>
+        <source>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</source>
         <oldsource>For the transaction to complete, you should get online during the 12 hours after UFO are sent.</oldsource>
         <translation type="unfinished">거래를 완료하기 위해서는, Ufo 을 보낸 후 12시간 동안 온라인 상태이어야 합니다.</translation>
     </message>
@@ -1735,13 +1735,13 @@ Please check the swap token and try again.</oldsource>
         <source>lock transaction confirmations</source>
         <translation type="unfinished">lock transaction confirmations</translation>
     </message>
-    <message id="swap-details-beam-lock-kernel-id">
-        <source>BEAM lock transaction kernel ID</source>
+    <message id="swap-details-ufo-lock-kernel-id">
+        <source>UFO lock transaction kernel ID</source>
         <oldsource>UFO lock transaction kernel ID</oldsource>
         <translation type="unfinished">UFO lock transaction kernel ID</translation>
     </message>
-    <message id="swap-details-beam-redeem-kernel-id">
-        <source>BEAM redeem transaction kernel ID</source>
+    <message id="swap-details-ufo-redeem-kernel-id">
+        <source>UFO redeem transaction kernel ID</source>
         <oldsource>UFO redeem transaction kernel ID</oldsource>
         <translation type="unfinished">UFO redeem transaction kernel ID</translation>
     </message>
@@ -1753,8 +1753,8 @@ Please check the swap token and try again.</oldsource>
         <source>redeem transaction confirmations</source>
         <translation type="unfinished">redeem transaction confirmations</translation>
     </message>
-    <message id="swap-details-beam-refund-kernel-id">
-        <source>BEAM refund transaction kernel ID</source>
+    <message id="swap-details-ufo-refund-kernel-id">
+        <source>UFO refund transaction kernel ID</source>
         <oldsource>UFO refund transaction kernel ID</oldsource>
         <translation type="unfinished">UFO refund transaction kernel ID</translation>
     </message>

@@ -16,20 +16,20 @@ RowLayout {
     property var    comment
     property var    swapCoinLockTxId
     property var    swapCoinLockTxConfirmations
-    property var    beamLockTxKernelId
+    property var    ufoLockTxKernelId
 
-    property bool   isBeamSide
+    property bool   isUFOSide
     property bool   isProofReceived    // KernelProofHeight != null
 
-    // isBeamSide || (!isBeamSide && isProofReceived)
-    property var    beamRedeemTxKernelId
-    // isBeamSide && isProofReceived
+    // isUFOSide || (!isUFOSide && isProofReceived)
+    property var    ufoRedeemTxKernelId
+    // isUFOSide && isProofReceived
     property var    swapCoinRedeemTxId
     property var    swapCoinRedeemTxConfirmations
-    // isBeamSide && !isProofReceived
-    property var    beamRefundTxKernelId
+    // isUFOSide && !isProofReceived
+    property var    ufoRefundTxKernelId
 
-    // !isBeamSide && !isProofReceived
+    // !isUFOSide && !isProofReceived
     property var    swapCoinRefundTxId
     property var    swapCoinRefundTxConfirmations
 
@@ -158,7 +158,7 @@ RowLayout {
         }
         SFLabel {
             id: swapCoinLockTxConfirmationsLabel
-            enabled: (text != "") && !isBeamSide
+            enabled: (text != "") && !isUFOSide
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -171,16 +171,16 @@ RowLayout {
         }
         
         SFText {
-            enabled: beamLockTxKernelIdLabel.enabled
+            enabled: ufoLockTxKernelIdLabel.enabled
             visible: enabled
             Layout.alignment: Qt.AlignTop
             font.pixelSize: 14
             color: Style.content_secondary
-            //% "BEAM lock transaction kernel ID"
-            text: qsTrId("swap-details-beam-lock-kernel-id") + ":"
+            //% "UFO lock transaction kernel ID"
+            text: qsTrId("swap-details-ufo-lock-kernel-id") + ":"
         }
         SFLabel {
-            id: beamLockTxKernelIdLabel
+            id: ufoLockTxKernelIdLabel
             enabled: text != ""
             visible: enabled
             Layout.fillWidth: true
@@ -194,17 +194,17 @@ RowLayout {
         }
         
         SFText {
-            enabled: beamRedeemTxKernelIdLabel.enabled
+            enabled: ufoRedeemTxKernelIdLabel.enabled
             visible: enabled
             Layout.alignment: Qt.AlignTop
             font.pixelSize: 14
             color: Style.content_secondary
-            //% "BEAM redeem transaction kernel ID"
-            text: qsTrId("swap-details-beam-redeem-kernel-id") + ":"
+            //% "UFO redeem transaction kernel ID"
+            text: qsTrId("swap-details-ufo-redeem-kernel-id") + ":"
         }
         SFLabel {
-            id: beamRedeemTxKernelIdLabel
-            enabled: (text != "") && (isBeamSide || (!isBeamSide && isProofReceived))
+            id: ufoRedeemTxKernelIdLabel
+            enabled: (text != "") && (isUFOSide || (!isUFOSide && isProofReceived))
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -227,7 +227,7 @@ RowLayout {
         }
         SFLabel {
             id: swapCoinRedeemTxIdLabel
-            enabled: (text != "") && isBeamSide && isProofReceived
+            enabled: (text != "") && isUFOSide && isProofReceived
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -250,7 +250,7 @@ RowLayout {
         }
         SFLabel {
             id: swapCoinRedeemTxConfirmationsLabel
-            enabled: (text != "") && isBeamSide && isProofReceived
+            enabled: (text != "") && isUFOSide && isProofReceived
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -263,17 +263,17 @@ RowLayout {
         }
         
         SFText {
-            enabled: beamRefundTxKernelIdLabel.enabled
+            enabled: ufoRefundTxKernelIdLabel.enabled
             visible: enabled
             Layout.alignment: Qt.AlignTop
             font.pixelSize: 14
             color: Style.content_secondary
-            //% "BEAM refund transaction kernel ID"
-            text: qsTrId("swap-details-beam-refund-kernel-id") + ":"
+            //% "UFO refund transaction kernel ID"
+            text: qsTrId("swap-details-ufo-refund-kernel-id") + ":"
         }
         SFLabel {
-            id: beamRefundTxKernelIdLabel
-            enabled: (text != "") && isBeamSide && !isProofReceived
+            id: ufoRefundTxKernelIdLabel
+            enabled: (text != "") && isUFOSide && !isProofReceived
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -296,7 +296,7 @@ RowLayout {
         }
         SFLabel {
             id: swapCoinRefundTxIdLabel
-            enabled: (text != "") && !isBeamSide && !isProofReceived
+            enabled: (text != "") && !isUFOSide && !isProofReceived
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
@@ -319,7 +319,7 @@ RowLayout {
         }
         SFLabel {
             id: swapCoinRefundTxConfirmationsLabel
-            enabled: (text != "") && !isBeamSide && !isProofReceived
+            enabled: (text != "") && !isUFOSide && !isProofReceived
             visible: enabled
             Layout.fillWidth: true
             copyMenuEnabled: true
