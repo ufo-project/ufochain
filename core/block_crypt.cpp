@@ -971,6 +971,8 @@ namespace ufo
             0x2e, 0x27, 0x1e, 0x04, 0xf2, 0x50, 0x94, 0xef,
             0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
         };
+
+        ProgPowForkHeight = 50;
 #else
         Prehistoric = {
             // BTC Block #613064
@@ -979,6 +981,8 @@ namespace ufo
             0x39, 0xa2, 0x7f, 0x69, 0xeb, 0x33, 0x16, 0x7e,
             0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
         };
+
+        ProgPowForkHeight = 500000;
 #endif
 
 		ZeroObject(pForks);
@@ -1028,7 +1032,13 @@ namespace ufo
 		assert(h >= 1);
 		int n = (h - 1) / Emission.Drop0;
 		hEnd = (n + 1) * Emission.Drop0 + 1;
-		return base >> n;
+
+        if (h < Rules::get().ProgPowForkHeight) {
+            return base >> n;
+        }
+
+        // to halt the reward from the height of progpow fork
+        return base >> (n + 1);
 	}
 
 	Amount Rules::get_Emission(Height h)
@@ -1327,7 +1337,7 @@ namespace ufo
 	{
 		Merkle::Hash hv;
 		get_HashForPoW(hv);
-    return m_PoW.Solve(m_Prev.m_pData, m_Prev.nBytes, hv.m_pData, hv.nBytes, fnCancel);
+        return m_PoW.Solve(m_Prev.m_pData, m_Prev.nBytes, hv.m_pData, hv.nBytes, m_Height, fnCancel);
 	}
 
 	bool Block::SystemState::Sequence::Element::IsValidProofUtxo(const ECC::Point& comm, const Input::Proof& p) const

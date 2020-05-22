@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.11)
+
 add_definitions()
 
 set(X17R_SRC

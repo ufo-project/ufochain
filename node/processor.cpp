@@ -2458,6 +2458,12 @@ Difficulty NodeProcessor::get_NextDifficulty()
 	assert(r.DA.DiffAdjustBlocks > 1);
 
 	uint32_t height = m_Cursor.m_Full.m_Height;
+
+    // progpow fork
+    if (height == r.ProgPowForkHeight) {
+        return Rules::get().DA.Difficulty0;
+    }
+
 	if (height != 0 && height % r.DA.DiffAdjustBlocks == 0) {
 	    // adjust
 	    uint32_t blockHeight0;

@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 
+add_definitions(-DPROGPOW_VERSION=93)
+
 set(NODE_SRC
     node.cpp
     db.cpp
@@ -18,9 +20,12 @@ add_library(node STATIC ${NODE_SRC})
 target_link_libraries(node
     PUBLIC
         core
+        pow
+        external_pow
     PRIVATE
         sqlite
         x17r
+        progpow
 )
 
 add_subdirectory(unittests)

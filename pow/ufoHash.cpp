@@ -18,8 +18,10 @@
 #include "arith_uint256.h"
 #include <utility>
 #include "utility/logger.h"
+#include "utility/helpers.h"
 #include <mutex>
 #include "x17r/x17r.h"
+#include "pow/external_progpow.h"
 
 namespace ufo
 {
@@ -71,7 +73,7 @@ namespace ufo
         }
     };
 
-    bool Block::PoW::Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& fnCancel)
+    bool Block::PoW::Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, Height height, const Cancel& fnCancel)
     {
         Helper hlp;
 
@@ -126,7 +128,38 @@ namespace ufo
             memcpy(pDataIn + 40, (unsigned char*)pInput, nSizeInput);
             memcpy(pDataIn + 72, (unsigned char*)m_Nonce.m_pData, m_Nonce.nBytes);
 
-            x17r_hash(pDataOut, pDataIn, 80);
+            // progpow fork
+            if (height < Rules::get().ProgPowForkHeight) {
+                x17r_hash(pDataOut, pDataIn, 80);
+            }
+            else {
+                std::string s = to_hex(pDataIn, 72);
+
+                ECC::Hash::Processor hp;
+                Merkle::Hash o;
+
+                hp << s >> o;
+                s = to_hex(o.m_pData, o.nBytes);
+
+                uint64_t n =
+                    (uint64_t)m_Nonce.m_pData[0] << 56 +
+                    (uint64_t)m_Nonce.m_pData[1] << 48 +
+                    (uint64_t)m_Nonce.m_pData[2] << 40 +
+                    (uint64_t)m_Nonce.m_pData[3] << 32 +
+                    (uint64_t)m_Nonce.m_pData[4] << 24 +
+                    (uint64_t)m_Nonce.m_pData[5] << 16 +
+                    (uint64_t)m_Nonce.m_pData[6] << 8 +
+                    (uint64_t)m_Nonce.m_pData[7];
+                   
+                std::string r;
+                progpow_hash(s, n, r);
+                bool f;
+                auto bytes_vec = from_hex(r, &f);
+                assert(bytes_vec.size() == 32);
+                for (int i = 0; i < 32; ++i) {
+                    pDataOut[i] = bytes_vec[i];
+                }
+            }
 
             if (hlp.TestDifficulty(pDataOut, 32, m_Difficulty)) {
                 break;

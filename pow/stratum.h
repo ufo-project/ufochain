@@ -178,10 +178,11 @@ struct MiningNotify : Message {
     std::string jobid;
     std::string prev;
     std::string input;
+    Height height;
 
     MiningNotify() = default;
 
-    MiningNotify(const std::string& _id, const std::string& _jobid, const std::string& _prev, const std::string& _input);
+    MiningNotify(const std::string& _id, const std::string& _jobid, const std::string& _prev, const std::string& _input, Height height);
 };
 
 struct MiningSetDifficulty : Message {

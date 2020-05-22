@@ -114,6 +114,7 @@ public:
         const Merkle::Hash& prev,
         const Merkle::Hash& input,
         const Difficulty& setDiff,
+        Height height,
         const ShareFound& callback,
         const CancelCallback& cancelCallback) = 0;
 

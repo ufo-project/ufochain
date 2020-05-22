@@ -26,7 +26,6 @@ target_link_libraries(wallet
         keykeeper
     PRIVATE
         sqlite
-        x17r
 )
 
 target_compile_features(wallet PUBLIC cxx_std_17)

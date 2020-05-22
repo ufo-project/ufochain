@@ -229,11 +229,12 @@ MiningSubmit::MiningSubmit(const std::string& _id, const std::string& _jobid, co
 {
 }
 
-MiningNotify::MiningNotify(const std::string& _id, const std::string& _jobid, const std::string& _prev, const std::string& _input) :
+MiningNotify::MiningNotify(const std::string& _id, const std::string& _jobid, const std::string& _prev, const std::string& _input, Height height) :
     Message(std::move(_id), mining_notify),
     jobid(std::move(_jobid)),
     prev(std::move(_prev)),
-    input(std::move(_input))
+    input(std::move(_input)),
+    height(height)
 {
 }
 
@@ -335,6 +336,7 @@ bool append_json_msg(io::FragmentWriter& packer, const MiningNotify& m) {
     o[l_jobid] = m.jobid;
     o[l_prev] = m.prev;
     o[l_input] = m.input;
+    o[l_height] = m.height;
     return serialize_json_msg(packer, o);
 }
 

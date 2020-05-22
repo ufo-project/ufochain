@@ -23,6 +23,7 @@
 
 #define LOG_VERBOSE_ENABLED 0
 #include "utility/logger.h"
+#include "pow/external_progpow.h"
 
 namespace po = boost::program_options;
 
@@ -39,6 +40,7 @@ class StratumClient : public stratum::ParserCallback {
     io::TcpStream::Ptr _connection;
     io::Timer::Ptr _timer;
     std::string _lastJobID;
+    Height _lastJobHeight;
     Merkle::Hash _lastJobPrev;
     Merkle::Hash _lastJobInput;
     Block::PoW _lastFoundBlock;
@@ -79,6 +81,7 @@ private:
         if (!ok || buf2.size() != 32) return false;
         memcpy(_lastJobInput.m_pData, buf2.data(), 32);
         _lastJobID = job.id;
+        _lastJobHeight = job.height;
         return true;
     }
 
@@ -93,7 +96,7 @@ private:
         if (!fill_job_info(job)) return false;
 
         _miner->new_job(
-            _lastJobID, _lastJobPrev, _lastJobInput, pow, job.height,
+            _lastJobID, _lastJobPrev, _lastJobInput, pow, _lastJobHeight,
             BIND_THIS_MEMFN(on_block_found),
             []() { return false; }
         );
@@ -276,6 +279,12 @@ int main(int argc, char* argv[]) {
     logFilePrefix += std::to_string(uv_os_getpid());
     logFilePrefix += "_";
     auto logger = Logger::create(LOG_LEVEL_INFO, options.logLevel, options.logLevel, logFilePrefix, "logs");
+
+    if (!progpow_ethash_init()) {
+        LOG_ERROR() << "progpow_ethash_init failed ";
+        return 1;
+    }
+
     int retCode = 0;
     try {
         io::Reactor::Ptr reactor = io::Reactor::create();

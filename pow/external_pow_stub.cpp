@@ -122,7 +122,7 @@ private:
 				job.callback();
 				*/
 
-            } else if ( (job.pow.*SolveFn) (job.prev.m_pData, Merkle::Hash::nBytes, job.input.m_pData, Merkle::Hash::nBytes, cancelFn)) {
+            } else if ( (job.pow.*SolveFn) (job.prev.m_pData, Merkle::Hash::nBytes, job.input.m_pData, Merkle::Hash::nBytes, job.height, cancelFn)) {
                 {
                     std::lock_guard<std::mutex> lk(_mutex);
                     _lastFoundBlock = job.pow;
@@ -171,6 +171,7 @@ private:
         Merkle::Hash prev;
         Merkle::Hash input;
         Block::PoW  pow;
+        Height height;
         ShareFound callback;
     };
 
@@ -179,6 +180,7 @@ private:
         const Merkle::Hash& prev,
         const Merkle::Hash& input,
         const Difficulty& setDiff,
+        Height height,
         const ShareFound& callback,
         const CancelCallback& cancelCallback
     ) override
@@ -189,6 +191,7 @@ private:
         _currentJob.input = input;
         _currentJob.pow = Block::PoW();
         _currentJob.pow.m_Difficulty = setDiff;
+        _currentJob.height = height;
         _currentJob.callback = callback;
         _never_getjob = false;
         _changed = true;
@@ -269,18 +272,20 @@ private:
 
             LOG_INFO() << "solving job id=" << job.jobID
                 << " with nonce=" << job.pow.m_Nonce
-                << " and difficulty=" << job.pow.m_Difficulty;
+                << " and difficulty=" << job.pow.m_Difficulty
+                << " and height=" << job.height;
 
             job.pow.m_Nonce.Inc();
 
             if (_fakeSolver) {
                 ;
             }
-            else if ((job.pow.*SolveFn) (job.prev.m_pData, Merkle::Hash::nBytes, job.input.m_pData, Merkle::Hash::nBytes, cancelFn)) {
+            else if ((job.pow.*SolveFn) (job.prev.m_pData, Merkle::Hash::nBytes, job.input.m_pData, Merkle::Hash::nBytes, job.height, cancelFn)) {
                 {
                     std::lock_guard<std::mutex> lk(_mutex);
                     _lastFoundJobID = job.jobID;
                     _lastFoundShare = job.pow;
+                    _lastFoundShareHeight = job.height;
                 }
                 job.callback();
             }
@@ -290,6 +295,7 @@ private:
     Job _currentJob;
     std::string _lastFoundJobID;
     Block::PoW _lastFoundShare;
+    Height _lastFoundShareHeight;
     uint64_t _enonce;
     uint32_t _enonce_len;
     uint64_t _seed;

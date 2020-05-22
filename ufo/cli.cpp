@@ -25,6 +25,7 @@
 #include <iomanip>
 
 #include "pow/external_pow.h"
+#include "pow/external_progpow.h"
 
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
@@ -247,6 +248,12 @@ int main_impl(int argc, char* argv[])
 
 					if (!(sKeyOwner.empty() && sKeyMine.empty()))
 					{
+                        // progpow Ethash init
+                        if (!progpow_ethash_init()) {
+                            LOG_ERROR() << "progpow ethash init failed.";
+                            return -1;
+                        }
+
 						SecString pass;
 						if (!ufo::read_wallet_pass(pass, vm))
 						{

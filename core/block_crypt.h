@@ -155,6 +155,9 @@ namespace ufo
 		ECC::Hash::Value Prehistoric; // Prev hash of the 1st block
 		ECC::Hash::Value TreasuryChecksum;
 
+        // hard fork for changing progpow algo
+        uint32_t ProgPowForkHeight;
+
 		void UpdateChecksum();
 
 		static Amount get_Emission(Height);
@@ -510,7 +513,7 @@ namespace ufo
 			using Cancel = std::function<bool(bool bRetrying)>;
 			// Difficulty and Nonce must be initialized. During the solution it's incremented each time by 1.
             // returns false only if cancelled
-            bool Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, const Cancel& = [](bool) { return false; });
+            bool Solve(const void* pPrev, uint32_t nSizePrev, const void* pInput, uint32_t nSizeInput, Height height, const Cancel& = [](bool) { return false; });
 
 		private:
 			struct Helper;

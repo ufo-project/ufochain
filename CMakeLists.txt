@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.11)
 cmake_policy(SET CMP0074 NEW)
 
 set(VERSION_MAJOR 1)
-set(VERSION_MINOR 0)
-set(VERSION_REVISION 3)
+set(VERSION_MINOR 1)
+set(VERSION_REVISION 0)
 set(GIT_COMMIT_HASH "unknown")
 
 set(UFO_SUFFIX_LOWER_CASE "testnet")
@@ -128,7 +128,7 @@ if (UFO_NO_QT_UI_WALLET)
     set(UFO_QT_UI_WALLET FALSE)    
 endif()
 
-set(UFO_USE_STATIC FALSE)
+set(UFO_USE_STATIC TRUE)
 if(UFO_LINK_TYPE MATCHES "Static")
     set(UFO_USE_STATIC TRUE)
 endif()
@@ -149,9 +149,9 @@ if(SHOW_CODE_LOCATION)
 endif()
 
 # uncoment next line for testnet
-#set(UFO_TESTNET TRUE)
+set(UFO_TESTNET TRUE)
 # uncoment next line for mainnet
-set(UFO_MAINNET TRUE)
+#set(UFO_MAINNET TRUE)
 
 if(UFO_TESTNET)
     add_definitions(-DUFO_TESTNET)
@@ -385,7 +385,6 @@ endif()
 
 add_definitions(-DBC_STATIC)
 add_subdirectory(3rdparty)
-add_subdirectory(3rdparty/x17r)
 add_subdirectory(utility)
 add_subdirectory(core)
 add_subdirectory(pow)

@@ -8,12 +8,15 @@ add_library(pbkdf STATIC
 )
 
 add_subdirectory(secp256k1-zkp)
+message("UFO_ATOMIC_SWAP_SUPPORT:" ${UFO_ATOMIC_SWAP_SUPPORT})
 if (UFO_ATOMIC_SWAP_SUPPORT)
     add_subdirectory(libbitcoin)
 endif()
 add_subdirectory(sqlite)
 add_subdirectory(crypto/blake)
 add_subdirectory(libuv)
+add_subdirectory(x17r)
+add_subdirectory(progpow)
 
 
 #add_library(3rdparty INTERFACE IMPORTED GLOBAL)
