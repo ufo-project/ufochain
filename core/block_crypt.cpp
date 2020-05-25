@@ -971,6 +971,8 @@ namespace ufo
             0x2e, 0x27, 0x1e, 0x04, 0xf2, 0x50, 0x94, 0xef,
             0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
         };
+
+        RewardHalfForkHeight = 20;
 #else
         Prehistoric = {
             // BTC Block #613064
@@ -979,6 +981,8 @@ namespace ufo
             0x39, 0xa2, 0x7f, 0x69, 0xeb, 0x33, 0x16, 0x7e,
             0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
         };
+
+        RewardHalfForkHeight = 202801;
 #endif
 
 		ZeroObject(pForks);
@@ -1028,7 +1032,13 @@ namespace ufo
 		assert(h >= 1);
 		int n = (h - 1) / Emission.Drop0;
 		hEnd = (n + 1) * Emission.Drop0 + 1;
-		return base >> n;
+
+        if (h < Rules::get().RewardHalfForkHeight) {
+            return base >> n;
+        }
+
+        // to halt the reward from the height of RewardHalfForkHeight
+        return base >> (n + 1);
 	}
 
 	Amount Rules::get_Emission(Height h)
