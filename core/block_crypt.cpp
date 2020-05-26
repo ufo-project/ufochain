@@ -18,6 +18,7 @@
 #include "block_crypt.h"
 #include "utility/helpers.h"
 #include "x17r/x17r.h"
+#include "pow/external_progpow.h"
 
 namespace ufo
 {
@@ -1292,7 +1293,40 @@ namespace ufo
             memcpy(pDataIn + 40, (unsigned char*)v.m_pData, v.nBytes);
             memcpy(pDataIn + 72, (unsigned char*)m_PoW.m_Nonce.m_pData, m_PoW.m_Nonce.nBytes);
 
-            x17r_hash(pDataOut, pDataIn, 80);
+            //x17r_hash(pDataOut, pDataIn, 80);
+            // progpow fork
+            if (m_Height < Rules::get().ProgPowForkHeight) {
+                x17r_hash(pDataOut, pDataIn, 80);
+            }
+            else {
+                std::string s = to_hex(pDataIn, 72);
+
+                ECC::Hash::Processor hp;
+                Merkle::Hash o;
+
+                hp << s >> o;
+                s = to_hex(o.m_pData, o.nBytes);
+
+                uint64_t n =
+                    (uint64_t)m_PoW.m_Nonce.m_pData[0] << 56 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[1] << 48 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[2] << 40 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[3] << 32 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[4] << 24 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[5] << 16 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[6] << 8 +
+                    (uint64_t)m_PoW.m_Nonce.m_pData[7];
+
+                std::string r;
+                progpow_hash(s, n, r);
+                bool f;
+                auto bytes_vec = from_hex(r, &f);
+                assert(bytes_vec.size() == 32);
+                for (int i = 0; i < 32; ++i) {
+                    pDataOut[i] = bytes_vec[i];
+                }
+            }
+
             memcpy(out.m_pData, pDataOut, 32);
         }
     }
