@@ -113,11 +113,19 @@ namespace ufo
 			//Height Drop1	= 1440 * 365 * 4; // 4 years roughly. Each such a cycle there's a new drop
 
 			Amount Value0 = Coin * 5; // Initial emission. Each drop it will be halved.
+#ifdef UFO_TESTNET
+            Height Drop0 = 50;
+#else
 			Height Drop0 = 1050000; // about 2 years roughly. Each such a cycle there's a drop
+#endif
 		} Emission;
 
 		struct {
+#ifdef UFO_TESTNET
+            Height Coinbase = 10;
+#else
 			Height Coinbase	= 240; // 4 hours
+#endif
 			Height Std		= 0; // not restricted. Can spend even in the block of creation (i.e. spend it before it becomes visible)
 		} Maturity;
 
@@ -131,8 +139,13 @@ namespace ufo
 			//Difficulty Difficulty0	= Difficulty(8 << Difficulty::s_MantissaBits); // 2^8 = 256
 			//Difficulty Difficulty0 = Difficulty(1);
 			uint32_t DiffAdjustBlocks = 50;  // Adjust difficulty once for 50 blocks
+
+#ifdef UFO_TESTNET
+            Difficulty Difficulty0 = Difficulty(0x1e0fffff);
+#else
             // use the same difficulty as RVN
-			Difficulty Difficulty0 = Difficulty(0x1e00ffff);
+            Difficulty Difficulty0 = Difficulty(0x1e00ffff);
+#endif
 			struct {
 				// damp factor. Adjustment of actual dt toward expected, effectively dampens
 				uint32_t M = 1; // Multiplier of the actual dt
@@ -155,8 +168,11 @@ namespace ufo
 		ECC::Hash::Value Prehistoric; // Prev hash of the 1st block
 		ECC::Hash::Value TreasuryChecksum;
 
+        // hard fork to half block reward
+        Height RewardHalfForkHeight;
+
         // hard fork for changing progpow algo
-        uint32_t ProgPowForkHeight;
+        Height ProgPowForkHeight;
 
 		void UpdateChecksum();
 

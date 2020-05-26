@@ -972,7 +972,9 @@ namespace ufo
             0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
         };
 
-        ProgPowForkHeight = 50;
+        RewardHalfForkHeight = 20;
+
+        ProgPowForkHeight = 30;
 #else
         Prehistoric = {
             // BTC Block #613064
@@ -981,6 +983,8 @@ namespace ufo
             0x39, 0xa2, 0x7f, 0x69, 0xeb, 0x33, 0x16, 0x7e,
             0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
         };
+
+        RewardHalfForkHeight = 202801;
 
         ProgPowForkHeight = 500000;
 #endif
@@ -1033,11 +1037,11 @@ namespace ufo
 		int n = (h - 1) / Emission.Drop0;
 		hEnd = (n + 1) * Emission.Drop0 + 1;
 
-        if (h < Rules::get().ProgPowForkHeight) {
+        if (h < Rules::get().RewardHalfForkHeight) {
             return base >> n;
         }
 
-        // to halt the reward from the height of progpow fork
+        // to halt the reward from the height of RewardHalfForkHeight
         return base >> (n + 1);
 	}
 
