@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 
-add_definitions(-DPROGPOW_VERSION=93)
+# use progpow v0.9.2
+# add_definitions(-DPROGPOW_VERSION=93)
 
 set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_MODULE_PATH}")
 

@@ -152,7 +152,7 @@ private:
 
         //x17r_hash(pDataOut, pDataIn, 80);
         // progpow fork
-        if (h < Rules::get().ProgPowForkHeight) {
+        if (_lastJobHeight < Rules::get().ProgPowForkHeight) {
             x17r_hash(pDataOut, pDataIn, 80);
         }
         else {

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 
-add_definitions(-DPROGPOW_VERSION=93)
+# use progpow v0.9.2
+# add_definitions(-DPROGPOW_VERSION=93)
 
 if (WIN32)
 	set(PROGPOW_SRC
