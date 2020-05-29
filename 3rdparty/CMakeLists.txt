@@ -16,7 +16,8 @@ add_subdirectory(sqlite)
 add_subdirectory(crypto/blake)
 add_subdirectory(libuv)
 add_subdirectory(x17r)
-add_subdirectory(progpow)
+add_subdirectory(libethash)
+add_subdirectory(libdevcore)
 
 
 #add_library(3rdparty INTERFACE IMPORTED GLOBAL)

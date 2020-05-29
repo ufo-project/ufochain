@@ -175,7 +175,7 @@ private:
                 (uint64_t)_lastFoundBlock.m_Nonce.m_pData[7];
 
             std::string r;
-            progpow_hash(s, n, r);
+            progpow_hash(_lastJobHeight, s, n, r);
             bool f;
             auto bytes_vec = from_hex(r, &f);
             assert(bytes_vec.size() == 32);
@@ -311,11 +311,6 @@ int main(int argc, char* argv[]) {
     logFilePrefix += std::to_string(uv_os_getpid());
     logFilePrefix += "_";
     auto logger = Logger::create(LOG_LEVEL_INFO, options.logLevel, options.logLevel, logFilePrefix, "logs");
-
-    if (!progpow_ethash_init()) {
-        LOG_ERROR() << "progpow_ethash_init failed ";
-        return 1;
-    }
 
     int retCode = 0;
     try {

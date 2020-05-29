@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
 
-# use progpow v0.9.2
-# add_definitions(-DPROGPOW_VERSION=93)
-
 set(NODE_SRC
     node.cpp
     db.cpp
@@ -26,7 +23,8 @@ target_link_libraries(node
     PRIVATE
         sqlite
         x17r
-        progpow
+        devcore
+        ethash
 )
 
 add_subdirectory(unittests)

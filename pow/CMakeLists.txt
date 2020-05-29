@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
 
-# use progpow v0.9.2
-# add_definitions(-DPROGPOW_VERSION=93)
-
 set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_MODULE_PATH}")
 
 include_directories(impl)
@@ -29,7 +26,8 @@ target_link_libraries(pow
         Boost::boost
         blake2b
         x17r
-        progpow
+        devcore
+        ethash
 )
 
 add_library(external_pow STATIC
@@ -44,12 +42,12 @@ if (NOT ANDROID AND NOT IOS)
     add_executable(miner_client miner_client.cpp ../core/block_crypt.cpp) # ???????????????????????????
 
     #find_package(Boost 1.67 REQUIRED COMPONENTS program_options)
-    target_link_libraries(miner_client pow external_pow Boost::program_options x17r progpow)
+    target_link_libraries(miner_client pow external_pow Boost::program_options x17r devcore ethash)
 
     add_executable(minepool_client minepool_client.cpp ../core/block_crypt.cpp) # ???????????????????????????
 
     #find_package(Boost 1.67 REQUIRED COMPONENTS program_options)
-    target_link_libraries(minepool_client pow external_pow Boost::program_options x17r progpow)
+    target_link_libraries(minepool_client pow external_pow Boost::program_options x17r devcore ethash)
 
     add_subdirectory(unittests)
 endif()

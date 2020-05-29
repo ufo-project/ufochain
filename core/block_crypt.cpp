@@ -1318,7 +1318,7 @@ namespace ufo
                     (uint64_t)m_PoW.m_Nonce.m_pData[7];
 
                 std::string r;
-                progpow_hash(s, n, r);
+                progpow_hash(m_Height, s, n, r);
                 bool f;
                 auto bytes_vec = from_hex(r, &f);
                 assert(bytes_vec.size() == 32);
