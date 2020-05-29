@@ -13,11 +13,13 @@
 
 bool progpow_hash(uint32_t block_number, const std::string& in, uint64_t nonce, std::string& out)
 {
+    assert(in.length() == 64);
+
     const auto& context = progpow::get_global_epoch_context_full(block_number / ETHASH_EPOCH_LENGTH);
     auto header = progpow::hash256_from_bytes(
         dev::fromHex(in).data());
 
-    auto result = progpow::hash(context, block_number, header, 0x123456789abcdef0);
+    auto result = progpow::hash(context, block_number, header, nonce);
 
     out = dev::toHex(result.final_hash.bytes);
 }
