@@ -114,8 +114,9 @@ private:
 
     IExternalPOW::BlockFoundResult on_block_found() {
         std::string jobID;
-		Height h;
-        _miner->get_last_found_block(jobID, h, _lastFoundBlock);
+		Height foundBlockHeight;
+        Block::PoW foundBlock;
+        _miner->get_last_found_block(jobID, foundBlockHeight, foundBlock);
         if (jobID != _lastJobID) {
             LOG_INFO() << "solution expired" << TRACE(jobID);
             return IExternalPOW::solution_expired;
@@ -124,10 +125,10 @@ private:
         //char buf[72];
         //LOG_DEBUG() << "input=" << to_hex(buf, _lastJobInput.m_pData, 32);
 
-       // if (!_fakeSolver && !_lastFoundBlock.IsValid(_lastJobInput.m_pData, 32, h)) {
-       //     LOG_ERROR() << "solution is invalid, id=" << _lastJobID;
-       //     return IExternalPOW::solution_rejected;
-       // }
+        // if (!_fakeSolver && !_lastFoundBlock.IsValid(_lastJobInput.m_pData, 32, h)) {
+        //     LOG_ERROR() << "solution is invalid, id=" << _lastJobID;
+        //     return IExternalPOW::solution_rejected;
+        // }
 		//Merkle::Hash hv;
 		//for (int i = 0; i < _lastJobInput.nBytes; ++i)
 		//{
@@ -148,11 +149,11 @@ private:
         memset(pDataIn + 36, 0x0, 4);
 
         memcpy(pDataIn + 40, (unsigned char*)_lastJobInput.m_pData, _lastJobInput.nBytes);
-        memcpy(pDataIn + 72, (unsigned char*)_lastFoundBlock.m_Nonce.m_pData, _lastFoundBlock.m_Nonce.nBytes);
+        memcpy(pDataIn + 72, (unsigned char*)foundBlock.m_Nonce.m_pData, foundBlock.m_Nonce.nBytes);
 
         //x17r_hash(pDataOut, pDataIn, 80);
         // progpow fork
-        if (_lastJobHeight < Rules::get().ProgPowForkHeight) {
+        if (foundBlockHeight < Rules::get().ProgPowForkHeight) {
             x17r_hash(pDataOut, pDataIn, 80);
         }
         else {
@@ -165,17 +166,17 @@ private:
             s = to_hex(o.m_pData, o.nBytes);
 
             uint64_t n =
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[0] << 56 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[1] << 48 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[2] << 40 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[3] << 32 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[4] << 24 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[5] << 16 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[6] << 8 +
-                (uint64_t)_lastFoundBlock.m_Nonce.m_pData[7];
+                (uint64_t)foundBlock.m_Nonce.m_pData[0] << 56 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[1] << 48 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[2] << 40 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[3] << 32 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[4] << 24 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[5] << 16 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[6] << 8 +
+                (uint64_t)foundBlock.m_Nonce.m_pData[7];
 
             std::string r;
-            progpow_hash(_lastJobHeight, s, n, r);
+            progpow_hash(foundBlockHeight, s, n, r, foundBlock.m_MixHash);
             bool f;
             auto bytes_vec = from_hex(r, &f);
             assert(bytes_vec.size() == 32);
@@ -184,12 +185,12 @@ private:
             }
         }
 
-        if (!_fakeSolver && !_lastFoundBlock.IsValid(pDataOut, 32,0)) {
+        if (!_fakeSolver && !foundBlock.IsValid(pDataOut, 32,0)) {
           LOG_ERROR() << "solution is invalid, id=" << _lastJobID;
           return IExternalPOW::solution_rejected;
         }
         LOG_INFO() << "block found id=" << _lastJobID;
-        LOG_INFO() << "nonce=" << _lastFoundBlock.m_Nonce;
+        LOG_INFO() << "nonce=" << foundBlock.m_Nonce;
 
         _blockSent = false;
         send_last_found_block();

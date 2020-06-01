@@ -210,9 +210,10 @@ private:
         ECC::GenRandom(&_seed, 8);
     }
 
-    void get_last_found_share(std::string& jobID, Block::PoW& pow) override {
+    void get_last_found_share(std::string& jobID, Height& jobHeight, Block::PoW& pow) override {
         std::lock_guard<std::mutex> lk(_mutex);
         jobID = _lastFoundJobID;
+        jobHeight = _lastFoundShareHeight;
         pow = _lastFoundShare;
     }
 

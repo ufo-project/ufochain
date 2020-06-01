@@ -11,7 +11,7 @@
 #define ETHASH_EPOCH_LENGTH 30000
 
 
-bool progpow_hash(uint32_t block_number, const std::string& in, uint64_t nonce, std::string& out)
+bool progpow_hash(uint32_t block_number, const std::string& in, uint64_t nonce, std::string& out_result, std::string& out_mixhash)
 {
     assert(in.length() == 64);
 
@@ -21,5 +21,8 @@ bool progpow_hash(uint32_t block_number, const std::string& in, uint64_t nonce, 
 
     auto result = progpow::hash(context, block_number, header, nonce);
 
-    out = dev::toHex(result.final_hash.bytes);
+    out_result = dev::toHex(result.final_hash.bytes);
+    out_mixhash = dev::toHex(result.mix_hash.bytes);
+
+    return true;
 }

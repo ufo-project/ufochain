@@ -74,6 +74,7 @@ namespace {
     DEF_LABEL(minertype);
     DEF_LABEL(jobid);
     DEF_LABEL(enonce);
+    DEF_LABEL(mixhash);
 #undef DEF_LABEL
 
 ResultCode parse_json(const void* buf, size_t bufSize, json& o) {
@@ -116,14 +117,15 @@ template<> void parse(const json& o, Login& m) {
 }
 
 template<> void parse(const json& o, Job& m) {
-  m.prev = o[l_prev];
-  m.input = o[l_input];
-  m.nbits = o[l_nbits];
-  m.height = o[l_height];
+    m.prev = o[l_prev];
+    m.input = o[l_input];
+    m.nbits = o[l_nbits];
+    m.height = o[l_height];
 }
 
 template<> void parse(const json& o, Solution& m) {
     m.nonce = o[l_nonce];
+    m.mixhash = o[l_mixhash];
 }
 
 template<> void parse(const json& o, Result& m) {
@@ -145,6 +147,7 @@ template<> void parse(const json& o, MiningSubmit& m) {
     m.minertype = o[l_minertype];
     m.jobid = o[l_jobid];
     m.nonce = o[l_nonce];
+    m.mixhash = o[l_mixhash];
 }
 
 template<> void parse(const json& o, MiningNotify& m) {
@@ -195,16 +198,18 @@ Job::Job(const std::string& _id, const Merkle::Hash& _prev, const Merkle::Hash& 
 Solution::Solution(const std::string& _id, const Block::PoW& _pow) :
   Message(_id, solution)
 {
-  char buf[Block::PoW::NonceType::nBytes * 2 + 1];
-  nonce = to_hex(buf, _pow.m_Nonce.m_pData, Block::PoW::NonceType::nBytes);
+    char buf[Block::PoW::NonceType::nBytes * 2 + 1];
+    nonce = to_hex(buf, _pow.m_Nonce.m_pData, Block::PoW::NonceType::nBytes);
+    mixhash = _pow.m_MixHash;
 }
 
 bool Solution::fill_pow(Block::PoW& pow) const {
-  bool ok = false;
-  std::vector<uint8_t> buf = from_hex(nonce, &ok);
-  if (!ok || buf.size() != Block::PoW::NonceType::nBytes) return false;
-  memcpy(pow.m_Nonce.m_pData, buf.data(), Block::PoW::NonceType::nBytes);
-  return true;
+    bool ok = false;
+    std::vector<uint8_t> buf = from_hex(nonce, &ok);
+    if (!ok || buf.size() != Block::PoW::NonceType::nBytes) return false;
+    memcpy(pow.m_Nonce.m_pData, buf.data(), Block::PoW::NonceType::nBytes);
+    pow.m_MixHash = mixhash;
+    return true;
 }
 
 
@@ -221,11 +226,12 @@ MiningSubscribe::MiningSubscribe(const std::string& _id) :
 {
 }
 
-MiningSubmit::MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce) :
+MiningSubmit::MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string _mixhash) :
     Message(std::move(_id), mining_submit),
     minertype("cpu"),
     jobid(std::move(_jobid)),
-    nonce(std::move(_nonce))
+    nonce(std::move(_nonce)),
+    mixhash(std::move(_mixhash))
 {
 }
 
@@ -292,6 +298,7 @@ bool append_json_msg(io::FragmentWriter& packer, const Solution& m) {
     json o;
     append_base(o, m);
     o[l_nonce] = m.nonce;
+    o[l_mixhash] = m.mixhash;
     return serialize_json_msg(packer, o);
 }
 
@@ -327,6 +334,7 @@ bool append_json_msg(io::FragmentWriter& packer, const MiningSubmit& m) {
     o[l_minertype] = m.minertype;
     o[l_jobid] = m.jobid;
     o[l_nonce] = m.nonce;
+    o[l_mixhash] = m.mixhash;
     return serialize_json_msg(packer, o);
 }
 

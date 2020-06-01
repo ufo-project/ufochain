@@ -199,7 +199,9 @@ private:
 
     IExternalPOW2::ShareFoundResult on_share_found() {
         std::string jobID;
-        _miner->get_last_found_share(jobID, _lastFoundShare);
+        Height foundShareHeight;
+        Block::PoW foundShare;
+        _miner->get_last_found_share(jobID, foundShareHeight, foundShare);
         if (jobID != _lastJobID) {
             LOG_INFO() << "solution expired" << TRACE(jobID);
             return IExternalPOW2::solution_expired;
@@ -213,11 +215,11 @@ private:
         memset(pDataIn + 36, 0x0, 4);
 
         memcpy(pDataIn + 40, (unsigned char*)_lastJobInput.m_pData, _lastJobInput.nBytes);
-        memcpy(pDataIn + 72, (unsigned char*)_lastFoundShare.m_Nonce.m_pData, _lastFoundShare.m_Nonce.nBytes);
+        memcpy(pDataIn + 72, (unsigned char*)foundShare.m_Nonce.m_pData, foundShare.m_Nonce.nBytes);
 
         //x17r_hash(pDataOut, pDataIn, 80);
         // progpow fork
-        if (_lastJobHeight < Rules::get().ProgPowForkHeight) {
+        if (foundShareHeight < Rules::get().ProgPowForkHeight) {
             x17r_hash(pDataOut, pDataIn, 80);
         }
         else {
@@ -230,17 +232,17 @@ private:
             s = to_hex(o.m_pData, o.nBytes);
 
             uint64_t n =
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[0] << 56 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[1] << 48 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[2] << 40 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[3] << 32 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[4] << 24 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[5] << 16 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[6] << 8 +
-                (uint64_t)_lastFoundShare.m_Nonce.m_pData[7];
+                (uint64_t)foundShare.m_Nonce.m_pData[0] << 56 +
+                (uint64_t)foundShare.m_Nonce.m_pData[1] << 48 +
+                (uint64_t)foundShare.m_Nonce.m_pData[2] << 40 +
+                (uint64_t)foundShare.m_Nonce.m_pData[3] << 32 +
+                (uint64_t)foundShare.m_Nonce.m_pData[4] << 24 +
+                (uint64_t)foundShare.m_Nonce.m_pData[5] << 16 +
+                (uint64_t)foundShare.m_Nonce.m_pData[6] << 8 +
+                (uint64_t)foundShare.m_Nonce.m_pData[7];
 
             std::string r;
-            progpow_hash(_lastJobHeight, s, n, r);
+            progpow_hash(foundShareHeight, s, n, r, foundShare.m_MixHash);
             bool f;
             auto bytes_vec = from_hex(r, &f);
             assert(bytes_vec.size() == 32);
@@ -262,7 +264,7 @@ private:
         LOG_INFO() << "share found jobid=" << _lastJobID;
         LOG_INFO() << "prev=" << _lastJobPrev;
         LOG_INFO() << "jobinput=" << _lastJobInput;
-        LOG_INFO() << "nonce=" << _lastFoundShare.m_Nonce;
+        LOG_INFO() << "nonce=" << foundShare.m_Nonce;
 
         // ignore reduplicative calculation in a job
         _miner->reset_seed();
@@ -282,7 +284,7 @@ private:
         s >> nonceStr;
         nonceStr = nonceStr.substr((size_t)_enonce_len * 2, nonceStr.length());
 
-        stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr);
+        stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr, _lastFoundShare.m_MixHash);
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
             LOG_ERROR() << "Internal error";
             _reactor.stop();

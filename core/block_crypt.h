@@ -524,6 +524,9 @@ namespace ufo
 			NonceType m_Nonce; // 8 bytes. The overall solution size is 96 bytes.
 			Difficulty m_Difficulty;
 
+            // used to increase progpow hash-verify efficiency
+            std::string m_MixHash;
+
 			bool IsValid(const void* pInput, uint32_t nSizeInput, Height) const;
 
 			using Cancel = std::function<bool(bool bRetrying)>;

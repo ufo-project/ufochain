@@ -122,6 +122,7 @@ struct Cancel : Message {
 /// Miner posts a solution
 struct Solution : Message {
     std::string nonce;
+    std::string mixhash;
 
     Solution() = default;
 
@@ -168,10 +169,11 @@ struct MiningSubmit : Message {
     std::string minertype;
     std::string jobid;
     std::string nonce;
+    std::string mixhash;
 
     MiningSubmit() = default;
 
-    MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce);
+    MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string _mixhash);
 };
 
 struct MiningNotify : Message {

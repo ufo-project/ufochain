@@ -148,7 +148,7 @@ bool Server::on_login(uint64_t from, const Login& login) {
 
 bool Server::on_solution(uint64_t from, const Solution& sol) {
 	//LOG_DEBUG() << TRACE(sol.nonce) << TRACE(sol.output);
-  LOG_DEBUG() << TRACE(sol.nonce);
+    LOG_DEBUG() << TRACE(sol.nonce);
 	if (_prefixDigits > 0) {
 	    const std::string& nonceprefix = _connections[from]->get_nonceprefix();
 	    if (

@@ -15,8 +15,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x123456789abcdef0;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -27,8 +28,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x0000000000000000;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -39,8 +41,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x0000000006ff2c47;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -51,8 +54,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x00000000076e482e;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -63,8 +67,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x000000003917afab;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -75,8 +80,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005d409dbc23a62a;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -87,8 +93,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005db5fa4c2a3d03;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -99,8 +106,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005db8607994ff30;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -111,8 +119,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005e30899481055e;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -123,8 +132,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005ea6aef136f88b;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -135,8 +145,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x02ebe0503bd7b1da;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -147,8 +158,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x02edb6275bd221e3;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -159,8 +171,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x005e30899481055e;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
@@ -171,8 +184,9 @@ int main(int argc, char* argv[])
         uint64_t nonce = 0x02abe0589481055e;
 
         std::string out;
+        std::string mix;
 
-        progpow_hash(block_num, in, nonce, out);
+        progpow_hash(block_num, in, nonce, out, mix);
 
         fprintf(stdout, "block: %d\nresult: %s\n", block_num, out.c_str());
     }
