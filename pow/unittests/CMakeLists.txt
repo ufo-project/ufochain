@@ -6,6 +6,9 @@ target_link_libraries(equihash_test pow core x17r)
 add_test_snippet(progpow_test pow)
 target_link_libraries(progpow_test devcore ethash external_pow)
 
+add_test_snippet(progpow_test2 pow)
+target_link_libraries(progpow_test2 devcore ethash external_pow)
+
 add_test_snippet(stratum_test external_pow)
 
 add_executable(server_stub server_stub.cpp ../../core/block_crypt.cpp) # ???????????????????????????

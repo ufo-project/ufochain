@@ -20,6 +20,7 @@
 #include "utility/io/timer.h"
 #include "utility/helpers.h"
 #include "x17r/x17r.h"
+#include "openssl/sha.h"
 #include "sstream"
 #include <boost/program_options.hpp>
 
@@ -225,21 +226,21 @@ private:
         else {
             std::string s = to_hex(pDataIn, 72);
 
-            ECC::Hash::Processor hp;
-            Merkle::Hash o;
+            unsigned char out[32];
+            unsigned char* p = out;
 
-            hp << s >> o;
-            s = to_hex(o.m_pData, o.nBytes);
+            SHA256((const unsigned char*)s.c_str(), s.length(), p);
+            s = to_hex(out, sizeof(out));
 
             uint64_t n =
-                (uint64_t)foundShare.m_Nonce.m_pData[0] << 56 +
-                (uint64_t)foundShare.m_Nonce.m_pData[1] << 48 +
-                (uint64_t)foundShare.m_Nonce.m_pData[2] << 40 +
-                (uint64_t)foundShare.m_Nonce.m_pData[3] << 32 +
-                (uint64_t)foundShare.m_Nonce.m_pData[4] << 24 +
-                (uint64_t)foundShare.m_Nonce.m_pData[5] << 16 +
-                (uint64_t)foundShare.m_Nonce.m_pData[6] << 8 +
-                (uint64_t)foundShare.m_Nonce.m_pData[7];
+                ((uint64_t)foundShare.m_Nonce.m_pData[0] << 56) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[1] << 48) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[2] << 40) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[3] << 32) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[4] << 24) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[5] << 16) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[6] << 8) +
+                ((uint64_t)foundShare.m_Nonce.m_pData[7]);
 
             std::string r;
             progpow_hash(foundShareHeight, s, n, r, foundShare.m_MixHash);

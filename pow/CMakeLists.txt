@@ -26,6 +26,7 @@ target_link_libraries(pow
         Boost::boost
         blake2b
         x17r
+        core
         devcore
         ethash
 )
