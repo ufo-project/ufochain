@@ -982,7 +982,7 @@ namespace ufo
             0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
         };
 
-        RewardHalfForkHeight = 202801;
+        RewardHalfForkHeight = 208201;
 #endif
 
 		ZeroObject(pForks);
