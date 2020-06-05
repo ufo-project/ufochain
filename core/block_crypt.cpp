@@ -21,6 +21,7 @@
 #include "pow/external_progpow.h"
 #include "openssl/sha.h"
 
+
 namespace ufo
 {
 
@@ -986,7 +987,7 @@ namespace ufo
             0xca, 0xec, 0x1a, 0xe3, 0x41, 0xb7, 0x51, 0x35,
         };
 
-        RewardHalfForkHeight = 202801;
+        RewardHalfForkHeight = 208201;
 
         ProgPowForkHeight = 500000;
 #endif

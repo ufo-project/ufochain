@@ -141,7 +141,7 @@ namespace ufo
 			uint32_t DiffAdjustBlocks = 50;  // Adjust difficulty once for 50 blocks
 
 #ifdef UFO_TESTNET
-            Difficulty Difficulty0 = Difficulty(0x1e0fffff);
+            Difficulty Difficulty0 = Difficulty(0x1e00ffff);
 #else
             // use the same difficulty as RVN
             Difficulty Difficulty0 = Difficulty(0x1e00ffff);

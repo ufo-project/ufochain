@@ -189,7 +189,19 @@ namespace ufo
 
     bool Block::PoW::IsValid(const void* pInput, uint32_t nSizeInput, Height h) const
     {
+        assert(nSizeInput == 32);
         Helper hlp;
+
+        if (h >= Rules().get().ProgPowForkHeight) {
+            // big endian to small endian
+            unsigned char reversed[32];
+            for (int i = 0; i < 32; ++i)
+                reversed[i] = *((unsigned char*)pInput + 31 - i);
+            
+            pInput = reversed;
+            return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
+        }
+
         return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
     }
 } // namespace ufo
