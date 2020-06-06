@@ -525,7 +525,8 @@ namespace ufo
 			Difficulty m_Difficulty;
 
             // used to increase progpow hash-verify efficiency
-            std::string m_MixHash;
+            static const uint32_t nMixHashBytes = 32;
+            std::array<uint8_t, nMixHashBytes> m_MixHash;
 
 			bool IsValid(const void* pInput, uint32_t nSizeInput, Height) const;
 

@@ -195,12 +195,13 @@ Job::Job(const std::string& _id, const Merkle::Hash& _prev, const Merkle::Hash& 
     input = to_hex(buf2, _input.m_pData, 32);
 }
 
-Solution::Solution(const std::string& _id, const Block::PoW& _pow) :
+Solution::Solution(const std::string& _id, const Block::PoW& _pow):
   Message(_id, solution)
 {
     char buf[Block::PoW::NonceType::nBytes * 2 + 1];
     nonce = to_hex(buf, _pow.m_Nonce.m_pData, Block::PoW::NonceType::nBytes);
-    mixhash = _pow.m_MixHash;
+    char buf2[Block::PoW::nMixHashBytes * 2 + 1];
+    mixhash = to_hex(buf2, _pow.m_MixHash.data(), Block::PoW::nMixHashBytes);
 }
 
 bool Solution::fill_pow(Block::PoW& pow) const {
@@ -208,7 +209,10 @@ bool Solution::fill_pow(Block::PoW& pow) const {
     std::vector<uint8_t> buf = from_hex(nonce, &ok);
     if (!ok || buf.size() != Block::PoW::NonceType::nBytes) return false;
     memcpy(pow.m_Nonce.m_pData, buf.data(), Block::PoW::NonceType::nBytes);
-    pow.m_MixHash = mixhash;
+
+    std::vector<uint8_t> buf2 = from_hex(mixhash, &ok);
+    if (!ok || buf2.size() != Block::PoW::nMixHashBytes) return false;
+    memcpy(pow.m_MixHash.data(), buf2.data(), Block::PoW::nMixHashBytes);
     return true;
 }
 
@@ -226,7 +230,7 @@ MiningSubscribe::MiningSubscribe(const std::string& _id) :
 {
 }
 
-MiningSubmit::MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string _mixhash) :
+MiningSubmit::MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string& _mixhash) :
     Message(std::move(_id), mining_submit),
     minertype("cpu"),
     jobid(std::move(_jobid)),

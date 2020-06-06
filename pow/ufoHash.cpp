@@ -137,11 +137,11 @@ namespace ufo
             else {
                 std::string s = to_hex(pDataIn, 72);
 
-                unsigned char out[32];
-                unsigned char* p = out;
+                unsigned char o[32];
+                unsigned char* p = o;
 
                 SHA256((const unsigned char*)s.c_str(), s.length(), p);
-                s = to_hex(out, sizeof(out));
+                s = to_hex(o, sizeof(o));
 
                 uint64_t n =
                     ((uint64_t)m_Nonce.m_pData[0] << 56) +
@@ -154,12 +154,19 @@ namespace ufo
                     ((uint64_t)m_Nonce.m_pData[7]);
                    
                 std::string r;
-                progpow_hash(height, s, n, r, m_MixHash);
+                std::string mixhash;
+                progpow_hash(height, s, n, r, mixhash);
+
+                bool ok;
+                std::vector<uint8_t> buf = from_hex(mixhash, &ok);
+                memcpy(m_MixHash.data(), buf.data(), Block::PoW::nMixHashBytes);
+
                 bool f;
                 auto bytes_vec = from_hex(r, &f);
                 assert(bytes_vec.size() == 32);
                 for (int i = 0; i < 32; ++i) {
-                    pDataOut[i] = bytes_vec[i];
+                    // big endian to little endian
+                    pDataOut[i] = bytes_vec[31 - i];
                 }
             }
 
@@ -191,16 +198,6 @@ namespace ufo
     {
         assert(nSizeInput == 32);
         Helper hlp;
-
-        if (h >= Rules().get().ProgPowForkHeight) {
-            // big endian to small endian
-            unsigned char reversed[32];
-            for (int i = 0; i < 32; ++i)
-                reversed[i] = *((unsigned char*)pInput + 31 - i);
-            
-            pInput = reversed;
-            return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
-        }
 
         return hlp.TestDifficulty((const uint8_t*)pInput, nSizeInput, m_Difficulty);
     }

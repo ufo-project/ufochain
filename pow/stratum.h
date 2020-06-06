@@ -173,7 +173,7 @@ struct MiningSubmit : Message {
 
     MiningSubmit() = default;
 
-    MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string _mixhash);
+    MiningSubmit(const std::string& _id, const std::string& _jobid, const std::string& _nonce, const std::string& _mixhash);
 };
 
 struct MiningNotify : Message {

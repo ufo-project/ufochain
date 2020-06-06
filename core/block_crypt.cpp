@@ -975,9 +975,13 @@ namespace ufo
             0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
         };
 
-        RewardHalfForkHeight = 20;
+        //RewardHalfForkHeight = 20;
 
-        ProgPowForkHeight = 30;
+        //ProgPowForkHeight = 30;
+
+        RewardHalfForkHeight = 3;
+
+        ProgPowForkHeight = 5;
 #else
         Prehistoric = {
             // BTC Block #613064
@@ -1303,11 +1307,11 @@ namespace ufo
             else {
                 std::string s = to_hex(pDataIn, 72);
 
-                unsigned char out[32];
-                unsigned char* p = out;
+                unsigned char o[32];
+                unsigned char* p = o;
 
                 SHA256((const unsigned char*)s.c_str(), s.length(), p);
-                s = to_hex(out, sizeof(out));
+                s = to_hex(o, sizeof(o));
 
                 uint64_t n = 
                     ((uint64_t)m_PoW.m_Nonce.m_pData[0] << 56) +
@@ -1320,12 +1324,19 @@ namespace ufo
                     ((uint64_t)m_PoW.m_Nonce.m_pData[7]);
 
                 std::string r;
-                progpow_hash(m_Height, s, n, r, (std::string&)m_PoW.m_MixHash);
+                std::string mixhash;
+                progpow_hash(m_Height, s, n, r, mixhash);
+
+                bool ok;
+                std::vector<uint8_t> buf = from_hex(mixhash, &ok);
+                memcpy((void*)m_PoW.m_MixHash.data(), buf.data(), Block::PoW::nMixHashBytes);
+
                 bool f;
                 auto bytes_vec = from_hex(r, &f);
                 assert(bytes_vec.size() == 32);
                 for (int i = 0; i < 32; ++i) {
-                    pDataOut[i] = bytes_vec[i];
+                    // big endian to little endian
+                    pDataOut[i] = bytes_vec[31 - i];
                 }
             }
 

@@ -226,11 +226,11 @@ private:
         else {
             std::string s = to_hex(pDataIn, 72);
 
-            unsigned char out[32];
-            unsigned char* p = out;
+            unsigned char o[32];
+            unsigned char* p = o;
 
             SHA256((const unsigned char*)s.c_str(), s.length(), p);
-            s = to_hex(out, sizeof(out));
+            s = to_hex(o, sizeof(o));
 
             uint64_t n =
                 ((uint64_t)foundShare.m_Nonce.m_pData[0] << 56) +
@@ -243,12 +243,19 @@ private:
                 ((uint64_t)foundShare.m_Nonce.m_pData[7]);
 
             std::string r;
-            progpow_hash(foundShareHeight, s, n, r, foundShare.m_MixHash);
+            std::string mixhash;
+            progpow_hash(foundShareHeight, s, n, r, mixhash);
+
+            bool ok;
+            std::vector<uint8_t> buf = from_hex(mixhash, &ok);
+            memcpy(foundShare.m_MixHash.data(), buf.data(), Block::PoW::nMixHashBytes);
+
             bool f;
             auto bytes_vec = from_hex(r, &f);
             assert(bytes_vec.size() == 32);
             for (int i = 0; i < 32; ++i) {
-                pDataOut[i] = bytes_vec[i];
+                // big endian to little endian
+                pDataOut[i] = bytes_vec[31 - i];
             }
         }
 
@@ -285,7 +292,10 @@ private:
         s >> nonceStr;
         nonceStr = nonceStr.substr((size_t)_enonce_len * 2, nonceStr.length());
 
-        stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr, _lastFoundShare.m_MixHash);
+        char buf[Block::PoW::nMixHashBytes * 2 + 1];
+        std::string mixhash = to_hex(buf, _lastFoundShare.m_MixHash.data(), Block::PoW::nMixHashBytes);
+
+        stratum::MiningSubmit submit(submit_id, _lastJobID, nonceStr, mixhash);
         if (!stratum::append_json_msg(_lineProtocol, submit)) {
             LOG_ERROR() << "Internal error";
             _reactor.stop();
