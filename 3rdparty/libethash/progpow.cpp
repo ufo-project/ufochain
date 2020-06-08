@@ -109,7 +109,7 @@ mix_rng_state::mix_rng_state(uint64_t seed) noexcept
     }
 }
 
-static int i=0;
+//static int i=0;
 
 NO_SANITIZE("unsigned-integer-overflow")
 inline uint32_t random_math(uint32_t a, uint32_t b, uint32_t selector) noexcept
@@ -148,7 +148,7 @@ inline uint32_t random_math(uint32_t a, uint32_t b, uint32_t selector) noexcept
 NO_SANITIZE("unsigned-integer-overflow")
 inline void random_merge(uint32_t& a, uint32_t b, uint32_t selector) noexcept
 {
-    uint32_t o_a=a;
+    //uint32_t o_a=a;
     const auto x = (selector >> 16) % 31 + 1;  // Additional non-zero selector from higher bits.
     switch (selector % 4)
     {

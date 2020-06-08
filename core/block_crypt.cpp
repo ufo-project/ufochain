@@ -975,13 +975,9 @@ namespace ufo
             0x71, 0x83, 0x69, 0x90, 0x43, 0xe4, 0x22, 0x20,
         };
 
-        //RewardHalfForkHeight = 20;
+        RewardHalfForkHeight = 20;
 
-        //ProgPowForkHeight = 30;
-
-        RewardHalfForkHeight = 3;
-
-        ProgPowForkHeight = 5;
+        ProgPowForkHeight = 30;
 #else
         Prehistoric = {
             // BTC Block #613064
