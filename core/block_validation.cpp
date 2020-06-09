@@ -109,6 +109,11 @@ namespace ufo
 
 		for (const Input* pPrev = NULL; r.m_pUtxoIn; pPrev = r.m_pUtxoIn, r.NextUtxoIn())
 		{
+            // check to make sure utxo input is not in treasury outputs;
+            auto p = Rules::CommitmentSetInTreasury.find(r.m_pUtxoIn->m_Commitment);
+            if (p != Rules::CommitmentSetInTreasury.end())
+                return false;
+
 			if (ShouldAbort())
 				return false;
 
