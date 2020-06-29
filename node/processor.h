@@ -314,6 +314,10 @@ public:
 
 		Mode m_Mode = Mode::SinglePass;
 
+        // txp: TxPool
+        // keyindex: subkey of export_miner_key
+        // coin: miner_key (child of master key)
+        // tag: owner_key (pub key of master key)
 		BlockContext(TxPool::Fluff& txp, Key::Index, Key::IKdf& coin, Key::IPKdf& tag);
 	};
 

@@ -1027,28 +1027,28 @@ void Node::Initialize(IExternalPOW* externalPOW)
     m_PeerMan.Initialize();
     if (m_Miner.m_pFinalizer)
     {
-      if (Peer::Flags::Finalizing & m_Miner.m_pFinalizer->m_Flags)
-        return; // wait until we receive that outdated finalization
+        if (Peer::Flags::Finalizing & m_Miner.m_pFinalizer->m_Flags)
+            return; // wait until we receive that outdated finalization
     }
     else
-      if (!keys.m_pMiner)
-        return; // offline mining is disabled
+        if (!keys.m_pMiner)
+            return; // offline mining is disabled
 
     NodeProcessor::BlockContext bc(
-      m_Miner.get_ParentObj().m_TxPool,
-      keys.m_nMinerSubIndex,
-      keys.m_pMiner ? *keys.m_pMiner : *keys.m_pGeneric,
-      keys.m_pOwner ? *keys.m_pOwner : *keys.m_pGeneric);
+        m_Miner.get_ParentObj().m_TxPool,
+        keys.m_nMinerSubIndex,
+        keys.m_pMiner ? *keys.m_pMiner : *keys.m_pGeneric,
+        keys.m_pOwner ? *keys.m_pOwner : *keys.m_pGeneric);
 
     if (m_Miner.m_pFinalizer)
-      bc.m_Mode = NodeProcessor::BlockContext::Mode::Assemble;
+        bc.m_Mode = NodeProcessor::BlockContext::Mode::Assemble;
 
     bool bRes = m_Miner.get_ParentObj().m_Processor.GenerateNewBlock(bc);
 
     if (!bRes)
     {
-      LOG_WARNING() << "Block generation failed, can't mine!";
-      return;
+        LOG_WARNING() << "Block generation failed, can't mine!";
+        return;
     }
 
     Miner::Task::Ptr pTask(std::make_shared<Miner::Task>());
